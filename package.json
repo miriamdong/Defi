@@ -11,12 +11,14 @@
     "prod:build": "NODE_ENV=production yarn run build:css && yarn run build"
   },
   "dependencies": {
-    "autoprefixer": "^10.1.0",
+    "@headlessui/react": "^1.1.1",
+    "@heroicons/react": "^1.0.1",
+    "autoprefixer": "^10.2.5",
     "next": "10.0.4",
-    "postcss": "^8.2.1",
+    "postcss": "^8.2.14",
     "postcss-cli": "^8.3.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.1.2"
   }
 }
