@@ -25,7 +25,7 @@ const solutions = [
     icon: ChartBarIcon,
   },
   {
-    name: 'My Project',
+    name: 'Get More Coins',
     description: 'Speak directly to your customers in a more meaningful way.',
     href: '#',
     icon: CursorClickIcon,
@@ -84,7 +84,7 @@ export default function Example() {
                   <span className="sr-only">Workflow</span>
                   <img
                     className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                    src="https://i.imgur.com/ZmPVEWF.jpg"
                     alt=""
                   />
                 </a>

@@ -13,6 +13,8 @@ export default function Home() {
       </Head>
       <Navbar />
       <Header />
+      
+      
       <Card />
       <Form />
       <Footer />
