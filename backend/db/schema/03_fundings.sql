@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS fundings CASCADE;
+CREATE TABLE fundings (
+  id VARCHAR(255) PRIMARY KEY NOT NULL,
+  user_id VARCHAR REFERENCES users(id) NOT NULL,
+  project_id VARCHAR REFERENCES projects(id) NOT NULL,
+  amount NUMERIC NOT NULL,
+  transaction_id VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP,
+  deleted_at TIMESTAMP
+);
