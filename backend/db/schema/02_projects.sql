@@ -8,7 +8,6 @@ CREATE TABLE projects (
   min_amount NUMERIC NOT NULL,
   round VARCHAR(50),
   contract TEXT,
-  image BYTEA,
   user_id INTEGER REFERENCES users(id) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP,
