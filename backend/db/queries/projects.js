@@ -21,5 +21,5 @@ const getProjectsByUserId = (id) => {
 module.exports = {
   getProjectById,
   listProjects,
-  getProjectsByUserId
+  getProjectsByUserId,
 }
