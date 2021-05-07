@@ -1,5 +1,5 @@
-import FirebaseAuth from '../../components/Auth/FirebaseAuth'
-import React, { useRef, useState } from "react"
+import React, { useState } from 'react';
+import Link from 'next/link';
 import { firebaseClient } from '../../firebase/initFirebase'
 
 const Auth = () => {
@@ -22,14 +22,13 @@ const Auth = () => {
         />
         <button
         onClick={async () => {
-            await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
-            window.location.href = '/';
+        await firebaseClient.auth().createUserWithEmailAndPassword(email, pass);
+        window.location.href = '/';
         }}
         >
-        Log in
+        Create account
         </button>
             </div>
-            <FirebaseAuth />
             <a href="/">Go back to home page</a>
         </div>
     )
