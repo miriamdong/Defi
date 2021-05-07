@@ -1,10 +1,9 @@
-DROP TABLE IF EXISTS fundings CASCADE;
-CREATE TABLE fundings (
+DROP TABLE IF EXISTS comments CASCADE;
+CREATE TABLE comments (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) NOT NULL,
   project_id INTEGER REFERENCES projects(id) NOT NULL,
-  amount NUMERIC NOT NULL,
-  transaction_id VARCHAR(255) NOT NULL,
+  comment TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP,
   deleted_at TIMESTAMP
