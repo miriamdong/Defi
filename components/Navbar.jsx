@@ -18,6 +18,10 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Sign_in from './Sign_in';
 import { useUser } from '../firebase/useUser'
+import FirebaseAuth from './Auth/FirebaseAuth'
+import React, { useRef, useState } from "react"
+import { firebaseClient } from '../firebase/initFirebase'
+
 
 const solutions = [
   {
@@ -73,7 +77,7 @@ function classNames(...classes) {
 export default function Navbar() {
   const { user, logout } = useUser()
   return (
-    <Popover className="Fixed bg-white fixed">
+    <Popover className="Fixed bg-white">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -256,12 +260,14 @@ export default function Navbar() {
                     </>
                   )}
                 </Popover> }
-                {user ? <a
-                  href="/auth/signup"
+                {user ? <button
                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  onClick={async () => {
+                    await firebaseClient.auth().signOut();
+                }}
                 >
                   Log out
-                </a>  :              
+                </button>  :              
                 <a
                   href="/auth/signup"
                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
