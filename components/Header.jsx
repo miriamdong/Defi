@@ -27,7 +27,7 @@ const supportLinks = [
 
 export default function Example() {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white" style={{paddingTop:"90px"}}>
       {/* Header */}
       <div className="relative pb-32 bg-gray-800">
         

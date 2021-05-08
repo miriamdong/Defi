@@ -77,18 +77,19 @@ function classNames(...classes) {
 export default function Navbar() {
   const { user, logout } = useUser()
   return (
-    <Popover className="Fixed bg-white">
+    <Popover className="relative bg-white" style={{position:"fixed",width:'100%',height:"12%",zIndex:"100"}}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+            <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10" >
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://i.imgur.com/ZmPVEWF.jpg"
+                    className="h-30 sm:h-10 "
+                    src="./img/cat1.png"
                     alt=""
+                    style={{height: "100px" ,width:"160px"}}
                   />
                 </a>
               </div>
