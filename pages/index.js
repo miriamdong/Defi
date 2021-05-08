@@ -20,15 +20,16 @@ export default function Home () {
 return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>rocketMEOW</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <div>
       <Navbar />
       <Header />
       <Card />
       <Form />
       <Footer />
-      <div>Hello World</div>
+      </div>
     </div>
   );
 }

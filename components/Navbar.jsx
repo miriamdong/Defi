@@ -72,9 +72,8 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const { user, logout } = useUser()
-  console.log("!!!",user)
   return (
-    <Popover className="Fixed bg-white">
+    <Popover className="Fixed bg-white fixed">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
