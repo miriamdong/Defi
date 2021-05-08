@@ -1,6 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { NewspaperIcon, PhoneIcon, SupportIcon } from "@heroicons/react/outline";
 import Link from 'next/link'
+import FirebaseAuth from './Auth/FirebaseAuth'
+import React, { useRef, useState } from "react"
+import { firebaseClient } from '../firebase/initFirebase'
+import { useUser } from '../firebase/useUser'
+
 const supportLinks = [
   {
     name: "Venus Head",
@@ -29,6 +34,7 @@ const supportLinks = [
 ];
 
 export default function Card() {
+  const { user, logout } = useUser()
   return (
     <section
       className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
@@ -53,13 +59,11 @@ export default function Card() {
           </div>
           
         ))}
-        <Link href="/project/create">
+        {user ? <Link href="/project/create">
         <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
-        
             <div className="flex-1 relative ">
               <div className=" px-4 py-10 sm:px-6 text-white">
-                <h3>CREATE NEW PROJECT</h3>
-                
+                <h3>CREATE NEW PROJECT</h3> 
               </div>
               <div  ><img 
                     src="./img/min.gif"
@@ -67,9 +71,24 @@ export default function Card() {
                   />
                   </div>
             </div>      
-       
       </div>
-      </Link>
+      </Link> : 
+        <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
+            <div className="flex-1 relative ">
+              <div className=" px-4 py-10 sm:px-6 text-white">
+                <h3>CREATE NEW PROJECT</h3>
+                <h6>Please Login First</h6>
+              </div>
+              <div  ><img 
+                    src="./img/min.gif"
+                    alt="New Project"
+                  />
+                  </div>
+            </div>      
+      </div>
+      
+      }
+        
       </div>
       
     </section>
