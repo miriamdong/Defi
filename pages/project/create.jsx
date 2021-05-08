@@ -1,10 +1,10 @@
-
+import UploadFile from '../../components/storage/UploadFile'
 import Link from 'next/link'
 export default function Create() {
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <form className="space-y-8 divide-y divide-gray-200">
-       
+
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
           <div>
@@ -219,10 +219,11 @@ export default function Create() {
                     <label
                       htmlFor="file-upload"
                       className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                    > <UploadFile />
+                      {/* <span>Upload a file</span> */}
+                      {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" /> */}
                     </label>
+
                     <p className="pl-1">or drag and drop</p>
                   </div>
                   <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
@@ -230,7 +231,7 @@ export default function Create() {
               </div>
             </div>
           </div>
-        
+
         <div className="pt-8">
           <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">Notifications</h3>

@@ -149,7 +149,7 @@ export default function Navbar() {
                                 </a>
                               ))}
                             </div>
-                            
+
                           </div>
                         </Popover.Panel>
                       </Transition>
@@ -252,7 +252,7 @@ export default function Navbar() {
                         leaveTo="opacity-0 translate-y-1"
                       >
                         <Popover.Panel
-  
+
                           className="absolute z-20 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0"
                         >
                           <Sign_in></Sign_in>
@@ -352,7 +352,7 @@ export default function Navbar() {
                     >
                       Sign up
                     </a> */}
-                     <Popover className="relative">
+                      <Popover className="relative">
                   {({ open }) => (
                     <>
                       <Popover.Button
@@ -402,7 +402,6 @@ export default function Navbar() {
                               ))}
                             </div>
                             <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
-                              
                               <div className="mt-5 text-sm">
                                 <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                                   {' '}
