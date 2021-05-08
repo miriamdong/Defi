@@ -53,20 +53,23 @@ export default function Card() {
           </div>
           
         ))}
-        <div className="flex flex-col bg-white rounded-2xl shadow-xl">
         <Link href="/project/create">
-            <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-              <div className="px-4 py-5 sm:px-6">
-                <h3>Create New Project</h3>
+        <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
+        
+            <div className="flex-1 relative ">
+              <div className=" px-4 py-10 sm:px-6 text-white">
+                <h3>CREATE NEW PROJECT</h3>
                 
               </div>
-              <div className="px-4 py-5 sm:p-6"><img
+              <div  ><img 
                     src="./img/min.gif"
                     alt="New Project"
-                  /></div>
+                  />
+                  </div>
             </div>      
-       </Link>
+       
       </div>
+      </Link>
       </div>
       
     </section>
