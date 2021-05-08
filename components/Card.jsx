@@ -61,7 +61,7 @@ export default function Card() {
                 
               </div>
               <div className="px-4 py-5 sm:p-6"><img
-                    src="https://i.imgur.com/PpxBlXu.jpg"
+                    src="./img/min.gif"
                     alt="New Project"
                   /></div>
             </div>      
