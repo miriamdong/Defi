@@ -17,6 +17,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Sign_in from './Sign_in';
+import { useUser } from '../firebase/useUser'
 
 const solutions = [
   {
@@ -69,7 +70,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navbar() {
+  const { user, logout } = useUser()
+  console.log("!!!",user)
   return (
     <Popover className="Fixed bg-white">
       {({ open }) => (
@@ -214,6 +217,7 @@ export default function Example() {
                 </Popover>
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              {user ? <p>Login as {user.email}</p> :
               <Popover className="relative">
                   {({ open }) => (
                     <>
@@ -231,7 +235,7 @@ export default function Example() {
                           )}
                           aria-hidden="true"
                         />
-                      </Popover.Button>
+                      </Popover.Button> 
 
                       <Transition
                         show={open}
@@ -252,14 +256,19 @@ export default function Example() {
                       </Transition>
                     </>
                   )}
-                </Popover>
-
+                </Popover> }
+                {user ? <a
+                  href="/auth/signup"
+                  className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Log out
+                </a>  :              
                 <a
                   href="/auth/signup"
                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   Sign up
-                </a>
+                </a> }
               </div>
             </div>
           </div>
