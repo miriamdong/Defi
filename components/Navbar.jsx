@@ -17,6 +17,11 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Sign_in from './Sign_in';
+import { useUser } from '../firebase/useUser'
+import FirebaseAuth from './Auth/FirebaseAuth'
+import React, { useRef, useState } from "react"
+import { firebaseClient } from '../firebase/initFirebase'
+
 
 const solutions = [
   {
@@ -69,7 +74,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navbar() {
+  const { user, logout } = useUser()
   return (
     <Popover className="Fixed bg-white">
       {({ open }) => (
@@ -214,16 +220,17 @@ export default function Example() {
                 </Popover>
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              {user ? <p>Login as {user.name}</p> :
               <Popover className="relative">
                   {({ open }) => (
                     <>
                       <Popover.Button
                         className={classNames(
                           open ? 'text-gray-900' : 'text-gray-500',
-                          'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                          'goverflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base text-white font-medium bg-indigo-600 hover:bg-indigo-700'
                         )}
                       >
-                        <span>Sign in</span>
+                        <span>Log in</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? 'text-gray-600' : 'text-gray-400',
@@ -231,7 +238,7 @@ export default function Example() {
                           )}
                           aria-hidden="true"
                         />
-                      </Popover.Button>
+                      </Popover.Button> 
 
                       <Transition
                         show={open}
@@ -252,14 +259,21 @@ export default function Example() {
                       </Transition>
                     </>
                   )}
-                </Popover>
-
+                </Popover> }
+                {user ? <button
+                  className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  onClick={async () => {
+                    await firebaseClient.auth().signOut();
+                }}
+                >
+                  Log out
+                </button>  :              
                 <a
                   href="/auth/signup"
                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   Sign up
-                </a>
+                </a> }
               </div>
             </div>
           </div>
