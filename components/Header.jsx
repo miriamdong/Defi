@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { NewspaperIcon, PhoneIcon, SupportIcon } from '@heroicons/react/outline'
-
+import  Navbar  from './Navbar';
 const supportLinks = [
   {
     name: 'Sales',
@@ -48,7 +48,7 @@ export default function Example() {
       </div>
 
       {/* Overlapping cards */}
-      <section
+      {/* <section
         className="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8"
         aria-labelledby="contact-heading"
       >
@@ -73,7 +73,7 @@ export default function Example() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
       <br></br>
       
     </div>
