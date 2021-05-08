@@ -217,7 +217,7 @@ export default function Navbar() {
                 </Popover>
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              {user ? <p>Login as {user.email}</p> :
+              {user ? <p>Login as {user.name}</p> :
               <Popover className="relative">
                   {({ open }) => (
                     <>
