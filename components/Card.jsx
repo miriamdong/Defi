@@ -43,6 +43,7 @@ export default function Card() {
           </div>
 
         ))}
+
         {user ? (
           <Link href="/project/create">
             <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
