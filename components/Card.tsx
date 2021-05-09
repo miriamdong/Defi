@@ -1,25 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { NewspaperIcon, PhoneIcon, SupportIcon } from "@heroicons/react/outline";
 import Link from 'next/link';
-import {useEffect} from 'react';
-import Head from 'next/head';
 import useAppData from "../hooks/useAppData.js";
-
-// import { getSortedData } from '../lib/data'
-
-      // const paths = supportLinks.map(project => ({
-      //   params: { id: project.ID.toString() }
-      // }))
-
-      // return { paths, fallback: false }
-
-
-// export async function getStaticProps() {
-//   const res = await fetch( 'https://defidapp.herokuapp.com/projects' )
-//     const projects = res.json();
-//   return { props: { projects } };
-// }
-
 
 export default function Card() {
 
@@ -35,7 +16,9 @@ export default function Card() {
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
-                <img src="link.img" />
+                <Link href="/project/[id]" as={`/project/${link.id}`}>
+                  <img src={link.image} />
+                </Link>
               </div>
               <div className="px-4 py-5 sm:p-6">{link.description}</div>
             </div>
@@ -43,7 +26,7 @@ export default function Card() {
               <a
                 href={link.link}
                 className="text-base font-medium text-indigo-700 hover:text-indigo-600">
-                Link to {link.link}
+                Link
               </a>
             </div>
 
