@@ -1,41 +1,45 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { NewspaperIcon, PhoneIcon, SupportIcon } from "@heroicons/react/outline";
-import Link from 'next/link'
-const supportLinks = [
-  {
-    name: "Venus Head",
-    href: "http:// Venus.com",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    name: "MARS",
-    href: "Mars.com",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-  },
-  {
-    name: "STAR",
-    href: "Star.com",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-  },
-  {
-    name: "AMAZING ONE",
-    href: "Star.com",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-  },
-];
+import Link from 'next/link';
+import {useEffect} from 'react';
+import Head from 'next/head';
+import useAppData from "../hooks/useAppData.js";
+
+// import { getSortedData } from '../lib/data'
+
+      // const paths = supportLinks.map(project => ({
+      //   params: { id: project.ID.toString() }
+      // }))
+
+      // return { paths, fallback: false }
+
+
+// export async function getStaticProps() {
+//   const res = await fetch( 'https://defidapp.herokuapp.com/projects' )
+//     const projects = res.json();
+//   return { props: { projects } };
+// }
+
 
 export default function Card() {
+
+  const {state} = useAppData();
+
+
+  // useEffect( () => {
+  //   fetch( 'http://defidapp.herokuapp.com/projects' )
+  //   .then( response => response.json() )
+  //   .then( data => {
+  //     console.log( data )
+  //   })
+  // }, [] )
   return (
     <section
       className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
       aria-labelledby="contact-heading">
       <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-20 lg:gap-x-8 ">
-        {supportLinks.map((link) => (
-          <div key={link.name} className="flex flex-col bg-white rounded-2xl shadow-xl">
+        {state.projects.map((link) => (
+          <div key={link.id} className="flex flex-col bg-white rounded-2xl shadow-xl">
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
@@ -49,26 +53,33 @@ export default function Card() {
                 Link to {link.href}
               </a>
             </div>
-            
+
           </div>
-          
+
         ))}
         <div className="flex flex-col bg-white rounded-2xl shadow-xl">
         <Link href="/project/create">
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>Create New Project</h3>
-                
+
               </div>
               <div className="px-4 py-5 sm:p-6"><img
                     src="https://i.imgur.com/PpxBlXu.jpg"
                     alt="New Project"
                   /></div>
-            </div>      
+            </div>
        </Link>
       </div>
       </div>
-      
+
     </section>
   );
 }
+
+//   Card.getInitialProps = async (ctx) => {
+//   const res = await fetch('https://defidapp.herokuapp.com/projects')
+//   const projects = await res.json()
+//   console.log(projects);
+//   return {props:{projects}};
+// }
