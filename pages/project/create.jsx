@@ -13,8 +13,13 @@ export default function Create() {
     link: "",
     round: "",
     contract: "",
+<<<<<<< HEAD
     image: "",
     
+=======
+    user_id: 2,
+    image: "https://pasteboard.co/K18xI9P.png"
+>>>>>>> ee6d09e443bcb2b6bbe3d4d65e8370146b72f1a3
     },);
   const handleChange = event => {
     const sth = {...state}
@@ -29,7 +34,7 @@ export default function Create() {
           "Access-Control-Allow-Origin": "*",
       }
     };
-    
+    console.log(state)
     axios.post('https://defidapp.herokuapp.com/projects', state, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
@@ -283,12 +288,16 @@ export default function Create() {
             </div>
           </div>
           <div className="sm:col-span-10" style={{borderTopWidth: "0px"}}> 
-              <label htmlFor="Contract" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="contract" className="block text-sm font-medium text-gray-700">
               Contract
               </label>
               <div className="mt-1">
                 <textarea
+<<<<<<< HEAD
                   id="Contract"
+=======
+                  id="contract"
+>>>>>>> ee6d09e443bcb2b6bbe3d4d65e8370146b72f1a3
                   name="contract"
                   rows={10}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
