@@ -64,7 +64,7 @@ export default function Card() {
         ))}
         {user ? (
           <Link href="/project/create">
-            <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
+            <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " style={{textAlign: "center"}}>
               <div className="flex-1 relative ">
                 <div className=" px-4 py-10 sm:px-6 text-white">
                   <h3>CREATE NEW PROJECT</h3>
