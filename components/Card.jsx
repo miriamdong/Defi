@@ -1,11 +1,21 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Link from 'next/link';
 import useAppData from "../hooks/useAppData.js";
+import { NewspaperIcon, PhoneIcon, SupportIcon } from "@heroicons/react/outline";
+import FirebaseAuth from "./Auth/FirebaseAuth";
+import React, { useRef, useState } from "react";
+import { firebaseClient } from "../firebase/initFirebase";
+import { useUser } from "../firebase/useUser";
+import { Popover, Transition } from '@headlessui/react'
+import { Fragment } from 'react'
+import Sign_in from './Sign_in';
 
 export default function Card() {
 
   const {state} = useAppData();
-
+  const { user, logout } = useUser();
+  const [isShown,setIsShown] = useState(false)
+  const [toggle, setToggle] =useState(false)
   return (
     <section
       className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
@@ -33,10 +43,10 @@ export default function Card() {
           </div>
 
         ))}
-<<<<<<< HEAD
+
         {user ? (
           <Link href="/project/create">
-            <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " style={{textAlign: "center"}}>
+            <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
               <div className="flex-1 relative ">
                 <div className=" px-4 py-10 sm:px-6 text-white">
                   <h3>CREATE NEW PROJECT</h3>
@@ -55,26 +65,20 @@ export default function Card() {
               return !prev
             })
           }}>
-=======
-        <Link href="/project/create">
-        <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl ">
-
->>>>>>> 5992b57fba96166f3138339e2b15c7046a72e4cd
             <div className="flex-1 relative ">
-              <div className=" px-4 py-10 sm:px-6 text-white">
-                <h3>CREATE NEW PROJECT</h3>
-
+              <div className=" px-4 py-10 sm:px-6 text-white" style={{textAlign: "center"}} >
+                {!toggle ? 
+                <h3>CREATE NEW PROJECT</h3>: <h3>PLEASE LOGIN FIRST!!!</h3>}
               </div>
-              <div  ><img
-                    src="./img/min.gif"
-                    alt="New Project"
-              /></div>
+              <div>
+                <img src="./img/min.gif" alt="New Project" />
               </div>
+            </div>
 
-      </div>
-       </Link>
-      </div>
+          </div>
 
+        )}
+      </div>
     </section>
   );
 }
