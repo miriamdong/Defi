@@ -25,14 +25,6 @@ export default function Card() {
 
   const {state} = useAppData();
 
-
-  // useEffect( () => {
-  //   fetch( 'http://defidapp.herokuapp.com/projects' )
-  //   .then( response => response.json() )
-  //   .then( data => {
-  //     console.log( data )
-  //   })
-  // }, [] )
   return (
     <section
       className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
@@ -43,14 +35,15 @@ export default function Card() {
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
+                <img src="link.img" />
               </div>
               <div className="px-4 py-5 sm:p-6">{link.description}</div>
             </div>
             <div className="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
               <a
-                href={link.href}
+                href={link.link}
                 className="text-base font-medium text-indigo-700 hover:text-indigo-600">
-                Link to {link.href}
+                Link to {link.link}
               </a>
             </div>
 
