@@ -34,12 +34,7 @@
     "@angular-devkit/build-angular": "^0.1102.12",
     "autoprefixer": "^10.2.5",
     "css-loader": "^5.2.4",
-<<<<<<< HEAD
     "postcss": "^8.2.14",
-    "tailwindcss": "^2.1.2",
-=======
-    "prisma": "^2.22.1",
->>>>>>> 5992b57fba96166f3138339e2b15c7046a72e4cd
-    "typescript": "^4.2.4"
+    "tailwindcss": "^2.1.2"
   }
 }
