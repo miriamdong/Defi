@@ -1,9 +1,49 @@
 import UploadFile from '../../components/storage/UploadFile'
 import Link from 'next/link'
+import React, { useRef, useState } from "react"
+import axios from "axios"
+
 export default function Create() {
+  const [state, setState] = useState({
+    name: "",
+    description: "",
+    target_amount: "",
+    target_date: "",
+    min_amount: "",
+    link: "",
+    round: "",
+    contract: "",
+    user_id: 2,
+    image: "",
+    
+    },);
+  const handleChange = event => {
+    const sth = {...state}
+    sth[event.target.name]= event.target.value
+    setState(sth)
+  }
+  const handleSubmit = event => {
+    event.preventDefault();
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+      }
+    };
+    
+    axios.post('https://defidapp.herokuapp.com/projects', state, axiosConfig)
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    })
+    
+
+  }
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <form className="space-y-8 divide-y divide-gray-200">
+    <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit} >
 
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
@@ -29,14 +69,16 @@ export default function Create() {
               <div className="mt-1">
                 <input
                   type="text"
-                  name="Project_name"
+                  name="name"
                   id="Project_name"
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  onChange={handleChange}
+
                 />
               </div>
             </div>
 
-            <div className="sm:col-span-3">
+            {/* <div className="sm:col-span-3">
               <label htmlFor="Company_name" className="block text-sm font-medium text-gray-700">
               Company Name
               </label>
@@ -46,11 +88,12 @@ export default function Create() {
                   name="Company_name"
                   id="Company_name"
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  onChange={this.handleChange}
                 />
               </div>
-            </div>
+            </div> */}
 
-            <div className="sm:col-span-4">
+            {/* <div className="sm:col-span-4">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Project Contact person
               </label>
@@ -60,12 +103,13 @@ export default function Create() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  onChange={this.handleChange}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
-            </div>
+            </div> */}
 
-            <div className="sm:col-span-3">
+            {/* <div className="sm:col-span-3">
               <label htmlFor="country" className="block text-sm font-medium text-gray-700">
                 Company Country / Region
               </label>
@@ -74,6 +118,7 @@ export default function Create() {
                   id="country"
                   name="country"
                   autoComplete="country"
+                  onChange={this.handleChange}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 >
                   <option>United States</option>
@@ -81,62 +126,67 @@ export default function Create() {
                   <option>Mexico</option>
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <div className="sm:col-span-6">
-              <label htmlFor="street_address" className="block text-sm font-medium text-gray-700">
-                Street address
+              <label htmlFor="target_amount" className="block text-sm font-medium text-gray-700">
+                Target Amount
               </label>
               <div className="mt-1">
                 <input
                   type="text"
-                  name="street_address"
-                  id="street_address"
+                  name="target_amount"
+                  id="target_amount"
                   autoComplete="street-address"
+                  onChange={handleChange}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                City
+              <label htmlFor="target_date" className="block text-sm font-medium text-gray-700">
+               Target Date
               </label>
               <div className="mt-1">
                 <input
                   type="text"
-                  name="city"
-                  id="city"
+                  name="target_date"
+                  id="target_date"
+                  onChange={handleChange}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="state" className="block text-sm font-medium text-gray-700">
-                State / Province
+              <label htmlFor="min_amount" className="block text-sm font-medium text-gray-700">
+                Minmum Amount
               </label>
               <div className="mt-1">
                 <input
                   type="text"
-                  name="state"
-                  id="state"
+                  name="min_amount"
+                  id="min_amount"
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  onChange={handleChange}                
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="zip" className="block text-sm font-medium text-gray-700">
-                ZIP / Postal
+              <label htmlFor="round" className="block text-sm font-medium text-gray-700">
+              Round
               </label>
               <div className="mt-1">
                 <input
                   type="text"
-                  name="zip"
-                  id="zip"
+                  name="round"
+                  id="round"
                   autoComplete="postal-code"
+                  onChange={handleChange}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -153,8 +203,9 @@ export default function Create() {
                 </span>
                 <input
                   type="url"
-                  name="website"
+                  name="link"
                   id="website"
+                  onChange={handleChange}
                   className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                 />
               </div>
@@ -167,10 +218,11 @@ export default function Create() {
               <div className="mt-1">
                 <textarea
                   id="Description"
-                  name="Description"
+                  name="description"
                   rows={10}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                   defaultValue={''}
+                  onChange={handleChange}
                 />
               </div>
               <p className="mt-2 text-sm text-gray-500">Write a few sentences about your project.</p>
@@ -231,6 +283,23 @@ export default function Create() {
               </div>
             </div>
           </div>
+          <div className="sm:col-span-10" style={{borderTopWidth: "0px"}}> 
+              <label htmlFor="Contract" className="block text-sm font-medium text-gray-700">
+              Contract
+              </label>
+              <div className="mt-1">
+                <textarea
+                  id="Contract"
+                  name="Contract"
+                  rows={10}
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  defaultValue={''}
+                  onChange={handleChange}
+                />
+              </div>
+              <p className="mt-2 text-sm text-gray-500">Write policy about your project.</p>
+            </div>
+
 
         <div className="pt-8">
           <div>
@@ -250,6 +319,7 @@ export default function Create() {
                       name="comments"
                       type="checkbox"
                       className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="ml-3 text-sm">
