@@ -225,11 +225,12 @@ export default function Navbar() {
               <Popover className="relative">
                   {({ open }) => (
                     <>
-                      <Popover.Button
+                      <Popover.Button id="sign-in-button"
                         className={classNames(
                           open ? 'text-gray-900' : 'text-gray-500',
-                          'goverflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base text-white font-medium bg-indigo-600 hover:bg-indigo-700'
-                        )}
+                          'sign-in-button goverflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base text-white font-medium bg-indigo-600 hover:bg-indigo-700'
+                        
+                          )}
                       >
                         <span>Log in</span>
                         <ChevronDownIcon
