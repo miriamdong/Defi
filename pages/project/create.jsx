@@ -13,7 +13,6 @@ export default function Create() {
     link: "",
     round: "",
     contract: "",
-    user_id: 2,
     image: "",
     
     },);
@@ -290,7 +289,7 @@ export default function Create() {
               <div className="mt-1">
                 <textarea
                   id="Contract"
-                  name="Contract"
+                  name="contract"
                   rows={10}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                   defaultValue={''}
