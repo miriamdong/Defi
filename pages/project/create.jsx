@@ -293,11 +293,7 @@ export default function Create() {
               </label>
               <div className="mt-1">
                 <textarea
-<<<<<<< HEAD
-                  id="Contract"
-=======
                   id="contract"
->>>>>>> ee6d09e443bcb2b6bbe3d4d65e8370146b72f1a3
                   name="contract"
                   rows={10}
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
