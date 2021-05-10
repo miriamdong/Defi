@@ -38,6 +38,7 @@ const Project = () => {
      setProject(response.data[0])
    })
   }, [])
+  console.log("^^^^",router.query.id)
   
   return (
       <div>
