@@ -8001,11 +8001,14 @@ pretty-hrtime@^1.0.3:
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 printj@~1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/printj/-/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
   integrity sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==
 
+=======
+>>>>>>> 71ce56f45a045bed35a286a4f19280e5a65aff4f
 =======
 >>>>>>> 71ce56f45a045bed35a286a4f19280e5a65aff4f
 process-nextick-args@~2.0.0:
