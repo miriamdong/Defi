@@ -5,7 +5,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-
+// import  Navbar  from '../../components/Navbar';
 
 
 export default function Create() {
@@ -18,7 +18,7 @@ export default function Create() {
     link: "",
     round: "",
     contract: "",
-    image: "",
+    image: "https://www.google.com/search?q=STH&rlz=1C5CHFA_enCA938CA938&sxsrf=ALeKk01dww0xKffsqsejHqVvX7aJDc-mQw:1620611058559&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj3l9vT_r3wAhWNsp4KHcW5CmIQ_AUoAnoECAIQBA&biw=1471&bih=1048#imgrc=X5wGcERir0GzzM",
     user_id: 2,
   });
   const [startDate, setStartDate] = useState(new Date());
@@ -47,7 +47,10 @@ export default function Create() {
       });
   };
   return (
+    <>
+    {/* <Navbar /> */}
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      
       <main className="bg-white">
         <div className="max-w-3xl mx-auto">
           <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
@@ -483,5 +486,6 @@ export default function Create() {
         </div>
       </main>
     </div>
-  );
+    </>
+  )
 }

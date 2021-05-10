@@ -16,7 +16,6 @@ export default function Card() {
   const { user, logout } = useUser();
   const [isShown,setIsShown] = useState(false)
   const [toggle, setToggle] =useState(false)
-  console.log("1111",state.projects) 
 
   return (
     <section
