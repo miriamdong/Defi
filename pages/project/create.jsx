@@ -1,4 +1,5 @@
-import UploadFile from '../../components/storage/UploadFile'
+// import UploadFile from '../../components/storage/UploadFile'
+import Upload from "../../components/storage/AWS"
 import Link from 'next/link'
 import React, { useRef, useState } from "react"
 import axios from "axios"
@@ -37,7 +38,7 @@ export default function Create() {
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
     })
-    
+
 
   }
   return (
@@ -168,7 +169,7 @@ export default function Create() {
                   name="min_amount"
                   id="min_amount"
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  onChange={handleChange}                
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -270,7 +271,7 @@ export default function Create() {
                     <label
                       htmlFor="file-upload"
                       className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                    > <UploadFile />
+                    > <Upload />
                       {/* <span>Upload a file</span> */}
                       {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" /> */}
                     </label>
@@ -282,7 +283,7 @@ export default function Create() {
               </div>
             </div>
           </div>
-          <div className="sm:col-span-10" style={{borderTopWidth: "0px"}}> 
+          <div className="sm:col-span-10" style={{borderTopWidth: "0px"}}>
               <label htmlFor="contract" className="block text-sm font-medium text-gray-700">
               Contract
               </label>
