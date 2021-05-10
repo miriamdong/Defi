@@ -4,7 +4,7 @@ import GridLoader from "react-spinners/GridLoader";
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3();
 
-export default function Upload() {
+export default function Upload(props) {
   const [uploading, setUploading] = useState(false);
   const [imgUrl, setImgUrl] = useState(null);
   const inputEl = useRef(null);
@@ -15,8 +15,9 @@ export default function Upload() {
     const filename = encodeURIComponent(file.name);
     const res = await fetch(`/api/upload-url?file=${filename}`);
     const { url, fields } = await res.json();
-    setTimeout(() => setImgUrl(url + "/" + fields.key), 1000);
-
+    const image = url + "/" + fields.key;
+    setTimeout(() => setImgUrl(image), 1000);
+    props.setImgUrl(image);
     console.log(imgUrl);
     console.log({ url });
     setUploading(true);
@@ -58,8 +59,8 @@ export default function Upload() {
   return (
     <>
       <p>Upload a .png or .jpg image (max 10MB).</p>
-      <input onChange={uploadPhoto} type="file" ref={inputEl} accept="image/png, image/jpeg" />
       <img src={imgUrl} alt="" />
+      <input onChange={uploadPhoto} type="file" ref={inputEl} accept="image/png, image/jpeg" />
     </>
   );
 }

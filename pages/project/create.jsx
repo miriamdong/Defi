@@ -5,6 +5,9 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import firebase from "firebase/app";
+import "firebase/auth";
 // import  Navbar  from '../../components/Navbar';
 
 export default function Create() {
@@ -17,16 +20,19 @@ export default function Create() {
     link: "",
     round: "",
     contract: "",
-    user_id: 2,
+    user_id: "",
     image: "",
   });
 
   const [startDate, setStartDate] = useState(new Date());
+  const [user_id, setUserId] = useState(null);
 
   const handleChange = (event) => {
     const sth = { ...state };
     sth[event.target.name] = event.target.value;
     setState(sth);
+    setUserId(firebase.auth().currentUser.uid);
+    console.log("user_id:", user_id);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
