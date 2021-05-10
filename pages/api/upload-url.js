@@ -23,8 +23,6 @@ export default async function handler (req, res) {
 
   });
 
-  console.log('sending presigned url', presignedPutUrl);
-
   res.status(200).json(upload);
 
 }
