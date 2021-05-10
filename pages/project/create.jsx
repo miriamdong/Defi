@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import UploadFile from "../../components/storage/UploadFile";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
@@ -7,6 +8,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import  Navbar  from '../../components/Navbar';
 
+=======
+// import UploadFile from '../../components/storage/UploadFile'
+import Upload from "../../components/storage/AWS"
+import Link from 'next/link'
+import React, { useRef, useState } from "react"
+import axios from "axios"
+>>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
 
 export default function Create() {
   const [state, setState] = useState({
@@ -36,6 +44,7 @@ export default function Create() {
         "Access-Control-Allow-Origin": "*",
       },
     };
+<<<<<<< HEAD
     console.log(state);
     axios
       .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
@@ -46,6 +55,19 @@ export default function Create() {
         console.log("AXIOS ERROR: ", err);
       });
   };
+=======
+    console.log(state)
+    axios.post('https://defidapp.herokuapp.com/projects', state, axiosConfig)
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    })
+
+
+  }
+>>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
   return (
     <>
     {/* <Navbar /> */}
@@ -181,10 +203,28 @@ export default function Create() {
                   </div>
 
 
+<<<<<<< HEAD
+=======
+            <div className="sm:col-span-2">
+              <label htmlFor="min_amount" className="block text-sm font-medium text-gray-700">
+                Minmum Amount
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="min_amount"
+                  id="min_amount"
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+>>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
 
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -198,6 +238,35 @@ export default function Create() {
                   <div className="sm:col-span-3">
                     <label htmlFor="min_amount" className="block text-sm font-medium text-gray-700">
                       Minmum Amount
+=======
+            <div className="sm:col-span-6">
+              <label htmlFor="cover_photo" className="block text-sm font-medium text-gray-700">
+              Cover photo
+              </label>
+              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div className="space-y-1 text-center">
+                  <svg
+                    className="mx-auto h-12 w-12 text-gray-400"
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <div className="flex text-sm text-gray-600">
+                    <label
+                      htmlFor="file-upload"
+                      className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                    > <Upload />
+                      {/* <span>Upload a file</span> */}
+                      {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" /> */}
+>>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
                     </label>
                     <div className="mt-1">
                       <input
@@ -231,6 +300,7 @@ export default function Create() {
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
               <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                 <div className="sm:col-span-4 pt-8">
                   <label htmlFor="username" className="block text-sm font-medium text-gray-700">
@@ -240,6 +310,41 @@ export default function Create() {
                     <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
                       http://
                     </span>
+=======
+            </div>
+          </div>
+          <div className="sm:col-span-10" style={{borderTopWidth: "0px"}}>
+              <label htmlFor="contract" className="block text-sm font-medium text-gray-700">
+              Contract
+              </label>
+              <div className="mt-1">
+                <textarea
+                  id="contract"
+                  name="contract"
+                  rows={10}
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  defaultValue={''}
+                  onChange={handleChange}
+                />
+              </div>
+              <p className="mt-2 text-sm text-gray-500">Write policy about your project.</p>
+            </div>
+
+
+        <div className="pt-8">
+          <div>
+            <h3 className="text-lg leading-6 font-medium text-gray-900">Notifications</h3>
+            <p className="mt-1 text-sm text-gray-500">
+              We'll always let you know about important changes, but you pick what else you want to hear about.
+            </p>
+          </div>
+          <div className="mt-6">
+            <fieldset>
+              <legend className="text-base font-medium text-gray-900">By Email</legend>
+              <div className="mt-4 space-y-4">
+                <div className="relative flex items-start">
+                  <div className="flex items-center h-5">
+>>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
                     <input
                       type="url"
                       name="link"

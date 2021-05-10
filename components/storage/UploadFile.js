@@ -69,4 +69,4 @@ const UploadFile = () => {
     )
 }
 
-export default UploadFile
+export default UploadFile;
