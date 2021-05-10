@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 export default function Create() {
+  const [date, setDate] = useState(new Date());
   const [state, setState] = useState({
     name: "",
     description: "",
@@ -22,10 +23,10 @@ export default function Create() {
     image: "https://www.google.com/search?q=STH&rlz=1C5CHFA_enCA938CA938&sxsrf=ALeKk01dww0xKffsqsejHqVvX7aJDc-mQw:1620611058559&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj3l9vT_r3wAhWNsp4KHcW5CmIQ_AUoAnoECAIQBA&biw=1471&bih=1048#imgrc=X5wGcERir0GzzM",
     user_id: 2,
   });
-  const [startDate, setStartDate] = useState(new Date());
+  
 
   const handleChange = (event) => {
-    const sth = { ...state };
+    const sth = { ...state};
     sth[event.target.name] = event.target.value;
     setState(sth);
   };
@@ -172,8 +173,9 @@ export default function Create() {
                         type="text"
                         name="target_date"
                         id="target_date"
-                        selected={startDate}
-                        onChange={date => setStartDate(date)}
+                        selected={date}
+                        
+                        onChange={date => setDate(date)}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
                       />
                        
