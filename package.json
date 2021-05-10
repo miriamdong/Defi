@@ -37,18 +37,13 @@
     "react-bootstrap": "^1.5.2",
     "react-datepicker": "^3.8.0",
     "react-dom": "17.0.2",
-<<<<<<< HEAD
     "react-feather": "^2.0.9",
     "react-firebaseui": "^4.1.0",
     "react-popper": "^2.2.5",
     "react-router-dom": "^5.2.0",
-    "tsx": "^1.0.0"
-=======
+    "tsx": "^1.0.0",
     "react-dropzone": "^11.3.2",
-    "react-firebaseui": "^4.1.0",
-    "react-router-dom": "^5.2.0",
     "react-spinners": "^0.10.6"
->>>>>>> 53ea2fc71b2b06a670d044c64493b57e3ab9f801
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1102.12",
