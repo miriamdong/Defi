@@ -33,6 +33,25 @@ const Project = () => {
   });
 
   const [comments, setComments] = useState([])
+  const [comment, setComment] = useState("")
+
+  const submitComment = (event) => {
+    event.preventDefault();
+    const commentObject = {
+      "user_id": "2",
+      "project_id": project.id,
+      "comment": comment
+    }
+    axios.post("https://defidapp.herokuapp.com/comments", commentObject)
+    .then((res) => {
+      axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
+      .then((response) => {
+        setComments(response.data);
+        setComment("");
+      })
+    })
+    
+  }
 
   useEffect(() => {
     axios.get(`https://defidapp.herokuapp.com/projects/${router.query.id}`)
@@ -42,7 +61,6 @@ const Project = () => {
 
     axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
       .then((response) => {
-        console.log(response.data)
         setComments(response.data)
       })
   }, [])
@@ -64,10 +82,18 @@ const Project = () => {
           {comments.map((comment) => {
             return (<div>
               <span>user {comment.user_id}: {comment.comment}</span>
-              </div>)
+            </div>)
           })}
         </div>
       </div>
+      <form  onSubmit={submitComment}>
+        <label
+          htmlFor="Project_name" > Comment: </label>
+        <div className="mt-1">
+          <input type="text" name="name" id="Project_name" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2" value={comment} onChange={(event) => setComment(event.target.value)}/>
+        </div>
+        <button type="submit" className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+      </form>
     </div>
   )
 }
