@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Link from 'next/link'
-import {useRouter} from 'next/router'
-import {useEffect, useState} from 'react';
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const Project = () => {
   const classes = useStyles();
   const router = useRouter();
-  
+
   const [project, setProject] = useState({
     name: "",
     description: "",
@@ -30,37 +30,45 @@ const Project = () => {
     contract: "",
     user_id: "",
     image: ""
-    });
+  });
+
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
-   axios.get(`https://defidapp.herokuapp.com/projects/${router.query.id}`)
-   .then((response) => {
-     setProject(response.data[0])
-   })
-  }, [])
-  console.log("^^^^",router.query.id)
-  
-  return (
-      <div>
-        {project.name}<br/>
-        {project.description}<br/>
-        {project.target_amount}<br/>
-        {project.target_date}<br/>
-        {project.min_amount}<br/>
-        {project.link}<br/>
-        {project.round}<br/>
-        {project.contract}<br/>
-        <img src={project.image} width="300"/>
-        
-        <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <Button type="submit">Comment</Button>
-    </form>
+    axios.get(`https://defidapp.herokuapp.com/projects/${router.query.id}`)
+      .then((response) => {
+        setProject(response.data[0])
+      });
 
-        <Link href="/">
-        <button>Go Back</button>
-        </Link>
+    axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
+      .then((response) => {
+        console.log(response.data)
+        setComments(response.data)
+      })
+  }, [])
+
+  return (
+
+    <div className="grid justify-items-center ...">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <img className="w-full" src={project.image} alt="Sunset in the mountains" />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{project.name}</div>
+          <p className="text-gray-700 text-base">
+            {project.description}
+          </p>
+        </div>
       </div>
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="px-6 py-4">
+          {comments.map((comment) => {
+            return (<div>
+              <span>user {comment.user_id}: {comment.comment}</span>
+              </div>)
+          })}
+        </div>
+      </div>
+    </div>
   )
 }
 
