@@ -51,281 +51,236 @@ export default function Create() {
   };
   console.log(state);
   return (
-    <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <main className="bg-white">
-        <div className="max-w-3xl mx-auto">
-          <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
-            <div className="space-y-8 divide-y divide-gray-200">
-              <div>
-                <div className="text-center">
-                  <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4">New Project</h1>
-                  <p className="mt-10 mb-0 text-sm text-gray-500">
-                    This information will be displayed publicly so be careful what you share.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-8">
+    <>
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <main className="bg-white">
+          <div className="max-w-3xl mx-auto">
+            <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
+              <div className="space-y-8 divide-y divide-gray-200">
                 <div>
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Company Information
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Use a permanent address where you can receive mail.
-                  </p>
+                  <div className="text-center">
+                    <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4">
+                      New Project
+                    </h1>
+                    <p className="mt-10 mb-0 text-sm text-gray-500">
+                      This information will be displayed publicly so be careful what you share.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-8">
+                  <div>
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                      Company Information
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Use a permanent address where you can receive mail.
+                    </p>
+                  </div>
+                  <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div className="sm:col-span-4">
+                      <label
+                        htmlFor="Project_name"
+                        className="block text-sm font-medium text-gray-700">
+                        Project name
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="text"
+                          name="name"
+                          id="Project_name"
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="sm:col-span-3">
+                      <label
+                        htmlFor="target_amount"
+                        className="block text-sm font-medium text-gray-700">
+                        Target Amount
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="text"
+                          name="target_amount"
+                          id="target_amount"
+                          placeholder="$000,000"
+                          onChange={handleChange}
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label
+                        htmlFor="target_date"
+                        className="block text-sm font-medium text-gray-700">
+                        Target Date
+                      </label>
+
+                      <div className="mt-1 ">
+                        <DatePicker
+                          type="text"
+                          name="target_date"
+                          id="target_date"
+                          selected={
+                            state.target_date === "" ? new Date() : new Date(state.target_date)
+                          }
+                          onChange={(newDate) => {
+                            setState((prev) => {
+                              return { ...prev, target_date: newDate.toLocaleDateString() };
+                            });
+                          }}
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label
+                        htmlFor="min_amount"
+                        className="block text-sm font-medium text-gray-700">
+                        Minmum Amount
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="text"
+                          name="min_amount"
+                          id="min_amount"
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
+                          placeholder="$000,000"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="round" className="block text-sm font-medium text-gray-700">
+                        Round
+                      </label>
+                      <div className="mt-1">
+                        <select
+                          type="text"
+                          name="round"
+                          id="round"
+                          autoComplete="postal-code"
+                          onChange={handleChange}
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                  <div className="sm:col-span-4">
-                    <label
-                      htmlFor="Project_name"
-                      className="block text-sm font-medium text-gray-700">
-                      Project name
+                  <div className="sm:col-span-4 pt-8">
+                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                      Website
                     </label>
-                    <div className="mt-1">
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                        http://
+                      </span>
                       <input
-                        type="text"
-                        name="name"
-                        id="Project_name"
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
+                        name="link"
+                        id="website"
                         onChange={handleChange}
+                        placeholder="www.example.com"
+                        className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300 p-2 border-2"
                       />
                     </div>
                   </div>
 
-                  {/* <div className="sm:col-span-3">
-              <label htmlFor="Company_name" className="block text-sm font-medium text-gray-700">
-              Company Name
-              </label>
-              <div className="mt-1">
-                <input
-                  type="text"
-                  name="Company_name"
-                  id="Company_name"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div> */}
-
-                  {/* <div className="sm:col-span-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Project Contact person
-              </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  onChange={this.handleChange}
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                />
-              </div>
-            </div> */}
-
-                  {/* <div className="sm:col-span-3">
-              <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                Company Country / Region
-              </label>
-              <div className="mt-1">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country"
-                  onChange={this.handleChange}
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-              </div>
-            </div> */}
-
-                  <div className="sm:col-span-3">
+                  <div className="sm:col-span-10">
                     <label
-                      htmlFor="target_amount"
+                      htmlFor="Description"
                       className="block text-sm font-medium text-gray-700">
-                      Target Amount
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="target_amount"
-                        id="target_amount"
-                        placeholder="$000,000"
-                        onChange={handleChange}
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="target_date"
-                      className="block text-sm font-medium text-gray-700">
-                      Target Date
+                      Description
                     </label>
 
                     <div className="mt-1 ">
-                      <DatePicker
-                        type="text"
-                        name="target_date"
-                        id="target_date"
-                        selected={
-                          state.target_date === "" ? new Date() : new Date(state.target_date)
-                        }
-                        onChange={(newDate) => {
-                          setState((prev) => {
-                            return { ...prev, target_date: newDate.toLocaleDateString() };
-                          });
-                        }}
+                      <textarea
+                        id="Description"
+                        name="description"
+                        rows={10}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label htmlFor="min_amount" className="block text-sm font-medium text-gray-700">
-                      Minmum Amount
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="min_amount"
-                        id="min_amount"
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-                        placeholder="$000,000"
+                        defaultValue={""}
                         onChange={handleChange}
                       />
                     </div>
+                    <p className="mt-2 text-sm text-gray-500">
+                      Write a few sentences about your project.
+                    </p>
                   </div>
 
-                  <div className="sm:col-span-2">
-                    <label htmlFor="round" className="block text-sm font-medium text-gray-700">
-                      Round
+                  <div className="sm:col-span-6">
+                    <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+                      logo
                     </label>
-                    <div className="mt-1">
-                      <select
-                        type="text"
-                        name="round"
-                        id="round"
-                        autoComplete="postal-code"
-                        onChange={handleChange}
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                      </select>
+                    <div className="mt-1 flex items-center">
+                      <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                        <svg
+                          className="h-full w-full text-gray-300"
+                          fill="currentColor"
+                          viewBox="0 0 24 24">
+                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                      </span>
+                      <button
+                        type="button"
+                        className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Change
+                      </button>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                <div className="sm:col-span-4 pt-8">
-                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                    Website
-                  </label>
-                  <div className="mt-1 flex rounded-md shadow-sm">
-                    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                      http://
-                    </span>
-                    <input
-                      name="link"
-                      id="website"
-                      onChange={handleChange}
-                      placeholder="www.example.com"
-                      className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300 p-2 border-2"
-                    />
-                  </div>
-                </div>
 
-                <div className="sm:col-span-10" >
-                  <label htmlFor="Description" className="block text-sm font-medium text-gray-700">
-                    Description
-                  </label>
+                  <div className="sm:col-span-6">
+                    <label
+                      htmlFor="cover_photo"
+                      className="block text-sm font-medium text-gray-700">
+                      Cover photo
+                    </label>
+                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                      <div className="space-y-1 text-center">
+                        <svg
+                          className="mx-auto h-12 w-12 text-gray-400"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 48 48"
+                          aria-hidden="true">
+                          <path
+                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <div className="flex text-sm text-gray-600">
+                          <label
+                            htmlFor="file-upload"
+                            className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                            {" "}
+                            <Upload setImgUrl={(imgUrl) => setState({ ...state, image: imgUrl })} />
+                            {/* <span>Upload a file</span> */}
+                            {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" /> */}
+                          </label>
 
-                  <div className="mt-1 ">
-                  <textarea
-                      id="Description"
-                      name="description"
-                      rows={10}
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-                      defaultValue={""}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <p className="mt-2 text-sm text-gray-500">
-                    Write a few sentences about your project.
-                  </p>
-                </div>
-
-                <div className="sm:col-span-6">
-                  <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
-                    logo
-                  </label>
-                  <div className="mt-1 flex items-center">
-                    <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                      <svg
-                        className="h-full w-full text-gray-300"
-                        fill="currentColor"
-                        viewBox="0 0 24 24">
-                        <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                    </span>
-                    <button
-                      type="button"
-                      className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Change
-                    </button>
-                  </div>
-                </div>
-
-                <div className="sm:col-span-6">
-                  <label htmlFor="cover_photo" className="block text-sm font-medium text-gray-700">
-                    Cover photo
-                  </label>
-                  <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                    <div className="space-y-1 text-center">
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true">
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <div className="flex text-sm text-gray-600">
-                        <label
-                          htmlFor="file-upload"
-                          className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                          {" "}
-                          <Upload setImgUrl={(imgUrl) => setState({ ...state, image: imgUrl })} />
-                          {/* <span>Upload a file</span> */}
-                          {/* <input id="file-upload" name="file-upload" type="file" className="sr-only" /> */}
-                        </label>
-
-                        <p className="pl-1">or drag and drop</p>
+                          <p className="pl-1">or drag and drop</p>
+                        </div>
+                        <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                       </div>
-                      <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-10">
                 <div className="sm:col-span-10" style={{ borderTopWidth: "0px" }}>
                   <label htmlFor="contract" className="block text-sm font-medium text-gray-700">
                     Contract
                   </label>
                   <div className="mt-1">
-                  <textarea
+                    <textarea
                       id="contract"
                       name="contract"
                       rows={10}
@@ -475,10 +430,10 @@ export default function Create() {
                   </button>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
-      </main>
-    </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
