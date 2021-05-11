@@ -1,22 +1,8 @@
 import axios from 'axios';
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
 
 const Project = () => {
-  const classes = useStyles();
   const router = useRouter();
 
   const [project, setProject] = useState({
@@ -36,6 +22,7 @@ const Project = () => {
   const [comment, setComment] = useState("")
 
   const submitComment = (event) => {
+    console.log("submit comment", comment)
     event.preventDefault();
     const commentObject = {
       "user_id": "2",
@@ -43,14 +30,13 @@ const Project = () => {
       "comment": comment
     }
     axios.post("https://defidapp.herokuapp.com/comments", commentObject)
-    .then((res) => {
-      axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
-      .then((response) => {
-        setComments(response.data);
-        setComment("");
-      })
-    })
-    
+      .then((res) => {
+        axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
+          .then((response) => {
+            setComments(response.data);
+            setComment("");
+          });
+      });
   }
 
   useEffect(() => {
@@ -62,39 +48,51 @@ const Project = () => {
     axios.get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
       .then((response) => {
         setComments(response.data)
-      })
+      });
   }, [])
 
   return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-300 to-gray-400">
+      <div className="w-80 bg-white rounded shadow-2xl">
+        <div className="h-60 bg-gray-200 rounded-tr rounded-tl animate-pulse">
+          <img src={project.image} className="h-60 w-80" />
+        </div>
+        <div className="p-2">
+          <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center justify-center"><p className="text-base p-2">{project.description}</p></div>
+        </div>
+        <div className="pl-2 pr-2">
+          <div className="h-7 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center justify-center">
+            <span className="text-base">{project.name}</span>
+          </div>
+          <div className="grid grid-cols-1 gap-1">
+            <div className="h-7 rounded-sm bg-gray-200 animate-pulse flex items-center justify-center"><span>Target Amount: </span><span>{project.target_amount}</span></div>
+            <div className="h-7 rounded-sm bg-gray-200 animate-pulse flex items-center justify-center"><span>Target Date: </span><span>{project.target_date.split("T")[0]}</span></div>
+            <div className="h-7 rounded-sm bg-gray-200 animate-pulse flex items-center justify-center"><span>Min Amount: </span><span>{project.min_amount}</span></div>
+            <div className="h-7 rounded-sm bg-gray-200 animate-pulse flex items-center justify-center"><span>Round: </span><span>{project.round}</span></div>
+          </div>
+        </div>
+        <div className="p-1">
+          <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center justify-center">
+            <form onSubmit={submitComment}>
+              <input className="p-4" onChange={(event) => {setComment(event.target.value)}} value={comment}></input>
+              <button className="btn btn-blue">Comment</button>
+            </form>
+          </div>
+        </div>
 
-    <div className="grid justify-items-center ...">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img className="w-full" src={project.image} alt="Sunset in the mountains" />
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{project.name}</div>
-          <p className="text-gray-700 text-base">
-            {project.description}
-          </p>
-        </div>
+        {comments.map((comment) => {
+          return (
+            <div className="p-1">
+              <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center">
+                <span>User {comment.user_id}:</span><span> &nbsp;&nbsp;{comment.comment}</span>
+              </div>
+            </div>
+          )
+        })}
+
       </div>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <div className="px-6 py-4">
-          {comments.map((comment) => {
-            return (<div>
-              <span>user {comment.user_id}: {comment.comment}</span>
-            </div>)
-          })}
-        </div>
-      </div>
-      <form  onSubmit={submitComment}>
-        <label
-          htmlFor="Project_name" > Comment: </label>
-        <div className="mt-1">
-          <input type="text" name="name" id="Project_name" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2" value={comment} onChange={(event) => setComment(event.target.value)}/>
-        </div>
-        <button type="submit" className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
-      </form>
     </div>
+
   )
 }
 
