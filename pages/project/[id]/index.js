@@ -74,7 +74,7 @@ const Project = () => {
         <div className="p-1">
           <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center justify-center">
             <form onSubmit={submitComment}>
-              <input className="p-4" onChange={(event) => {setComment(event.target.value)}} value={comment}></input>
+              <input className="p-3" onChange={(event) => {setComment(event.target.value)}} value={comment}></input>
               <button className="btn btn-blue">Comment</button>
             </form>
           </div>
