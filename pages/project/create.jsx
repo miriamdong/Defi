@@ -16,7 +16,7 @@ export default function Create() {
     name: "",
     description: "",
     target_amount: "",
-    target_date: "",
+    target_date: "new Date(",
     min_amount: "",
     link: "",
     round: 1,

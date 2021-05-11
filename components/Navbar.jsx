@@ -21,6 +21,7 @@ import { useUser } from '../firebase/useUser'
 import FirebaseAuth from './Auth/FirebaseAuth'
 import React, { useRef, useState } from "react"
 import { firebaseClient } from '../firebase/initFirebase'
+import Link from 'next/link';
 
 
 const solutions = [
@@ -51,20 +52,26 @@ const resources = [
   {
     name: 'My Project',
     description: 'Get all of your questions answered in our forums or contact support.',
-    href: '#',
+    href: '/user/{user.id}/dashboard/myproject',
     icon: SupportIcon,
   },
   {
-    name: 'Invested',
+    name: 'Processing',
     description: 'Learn how to maximize our platform to get the most out of it.',
-    href: '#',
+    href: '/user/{user.id}/dashboard/Processing',
     icon: BookmarkAltIcon,
   },
   {
-    name: 'Saved',
+    name: 'Finished',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: '#',
+    href: '/user/{user.id}/dashboard/Finished',
     icon: CalendarIcon,
+  },
+  {
+    name: 'Liked',
+    description: 'See what meet-ups and other events we might be planning near you.',
+    href: '/user/{user.id}/dashboard/Liked',
+    icon: PlayIcon,
   },
 
 ]
@@ -77,10 +84,10 @@ function classNames(...classes) {
 export default function Navbar() {
   const { user, logout } = useUser()
   return (
-    <Popover className="relative bg-white" style={{position:"fixed",width:'100%',height:"12%",zIndex:"100"}}>
+    <Popover className="fixed bg-white w-screen z-50 h-32 border-b" >
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 ">
             <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10" >
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <a href="#">
@@ -200,17 +207,23 @@ export default function Navbar() {
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
+                                <Link href={item.href}>
                                 <a
                                   key={item.name}
-                                  href={item.href}
+                                 
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                 >
                                   <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
                                   <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">{item.name}</p>
+                                    <a href={item.href} 
+                                    //  onClick={() => {
+                                    //   router.replace('user/{user.id}/dashboard/myproject')
+                                    // }}
+                                    className="text-base font-medium text-gray-900">{item.name}</a>
                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                   </div>
                                 </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -337,13 +350,13 @@ export default function Navbar() {
                       Docs
                     </a>
                     {resources.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className="text-base font-medium text-gray-900 hover:text-gray-700"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                   <div>
