@@ -94,7 +94,7 @@ export default function Navbar() {
                   <span className="sr-only">Workflow</span>
                   <img
                     className="h-30 sm:h-10 "
-                    src="./img/cat.png"
+                    src="/img/cat.png"
                     alt=""
                     style={{height: "100px" ,width:"160px"}}
                   />
