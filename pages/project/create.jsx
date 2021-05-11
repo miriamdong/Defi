@@ -172,11 +172,13 @@ export default function Create() {
                         type="text"
                         name="target_date"
                         id="target_date"
-                        selected={state.target_date === '' ? (new Date()) : (new Date(state.target_date))}
+                        selected={
+                          state.target_date === "" ? new Date() : new Date(state.target_date)
+                        }
                         onChange={(newDate) => {
-                          setState((prev)=>{
-                            return {...prev, target_date: newDate.toLocaleDateString()}
-                          })
+                          setState((prev) => {
+                            return { ...prev, target_date: newDate.toLocaleDateString() };
+                          });
                         }}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
                       />
@@ -238,17 +240,19 @@ export default function Create() {
                   </div>
                 </div>
 
-                <div className="sm:col-span-10">
+                <div className="sm:col-span-10" >
                   <label htmlFor="Description" className="block text-sm font-medium text-gray-700">
                     Description
                   </label>
 
                   <div className="mt-1 ">
-                  <input
+                  <textarea
+                      id="Description"
                       name="description"
-                      id="description"
+                      rows={10}
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
+                      defaultValue={""}
                       onChange={handleChange}
-                      className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300 p-2 border-2"
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
@@ -315,35 +319,13 @@ export default function Create() {
               </div>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-4 pt-8">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                  Website
-                </label>
-                <div className="mt-1 flex rounded-md shadow-sm">
-                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                    http://
-                  </span>
-                  <input
-                    type="text"
-                    name="link"
-                    id="website"
-                    onChange={handleChange}
-                    placeholder="www.example.com"
-                    className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300 p-2 border-2"
-                  />
-                </div>
-              </div>
-
               <div className="sm:col-span-10">
-                <label htmlFor="Description" className="block text-sm font-medium text-gray-700">
-                  Description
-                </label>
                 <div className="sm:col-span-10" style={{ borderTopWidth: "0px" }}>
                   <label htmlFor="contract" className="block text-sm font-medium text-gray-700">
                     Contract
                   </label>
                   <div className="mt-1">
-                    <textarea
+                  <textarea
                       id="contract"
                       name="contract"
                       rows={10}
