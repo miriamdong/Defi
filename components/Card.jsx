@@ -28,6 +28,7 @@ export default function Card() {
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
+                
                 <Link href="/project/[id]" as={`/project/${link.id}`}>
                   <img src={link.image} />
                 </Link>
