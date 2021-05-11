@@ -15,24 +15,24 @@ export default function Create() {
     name: "",
     description: "",
     target_amount: "",
-    target_date: "",
+    target_date: "02-02-22",
     min_amount: "",
     link: "",
-    round: "",
+    round: "1",
     contract: "",
     user_id: "",
     image: "",
   });
 
   const [startDate, setStartDate] = useState(new Date());
-  const [user_id, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
 
   const handleChange = (event) => {
     const sth = { ...state };
     sth[event.target.name] = event.target.value;
-    setState(sth);
-    setUserId(firebase.auth().currentUser.uid);
-    console.log("user_id:", user_id);
+    setState({ ...sth, user_id: firebase.auth().currentUser.uid });
+    // setUserId(firebase.auth().currentUser.uid);
+    console.log("user_id:", state.user_id);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,6 +52,8 @@ export default function Create() {
         console.log("AXIOS ERROR: ", err);
       });
   };
+
+  console.log(state);
   return (
     <>
       {/* <Navbar /> */}
