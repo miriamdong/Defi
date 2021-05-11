@@ -27,6 +27,8 @@ const supportLinks = [
 
 export default function Example() {
   return (
+    <>
+    <Navbar />
     <div className="relative bg-white" style={{paddingTop:"90px"}}>
       {/* Header */}
       <div className="relative pb-32 bg-gray-800">
@@ -78,5 +80,6 @@ export default function Example() {
       <br></br>
       
     </div>
+    </>
   )
 }

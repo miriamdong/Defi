@@ -24,7 +24,6 @@ return (
         <link rel='icon' href='/rocket.ico' />
       </Head>
       <div>
-      <Navbar />
       <Header />
       <Card />
       <Form />

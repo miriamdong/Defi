@@ -1,19 +1,4 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ]
-  }
-  ```
-*/
+import Navbar from '../Navbar'
 const tabs = [
   { name: 'Applied', href: '#', current: false },
   { name: 'Phone Screening', href: '#', current: false },
@@ -26,9 +11,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Nav() {
   return (
-    <div className="pb-5 border-b border-gray-200 sm:pb-0">
+    <>
+     
+    <div className="pb-5 border-b border-gray-200 sm:pb-0"> 
       <h3 className="text-lg leading-6 font-medium text-gray-900">Candidates</h3>
       <div className="mt-3 sm:mt-4">
         <div className="sm:hidden">
@@ -67,5 +54,6 @@ export default function Example() {
         </div>
       </div>
     </div>
+    </>
   )
 }
