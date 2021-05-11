@@ -17,6 +17,8 @@ const User = () => {
     });
   }, []);
 
+  console.log(router.query.id);
+
   return (
     <div>
       {user.name}
