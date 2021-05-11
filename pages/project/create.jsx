@@ -16,10 +16,10 @@ export default function Create() {
     name: "",
     description: "",
     target_amount: "",
-    target_date: "02-02-22",
+    target_date: "",
     min_amount: "",
     link: "",
-    round: "1",
+    round: 1,
     contract: "",
     user_id: "",
     image: "",
@@ -172,8 +172,12 @@ export default function Create() {
                         type="text"
                         name="target_date"
                         id="target_date"
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        selected={state.target_date === '' ? (new Date()) : (new Date(state.target_date))}
+                        onChange={(newDate) => {
+                          setState((prev)=>{
+                            return {...prev, target_date: newDate.toLocaleDateString()}
+                          })
+                        }}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
                       />
                     </div>
@@ -225,7 +229,6 @@ export default function Create() {
                       http://
                     </span>
                     <input
-                      type="url"
                       name="link"
                       id="website"
                       onChange={handleChange}
@@ -241,22 +244,11 @@ export default function Create() {
                   </label>
 
                   <div className="mt-1 ">
-                    <DatePicker
-                      type="text"
-                      name="target_date"
-                      id="target_date"
-                      selected={state.target_date == "" ? new Date() : new Date(state.target_date)}
-                      onChange={(newDate) => {
-                        setState((prevState) => {
-                          return {
-                            ...prevState,
-                            target_date: newDate.toLocaleDateString(),
-                          };
-                        });
-                      }}
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-                      defaultValue={""}
+                  <input
+                      name="description"
+                      id="description"
                       onChange={handleChange}
+                      className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300 p-2 border-2"
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
