@@ -21,7 +21,7 @@ return (
     <div>
       <Head>
         <title>rocketMEOW</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/rocket.ico' />
       </Head>
       <div>
       <Navbar />

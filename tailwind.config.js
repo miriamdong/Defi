@@ -12,6 +12,11 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
+    extend:{
+      inset: {
+        '17': '68px'
+      }
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
