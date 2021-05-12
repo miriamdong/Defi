@@ -16,7 +16,7 @@ export default function Create() {
     name: "",
     description: "",
     target_amount: "",
-    target_date: "new Date()",
+    target_date: new Date(),
     min_amount: "",
     link: "",
     round: 1,
@@ -423,11 +423,13 @@ export default function Create() {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Cancel
                   </button>
+                  <Link href='/'>
                   <button
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Save
                   </button>
+                  </Link>
                 </div>
               </div>
             </form>

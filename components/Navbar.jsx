@@ -52,13 +52,13 @@ const resources = [
   {
     name: 'My Project',
     description: 'Get all of your questions answered in our forums or contact support.',
-    href: '/user/{user.id}',
+    href: '/user/{user.id}/dashboard/Myproject',
     icon: SupportIcon,
   },
   {
     name: 'Processing',
     description: 'Learn how to maximize our platform to get the most out of it.',
-    href: '/user/{user.id}/dashboard/Processing',
+    href: `/user/{user.id}/dashboard/Processing`,
     icon: BookmarkAltIcon,
   },
   {
@@ -80,9 +80,9 @@ const resources = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
 export default function Navbar() {
   const { user, logout } = useUser()
+  console.log("!!!",user)
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b" >
       {({ open }) => (
