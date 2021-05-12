@@ -9,6 +9,7 @@ import {
     getUserFromCookie,
 } from './userCookies'
 import { mapUserData } from './mapUserData'
+import axios from 'axios';
 
 // initFirebase()
 
@@ -38,6 +39,16 @@ const useUser = () => {
                 const userData = mapUserData(user)
                 setUserCookie(userData)
                 setUser(userData)
+                const userObject = {
+                    "authId": user.uid,
+                    "name": user.displayName,
+                    "email": user.email
+                }
+                axios.post("https://defidapp.herokuapp.com/users", userObject).then((res) => {
+                    console.log('user save successfully', res)
+                }).catch((err) => {
+                    console.log('error saving user', err)
+                })
             } else {
                 removeUserCookie()
                 setUser()
