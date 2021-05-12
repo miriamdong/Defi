@@ -52,25 +52,25 @@ const resources = [
   {
     name: 'My Project',
     description: 'Get all of your questions answered in our forums or contact support.',
-    href: '/user/{user.id}/dashboard/Myproject',
+    href: 'dashboard/myproject',
     icon: SupportIcon,
   },
   {
     name: 'Processing',
     description: 'Learn how to maximize our platform to get the most out of it.',
-    href: `/user/{user.id}/dashboard/Processing`,
+    href: `dashboard/Processing`,
     icon: BookmarkAltIcon,
   },
   {
     name: 'Finished',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: '/user/{user.id}/dashboard/Finished',
+    href: 'dashboard/Finished',
     icon: CalendarIcon,
   },
   {
     name: 'Liked',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: '/user/{user.id}/dashboard/Liked',
+    href: 'dashboard/Liked',
     icon: PlayIcon,
   },
 
@@ -82,8 +82,7 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser()
-  console.log("!!!",user)
-  return (
+  return ( 
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b" >
       {({ open }) => (
         <>
@@ -207,7 +206,7 @@ export default function Navbar() {
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
-                                <Link href={item.href}>
+                                <Link href={user ? "/user/"+user.id+"/"+item.href : "#"}>
                                 <a
                                   key={item.name}
                                  
@@ -352,7 +351,7 @@ export default function Navbar() {
                     {resources.map((item) => (
                       <Link
                         key={item.name}
-                        href={item.href}
+                        href={user ? "/user/"+user.id+"/"+item.href : "#"}
                         className="text-base font-medium text-gray-900 hover:text-gray-700"
                       >
                         {item.name}
@@ -404,7 +403,7 @@ export default function Navbar() {
                               {resources.map((item) => (
                                 <a
                                   key={item.name}
-                                  href={item.href}
+                                  href={user ? "/user/"+user.id+"/"+item.href : "#"}
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                 >
                                   <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
