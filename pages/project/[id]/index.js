@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const Project = () => {
   const router = useRouter();
@@ -25,7 +27,7 @@ const Project = () => {
     console.log("submit comment", comment)
     event.preventDefault();
     const commentObject = {
-      "user_id": "2",
+      "user_id": firebase.auth().currentUser.uid,
       "project_id": project.id,
       "comment": comment
     }
@@ -84,7 +86,7 @@ const Project = () => {
           return (
             <div className="p-1">
               <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center">
-                <span>User {comment.user_id}:</span><span> &nbsp;&nbsp;{comment.comment}</span>
+                <span>{firebase.auth().currentUser.displayName}:</span><span> &nbsp;&nbsp;{comment.comment}</span>
               </div>
             </div>
           )
