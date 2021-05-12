@@ -18,10 +18,8 @@ import { useUser } from '../firebase/useUser'
 export default function Home () {
   const { user, logout } = useUser()
 return (
-    <div>
-      
+    <div>    
       <div>
-
       <Header />
       <Card />
       <Form />
