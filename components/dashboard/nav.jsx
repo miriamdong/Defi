@@ -4,9 +4,9 @@ import React, { useRef, useState } from "react"
 import { firebaseClient } from '../../firebase/initFirebase'
 import Link from 'next/link'
 const tabs = [
-  { name: "My Project", href: "/user/{user.id}/dashboard/Myproject", current: false },
+  { name: "My Project", href: "/user/{user.id}/dashboard/Myproject", current: true },
   { name: "Processing", href: "/user/{user.id}/dashboard/Processing", current: false },
-  { name: "Finished", href: "/user/{user.id}/dashboard/Finished", current: true },
+  { name: "Finished", href: "/user/{user.id}/dashboard/Finished", current: false },
   { name: "Liked", href: "/user/{user.id}/dashboard/Liked", current: false },
 ];
 
@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 export default function Nav() {
   const { user, logout } = useUser();
-  const [currentTab, setCurrenttab]= useState("Finished");
+  const [currentTab, setCurrenttab]= useState("");
   return (
     <>     
             <div className="relative border-gray-200 sm:pb-0 p-40 w-screen ax-w-3xl mx-auto border-b ">
@@ -30,10 +30,9 @@ export default function Nav() {
                     id="current-tab"
                     name="current-tab"
                     className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                    defaultValue={tabs.find((tab) => tab.current).name}
+                    // defaultValue={tabs.find((tab) => tab.current).name}
                     value={currentTab}
                     onChange ={(e)=>{
-                      console.log("^^^",e)
                       setCurrenttab(e.target.value)
                     }}
                     >
@@ -44,15 +43,15 @@ export default function Nav() {
                   </select>
                 </div>
                 <div className="hidden sm:block">
-                  <nav className="-mb-px flex space-x-8" onChange ={(e)=>{
-                      console.log("^^^",e)
-                    }}>
+                  <nav className="-mb-px flex space-x-8" >
                     {tabs.map((tab) => (
-                      
+                      <Link href={tab.href}>
                       <a
                         key={tab.name}
+                        onChange ={(e)=>{
+                          setCurrenttab(e.target.value)
+                        }}
                         onClick ={(e)=>{
-                          console.log("^^^",e)
                           setCurrenttab(tab.name)
                         }}   
                         className={classNames(
@@ -64,7 +63,7 @@ export default function Nav() {
                         aria-current={tab.current ? "page" : undefined}>
                         {tab.name}
                       </a>
-                      
+                     </Link>
                     ))}
                   </nav>
                 </div>
