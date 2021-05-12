@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import MyToken from "../../../contracts/MyToken.json";
 import MyTokenSale from "../../../contracts/MyTokenSale.json";
 import KycContract from "../../../contracts/KycContract.json";
@@ -10,6 +10,7 @@ class Transaction extends Component {
     kycAddress: "0x123",
     tokenSaleAddress: "",
     userTokens: 0,
+    value: 1,
   };
 
   componentDidMount = async () => {
@@ -62,6 +63,7 @@ class Transaction extends Component {
     this.setState({
       [name]: value,
     });
+    console.log("pppp:", event.target.value);
   };
 
   handleKycSubmit = async () => {
@@ -70,10 +72,12 @@ class Transaction extends Component {
     alert("Account " + kycAddress + " is now whitelisted");
   };
 
-  handleBuyToken = async () => {
+  handleBuyToken = async (e) => {
+    const target = e.target;
     await this.myTokenSale.methods
       .buyTokens(this.accounts[0])
-      .send({ from: this.accounts[0], value: 1 });
+      .send({ from: this.accounts[0], value: e.target.value });
+    console.log(e.target.value);
   };
 
   updateUserTokens = async () => {
@@ -92,7 +96,7 @@ class Transaction extends Component {
     return (
       <div className="App">
         <h1>Invest Today</h1>
-        <h2>Become an investor with MEOW-Tokens</h2>
+        <h3>Become an investor with MEOW-Tokens</h3>
         My Address:{" "}
         <input
           type="text"
@@ -111,12 +115,18 @@ class Transaction extends Component {
           Send Ether to this address: {this.state.tokenSaleAddress}
         </p>
         <p>You have: {this.state.userTokens}</p>
-        <button
-          type="button"
-          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          onClick={this.handleBuyToken}>
-          Buy MEOW-Tokens
-        </button>
+        <form>
+          <label>
+            How Many?
+            <input name="Tokens" type="textarea" onChange={this.handleInputChange} />
+          </label>
+          <button
+            type="button"
+            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={this.handleBuyToken}>
+            Buy MEOW-Tokens
+          </button>
+        </form>
       </div>
     );
   }
