@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import  Nav  from '/components/dashboard/Nav';
 
 const User = () => {
   const router = useRouter();
@@ -21,16 +22,7 @@ const User = () => {
 
   return (
     <div>
-      {user.name}
-      <br />
-      {user.projects}
-      <br />
-      {user.fav}
-      <br />
-      <img src={user.image} width="300" />
-      <Link href="/">
-        <button>Go Back</button>
-      </Link>
+      <Nav />
     </div>
   );
 };

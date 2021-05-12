@@ -52,7 +52,7 @@ const resources = [
   {
     name: 'My Project',
     description: 'Get all of your questions answered in our forums or contact support.',
-    href: '/user/{user.id}/dashboard/myproject',
+    href: '/user/{user.id}',
     icon: SupportIcon,
   },
   {
