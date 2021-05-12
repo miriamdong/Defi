@@ -16,12 +16,7 @@ export default function Home() {
   const { user, logout } = useUser();
   return (
     <div>
-      <Head>
-        <title>rocketMEOW</title>
-        <link rel="icon" href="/rocket.ico" />
-      </Head>
       <div>
-        <Navbar />
         <Header />
         <Card />
         <Form />
