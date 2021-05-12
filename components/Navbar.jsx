@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
@@ -52,25 +51,25 @@ const resources = [
   {
     name: 'My Project',
     description: 'Get all of your questions answered in our forums or contact support.',
-    href: '/user/{user.id}/dashboard/myproject',
+    href: 'dashboard/myproject',
     icon: SupportIcon,
   },
   {
     name: 'Processing',
     description: 'Learn how to maximize our platform to get the most out of it.',
-    href: `/user/{user.id}/dashboard/Processing`,
+    href: `dashboard/Processing`,
     icon: BookmarkAltIcon,
   },
   {
     name: 'Finished',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: '/user/{user.id}/dashboard/Finished',
+    href: 'dashboard/Finished',
     icon: CalendarIcon,
   },
   {
     name: 'Liked',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: '/user/{user.id}/dashboard/Liked',
+    href: 'dashboard/Liked',
     icon: PlayIcon,
   },
 
@@ -82,25 +81,22 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser()
-  return (
+  return ( 
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b" >
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 ">
             <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10" >
               <div className="flex justify-start lg:w-0 lg:flex-1">
-              <Link href="/">
                 <a href="#">
                   <span className="sr-only">Workflow</span>
                   <img
                     className="h-30 sm:h-10 "
                     src="/img/cat.png"
-                    alt="HOME"
+                    alt=""
                     style={{height: "100px" ,width:"160px"}}
                   />
-                  
                 </a>
-                </Link>
               </div>
               <div className="-mr-2 -my-2 md:hidden">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -127,7 +123,7 @@ export default function Navbar() {
                           aria-hidden="true"
                         />
                       </Popover.Button>
-                      
+
                       <Transition
                         show={open}
                         as={Fragment}
@@ -149,14 +145,12 @@ export default function Navbar() {
                                   key={item.name}
                                   href={item.href}
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                               >
-                                  
+                                >
                                   <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
                                   <div className="ml-4">
                                     <p className="text-base font-medium text-gray-900">{item.name}</p>
                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                   </div>
-                                  
                                 </a>
                               ))}
                             </div>
@@ -211,9 +205,10 @@ export default function Navbar() {
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
+                                <Link href={user ? "/user/"+user.id+"/"+item.href : "#"}>
                                 <a
                                   key={item.name}
-                                  href={item.href}
+                                 
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                 >
                                   <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
@@ -226,6 +221,7 @@ export default function Navbar() {
                                     <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                   </div>
                                 </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -354,7 +350,7 @@ export default function Navbar() {
                     {resources.map((item) => (
                       <Link
                         key={item.name}
-                        href={item.href}
+                        href={user ? "/user/"+user.id+"/"+item.href : "#"}
                         className="text-base font-medium text-gray-900 hover:text-gray-700"
                       >
                         {item.name}
@@ -406,7 +402,7 @@ export default function Navbar() {
                               {resources.map((item) => (
                                 <a
                                   key={item.name}
-                                  href={item.href}
+                                  href={user ? "/user/"+user.id+"/"+item.href : "#"}
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                 >
                                   <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
