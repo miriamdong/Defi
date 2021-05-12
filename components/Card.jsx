@@ -62,8 +62,8 @@ export default function Card() {
           </Link>
         ) : (
           <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " onClick={()=>{
-            const abc = document.getElementsByClassName("sign-in-button")
-            abc[0].click()
+            const Sign_in = document.getElementsByClassName("sign-in-button")
+            Sign_in[0].click()
             setToggle((prev)=>{
               return !prev
             })
