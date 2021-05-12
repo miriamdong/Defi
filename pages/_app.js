@@ -9,6 +9,8 @@ import Head from 'next/head';
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      {/* <Card data={pageProps.projects} /> */}
+
     <Head>
         <title>rocketMEOW</title>
         <link rel='icon' href='/rocket.ico' />
@@ -16,7 +18,16 @@ function MyApp({ Component, pageProps }) {
     <Navbar />
     <Component {...pageProps} />
     </>
-  )}
+  );
+}
 
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
+//   const res = await fetch(`https://defidapp.herokuapp.com/projects`)
+//   const projects = await res.json()
+//   console.log(projects);
+//   return { ...appProps, projects};
+// };
 
 export default MyApp;
