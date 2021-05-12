@@ -12,7 +12,6 @@ import { useUser } from "../firebase/useUser";
 // import Counter from '../components/realtimeDatabase/Counter'
 // import UploadFile from '../components/storage/UploadFile'
 
-<<<<<<< HEAD
 
 export default function Home () {
   const { user, logout } = useUser()
@@ -23,17 +22,6 @@ return (
       <Card />
       <Form />
       <Footer />
-=======
-export default function Home() {
-  const { user, logout } = useUser();
-  return (
-    <div>
-      <div>
-        <Header />
-        <Card />
-        <Form />
-        <Footer />
->>>>>>> master
       </div>
     </div>
   );
