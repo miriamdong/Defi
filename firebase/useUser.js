@@ -45,7 +45,7 @@ const useUser = () => {
                     "email": user.email
                 }
                 axios.post("https://defidapp.herokuapp.com/users", userObject).then((res) => {
-                    console.log('user save successfully', res)
+                    
                 }).catch((err) => {
                     console.log('error saving user', err)
                 })
