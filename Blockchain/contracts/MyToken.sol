@@ -3,17 +3,37 @@ pragma solidity >=0.6.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20Snapshot.sol";
 
-
-contract MyToken is ERC20, Ownable{
-    constructor(uint256 initialSupply) ERC20("rocketMEOW", "MEOW") public {
+contract MyToken is ERC20, ERC20Snapshot, Ownable {
+    constructor(uint256 initialSupply) ERC20("RocketMeow", "MEOW") public {
         _mint(msg.sender, initialSupply);
         _setupDecimals(0);
+    }
+
+    function snapshot() public onlyOwner {
+        _snapshot();
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
+
+    function _beforeTokenTransfer(address from, address to, uint256 amount)
+        internal
+        override(ERC20, ERC20Snapshot)
+    {
+        super._beforeTokenTransfer(from, to, amount);
+    }
+
+
+
+// contract MyToken is ERC20, Ownable{
+//     constructor(uint256 initialSupply) ERC20("rocketMEOW", "MEOW") public {
+//         _mint(msg.sender, initialSupply);
+//         _setupDecimals(0);
+//     }
+
 
 
     // Balances for each account stored using mapping

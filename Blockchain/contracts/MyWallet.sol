@@ -1,22 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.6.1;
 
-library AddressUtils {
-  function isContract(
-    address _addr
-  )
-    internal
-    view
-    returns (bool addressCheck)
-  {
-    uint256 size;
-
-    assembly { size := extcodesize(_addr) } // solhint-disable-line
-    addressCheck = size > 0;
-  }
-
-}
-
 contract MyWallet {
   address[] public approvers;
   uint public quorum;
