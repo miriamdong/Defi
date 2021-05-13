@@ -43,7 +43,7 @@ const Project = () => {
 
   useEffect(() => {
     axios.get(`https://defidapp.herokuapp.com/projects/${router.query.id}`).then((response) => {
-      setProject(response.data[0]);
+      setProject(response.data);
     });
 
     axios
