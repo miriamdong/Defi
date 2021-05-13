@@ -1,7 +1,5 @@
 import React, { useEffect, Component, useState } from "react";
 import MyToken from "../../../contracts/MyToken.json";
-import MyTokenSale from "../../../contracts/MyTokenSale.json";
-import KycContract from "../../../contracts/KycContract.json";
 import getWeb3 from "../../../getWeb3";
 import MyWallet from "../../../contracts/Wallet.json";
 
@@ -20,28 +18,30 @@ function Transfer() {
     const init = async () => {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
-      // const wallet = await getWallet(web3);
+      const account = accounts[0];
+      const wallet = await web3.eth.accounts.wallet;
+      console.log(wallet);
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = MyWallet.networks[networkId];
       const contract = new web3.eth.Contract(
-        MyWallet.abi,
+        MyToken.abi,
         deployedNetwork && deployedNetwork.address,
       );
+
       console.log(contract);
-      const quorum = await contract.methods.quorum().call();
-      const myToken = new web3.eth.Contract(
-        MyToken.abi,
-        MyToken.networks[networkId] && MyToken.networks[networkId].address,
-      );
+
+      // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
+      // console.log(`Transaction hash: ${receipt.transactionHash}`);
+      // const quorum = await contract.methods.quorum().call();
 
       // console.log(MyToken.networks[this.networkId].address);
 
       setWeb3(web3);
       setAccounts(accounts);
-      setQuorum(quorum);
+      // setQuorum(quorum);
       setWallet(wallet);
       setTransfers(transfers);
-      setWallet(contract.address);
+      setContract(contract);
     };
     init();
     window.ethereum.on("accountsChanged", (accounts) => {
@@ -60,6 +60,7 @@ function Transfer() {
 
   async function updateBalance() {
     const balance = await web3.eth.getBalance(contract.options.address);
+    console.log(balance);
     setBalance(balance);
   }
 
@@ -67,34 +68,37 @@ function Transfer() {
     e.preventDefault();
     const amount = e.target.elements[0].value;
     const to = e.target.elements[1].value;
-    await contract.methods.createTransfer(amount, to).send({ from: accounts[0] });
-    await updateCurrentTransfer();
+    console.log(amount, to);
+    const myToken = contract.methods.name();
+    console.log(myToken);
+    await contract.methods.transfer(to, amount).send({ from: accounts[0] });
+    // await updateCurrentTransfer();
   }
 
   async function sendTransfer() {
     await contract.methods.sendTransfer(currentTransfer.id).send({ from: accounts[0] });
     await updateBalance();
-    await updateCurrentTransfer();
+    // await updateCurrentTransfer();
   }
 
-  async function updateCurrentTransfer() {
-    const currentTransferId = (await contract.methods.nextId().call()) - 1;
-    if (currentTransferId >= 0) {
-      const currentTransfer = await contract.methods.transfers(currentTransferId).call();
-      const alreadyApproved = await contract.methods
-        .approvals(accounts[0], currentTransferId)
-        .call();
-      setCurrentTransfer({ ...currentTransfer, alreadyApproved });
-    }
-  }
+  // async function updateCurrentTransfer() {
+  //   const currentTransferId = (await contract.methods.nextId().call()) - 1;
+  //   if (currentTransferId >= 0) {
+  //     const currentTransfer = await contract.methods.transfers(currentTransferId).call();
+  //     const alreadyApproved = await contract.methods
+  //       .approvals(accounts[0], currentTransferId)
+  //       .call();
+  //     setCurrentTransfer({ ...currentTransfer, alreadyApproved });
+  //   }
+  // }
 
   const updateUserTokens = async () => {
-    let userTokens = await this.myToken.methods.balanceOf(this.accounts[0]).call();
-    this.setState({ userTokens: userTokens });
+    let userTokens = await contract.methods.balanceOf(accounts[0]).call();
+    setState({ userTokens: userTokens });
   };
 
   const listenToTokenTransfer = async () => {
-    this.myToken.events.Transfer({ to: this.accounts[0] }).on("data", this.updateUserTokens);
+    myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
   };
 
   if (!web3) {
@@ -119,11 +123,8 @@ function Transfer() {
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>
-              <p className="mt-2 text-sm text-gray-500">
-                Send Ether to this address: {contract}
-                {/* <p>You have: {state.userTokens}</p> */}
-              </p>
             </form>
+            {/* <p>You have: {state.userTokens}</p> */}
           </div>
         </div>
       ) : (
