@@ -42,6 +42,25 @@ export default function Card() {
                 Link
               </a>
             </div>
+
+            <div className="relative pt-1">
+              <div className="flex mb-2 items-center justify-between">
+                <div>
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200">funding</span>
+                </div>
+                <div className="text-right">
+                  <span className="text-xs font-semibold inline-block text-pink-600">{link.funding}%</span>
+                </div>
+              </div>
+              <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                <div style={{ width: link.funding }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+              </div>
+            </div>
+
+
+
+
+
           </div>
         ))}
 
@@ -61,17 +80,17 @@ export default function Card() {
             </div>
           </Link>
         ) : (
-          <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " onClick={()=>{
+          <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " onClick={() => {
             const Sign_in = document.getElementsByClassName("sign-in-button")
             Sign_in[0].click()
-            setToggle((prev)=>{
+            setToggle((prev) => {
               return !prev
             })
           }}>
             <div className="flex-1 relative ">
-              <div className=" px-4 py-10 sm:px-6 text-white" style={{textAlign: "center"}} >
-                {!toggle ? 
-                <h3>CREATE NEW PROJECT</h3>: <h3>PLEASE LOGIN FIRST!!!</h3>}
+              <div className=" px-4 py-10 sm:px-6 text-white" style={{ textAlign: "center" }} >
+                {!toggle ?
+                  <h3>CREATE NEW PROJECT</h3> : <h3>PLEASE LOGIN FIRST!!!</h3>}
               </div>
               <div>
                 <img src="./img/min.gif" alt="New Project" />

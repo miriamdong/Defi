@@ -105,7 +105,7 @@ const Project = () => {
           return (
             <div className="p-1">
               <div className="h-20 rounded-sm bg-gray-200 animate-pulse mb-4 flex items-center">
-                <span>{firebase.auth().currentUser.displayName}:</span>
+                <span>{comment.name}:</span>
                 <span> &nbsp;&nbsp;{comment.comment}</span>
               </div>
             </div>
