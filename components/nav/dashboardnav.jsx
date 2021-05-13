@@ -10,9 +10,11 @@ function classNames(...classes) {
 
 export default function Dashboardnav() {
   const { user, logout } = useUser();
+
+  const currentUser = firebase.auth().currentUser
   console.log(user)
  return (
-   <Nav tabs={tabs} href={"/user/" + firebase.auth().currentUser.uid} name="hi"/>
+   <Nav tabs={tabs} href={"/user/" + currentUser.uid} name="hi"/>
  )
   
 }

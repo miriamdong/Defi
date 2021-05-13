@@ -15,8 +15,9 @@ import axios from 'axios';
 
 const useUser = () => {
     const [user, setUser] = useState()
+    const [currentUser, setcurrentUser] = useState()
     const router = useRouter()
-
+    
     const logout = async () => {
         return firebase
             .auth()
