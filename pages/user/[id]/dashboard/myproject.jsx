@@ -1,4 +1,3 @@
-import  Navbar  from '/components/Navbar';
 import  Dashboardnav  from '/components/nav/dashboardnav';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
