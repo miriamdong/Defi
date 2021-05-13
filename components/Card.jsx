@@ -61,42 +61,24 @@ export default function Card() {
             </div>
           </Link>
         ) : (
-          <Popover className="relative">
-            {({ open }) => (
-              <>
-                <Popover.Button  onClick={() => {
-          setIsShowing(true)
-          resetIsShowing()}}>
-                  <div
-                    className="flex flex-col bg-purple-900 rounded-2xl shadow-xl "
-                    style={{ textAlign: "center" }}>
-                    <div className="flex-1 relative ">
-                      <div className=" px-4 py-10 sm:px-6 text-white">
-                        <h3>CREATE NEW PROJECT</h3>
-                      </div>
-                      <div>
-                        <img src="./img/min.gif" alt="New Project" />
-                      </div>
-                    </div>
-                  </div>
-                </Popover.Button>
+          <div className="flex flex-col bg-purple-900 rounded-2xl shadow-xl " onClick={()=>{
+            const Sign_in = document.getElementsByClassName("sign-in-button")
+            Sign_in[0].click()
+            setToggle((prev)=>{
+              return !prev
+            })
+          }}>
+            <div className="flex-1 relative ">
+              <div className=" px-4 py-10 sm:px-6 text-white" style={{textAlign: "center"}} >
+                {!toggle ? 
+                <h3>CREATE NEW PROJECT</h3>: <h3>PLEASE LOGIN FIRST!!!</h3>}
+              </div>
+              <div>
+                <img src="./img/min.gif" alt="New Project" />
+              </div>
+            </div>
 
-                <Transition
-                  show={open}
-                  as={Fragment}
-                  enter="transition ease-out duration-200"
-                  enterFrom="opacity-0 translate-y-1"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease-in duration-150"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-1">
-                  <Popover.Panel className="absolute z-20 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
-                    <Sign_in onClick={() => {router.replace("/project/create")}}></Sign_in>
-                  </Popover.Panel>
-                </Transition>
-              </>
-            )}
-          </Popover>
+          </div>
         )}
       </div>
     </section>
