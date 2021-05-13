@@ -1,134 +1,151 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, Component, useState } from "react";
 import MyToken from "../../../contracts/MyToken.json";
 import MyTokenSale from "../../../contracts/MyTokenSale.json";
 import KycContract from "../../../contracts/KycContract.json";
 import getWeb3 from "../../../getWeb3";
+import MyWallet from "../../../contracts/Wallet.json";
 
-class Transaction extends Component {
-  state = {
-    loaded: false,
-    kycAddress: "0x123",
-    tokenSaleAddress: "",
-    userTokens: 0,
-    value: 1,
-  };
+function Transfer() {
+  const [web3, setWeb3] = useState(undefined);
+  const [accounts, setAccounts] = useState(undefined);
+  const [contract, setContract] = useState(undefined);
+  const [balance, setBalance] = useState(undefined);
+  const [currentTransfer, setCurrentTransfer] = useState(undefined);
+  const [transfers, setTransfers] = useState([]);
+  const [quorum, setQuorum] = useState(undefined);
+  const [myToken, setMyToken] = useState(undefined);
+  const [wallet, setWallet] = useState(undefined);
 
-  componentDidMount = async () => {
-    try {
-      // Get network provider and web3 instance.
-      this.web3 = await getWeb3();
-
-      // Use web3 to get the user's accounts.
-      this.accounts = await this.web3.eth.getAccounts();
-      console.log(MyToken.networks);
-
-      // Get the contract instance.
-      //this.networkId = await this.web3.eth.net.getId(); <<- this doesn't work with MetaMask anymore
-      this.networkId = await this.web3.eth.getChainId();
-      console.log(this.networkId);
-
-      this.myToken = new this.web3.eth.Contract(
-        MyToken.abi,
-        MyToken.networks[this.networkId] && MyToken.networks[this.networkId].address,
+  useEffect(() => {
+    const init = async () => {
+      const web3 = await getWeb3();
+      const accounts = await web3.eth.getAccounts();
+      // const wallet = await getWallet(web3);
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = MyWallet.networks[networkId];
+      const contract = new web3.eth.Contract(
+        MyWallet.abi,
+        deployedNetwork && deployedNetwork.address,
       );
+      console.log(contract);
+      const quorum = await contract.methods.quorum().call();
+      const myToken = new web3.eth.Contract(
+        MyToken.abi,
+        MyToken.networks[networkId] && MyToken.networks[networkId].address,
+      );
+
       // console.log(MyToken.networks[this.networkId].address);
 
-      this.myTokenSale = new this.web3.eth.Contract(
-        MyTokenSale.abi,
-        MyTokenSale.networks[this.networkId] && MyTokenSale.networks[this.networkId].address,
-      );
-      this.kycContract = new this.web3.eth.Contract(
-        KycContract.abi,
-        KycContract.networks[this.networkId] && KycContract.networks[this.networkId].address,
-      );
-
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      this.listenToTokenTransfer();
-      this.setState(
-        { loaded: true, tokenSaleAddress: this.myTokenSale._address },
-        this.updateUserTokens,
-      );
-    } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(`Failed to load web3, accounts, or contract. Check console for details.`);
-      console.error(error);
-    }
-  };
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value,
+      setWeb3(web3);
+      setAccounts(accounts);
+      setQuorum(quorum);
+      setWallet(wallet);
+      setTransfers(transfers);
+      setWallet(contract.address);
+    };
+    init();
+    window.ethereum.on("accountsChanged", (accounts) => {
+      setAccounts(accounts);
+      setMyToken(myToken);
+      listenToTokenTransfer();
     });
-    console.log("pppp:", event.target.value);
-  };
+  }, []);
 
-  handleKycSubmit = async () => {
-    const { kycAddress } = this.state;
-    await this.kycContract.methods.setKycCompleted(kycAddress).send({ from: this.accounts[0] });
-    alert("Account " + kycAddress + " is now whitelisted");
-  };
+  useEffect(() => {
+    if (typeof contract !== "undefined" && typeof web3 !== "undefined") {
+      updateBalance();
+      // updateCurrentTransfer();
+    }
+  }, [accounts, contract, web3, currentTransfer]);
 
-  handleBuyToken = async (e) => {
-    const target = e.target;
-    await this.myTokenSale.methods
-      .buyTokens(this.accounts[0])
-      .send({ from: this.accounts[0], value: e.target.value });
-    console.log(e.target.value);
-  };
+  async function updateBalance() {
+    const balance = await web3.eth.getBalance(contract.options.address);
+    setBalance(balance);
+  }
 
-  updateUserTokens = async () => {
+  async function createTransfer(e) {
+    e.preventDefault();
+    const amount = e.target.elements[0].value;
+    const to = e.target.elements[1].value;
+    await contract.methods.createTransfer(amount, to).send({ from: accounts[0] });
+    await updateCurrentTransfer();
+  }
+
+  async function sendTransfer() {
+    await contract.methods.sendTransfer(currentTransfer.id).send({ from: accounts[0] });
+    await updateBalance();
+    await updateCurrentTransfer();
+  }
+
+  async function updateCurrentTransfer() {
+    const currentTransferId = (await contract.methods.nextId().call()) - 1;
+    if (currentTransferId >= 0) {
+      const currentTransfer = await contract.methods.transfers(currentTransferId).call();
+      const alreadyApproved = await contract.methods
+        .approvals(accounts[0], currentTransferId)
+        .call();
+      setCurrentTransfer({ ...currentTransfer, alreadyApproved });
+    }
+  }
+
+  const updateUserTokens = async () => {
     let userTokens = await this.myToken.methods.balanceOf(this.accounts[0]).call();
     this.setState({ userTokens: userTokens });
   };
 
-  listenToTokenTransfer = async () => {
+  const listenToTokenTransfer = async () => {
     this.myToken.events.Transfer({ to: this.accounts[0] }).on("data", this.updateUserTokens);
   };
 
-  render() {
-    if (!this.state.loaded) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
-    return (
-      <div className="App">
-        <h1>Invest Today</h1>
-        <h3>Become an investor with MEOW-Tokens</h3>
-        My Address:{" "}
-        <input
-          type="text"
-          name="kycAddress"
-          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
-          value={this.state.kycAddress}
-          onChange={this.handleInputChange}
-        />
-        <button
-          type="button"
-          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          onClick={this.handleKycSubmit}>
-          Whitelist Me
-        </button>
-        <p className="mt-2 text-sm text-gray-500">
-          Send Ether to this address: {this.state.tokenSaleAddress}
-        </p>
-        <p>You have: {this.state.userTokens}</p>
-        <form>
-          <label>
-            How Many?
-            <input name="Tokens" type="textarea" onChange={this.handleInputChange} />
-          </label>
-          <button
-            type="button"
-            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            onClick={this.handleBuyToken}>
-            Buy MEOW-Tokens
-          </button>
-        </form>
-      </div>
-    );
+  if (!web3) {
+    return <div>Loading...</div>;
   }
+  return (
+    <div className="Transfer">
+      {!currentTransfer || currentTransfer.approvals === quorum ? (
+        <div className="row" style={{ padding: "150px" }}>
+          <div className="col-sm-12">
+            <h1>Funding page</h1>
+            <h2>Create transfer</h2>
+            <form onSubmit={(e) => createTransfer(e)}>
+              <div className="form-group">
+                <label htmlFor="amount">Amount</label>
+                <input type="number" className="form-control" id="amount" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="to">To</label>
+                <input type="text" className="form-control" id="to" />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+              <p className="mt-2 text-sm text-gray-500">
+                Send Ether to this address: {contract}
+                {/* <p>You have: {state.userTokens}</p> */}
+              </p>
+            </form>
+          </div>
+        </div>
+      ) : (
+        <div className="row">
+          <div className="col-sm-12">
+            <h2>Approve transfer</h2>
+            <ul>
+              <li>TransferId: {currentTransfer.id}</li>
+              <li>Amount: {currentTransfer.amount}</li>
+              <li>Approvals: {currentTransfer.approvals}</li>
+            </ul>
+            {currentTransfer.alreadyApproved ? (
+              "Already approved"
+            ) : (
+              <button type="submit" className="btn btn-primary" onClick={sendTransfer}>
+                Submit
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
-export default Transaction;
+export default Transfer;
