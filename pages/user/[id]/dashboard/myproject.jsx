@@ -1,5 +1,10 @@
 import  Navbar  from '/components/Navbar';
 import  Nav  from '/components/dashboard/Nav';
+import {useState, useEffect} from 'react'
+import axios from 'axios';
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const posts = [
   {
     title: 'Boost your conversion rate',
@@ -58,6 +63,17 @@ const posts = [
 ]
 
 export default function Example() {
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://defidapp.herokuapp.com/projects/users/${firebase.auth().currentUser.uid}`)
+      .then((response) => {
+        console.log(response)
+        setProjects(response.data)
+      });
+  }, [])
+
   return (
     <>
     <Nav />  
@@ -74,40 +90,40 @@ export default function Example() {
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {posts.map((post) => (
-            <div key={post.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+          {projects.map((project) => (
+            <div key={project.name} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
               <div className="flex-shrink-0">
-                <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+                <img className="h-48 w-full object-cover" src={project.image} alt="" />
               </div>
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
-                    <a href={post.category.href} className="hover:underline">
-                      {post.category.name}
+                    <a href={project.link} className="hover:underline">
+                      Link
                     </a>
                   </p>
-                  <a href={post.href} className="block mt-2">
-                    <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-                    <p className="mt-3 text-base text-gray-500">{post.description}</p>
+                  <a href={project.link} className="block mt-2">
+                    <p className="text-xl font-semibold text-gray-900">{project.name}</p>
+                    <p className="mt-3 text-base text-gray-500">{project.description}</p>
                   </a>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
-                    <a href={post.author.href}>
-                      <span className="sr-only">{post.author.name}</span>
-                      <img className="h-10 w-10 rounded-full" src={post.author.imageUrl} alt="" />
+                    <a href={project.link}>
+                      <span className="sr-only">{firebase.auth().currentUser.displayName}</span>
+                      <img className="h-10 w-10 rounded-full" src={project.image} alt="" />
                     </a>
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      <a href={post.author.href} className="hover:underline">
-                        {post.author.name}
+                      <a href={project.link} className="hover:underline">
+                        {firebase.auth().currentUser.displayName}
                       </a>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime={post.datetime}>{post.date}</time>
+                      <time dateTime={project.target_date}>{project.target_date}</time>
                       <span aria-hidden="true">&middot;</span>
-                      <span>{post.readingTime} read</span>
+                      <span>{project.min_amount}</span>
                     </div>
                   </div>
                 </div>
