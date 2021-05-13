@@ -46,27 +46,27 @@ const solutions = [
 const callsToAction = [{ name: "Call to Help", href: "#", icon: PhoneIcon }];
 const resources = [
   {
-    name: "My Project",
-    description: "Get all of your questions answered in our forums or contact support.",
-    href: "dashboard/myproject",
+    name: 'My Project',
+    description: 'Get all of your questions answered in our forums or contact support.',
+    href: 'dashboard/myproject',
     icon: SupportIcon,
   },
   {
-    name: "Processing",
-    description: "Learn how to maximize our platform to get the most out of it.",
+    name: 'Processing',
+    description: 'Learn how to maximize our platform to get the most out of it.',
     href: `dashboard/Processing`,
     icon: BookmarkAltIcon,
   },
   {
-    name: "Finished",
-    description: "See what meet-ups and other events we might be planning near you.",
-    href: "dashboard/Finished",
+    name: 'Finished',
+    description: 'See what meet-ups and other events we might be planning near you.',
+    href: 'dashboard/Finished',
     icon: CalendarIcon,
   },
   {
-    name: "Liked",
-    description: "See what meet-ups and other events we might be planning near you.",
-    href: "dashboard/Liked",
+    name: 'Liked',
+    description: 'See what meet-ups and other events we might be planning near you.',
+    href: 'dashboard/Liked',
     icon: PlayIcon,
   },
 ];
