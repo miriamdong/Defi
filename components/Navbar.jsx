@@ -21,6 +21,7 @@ import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState } from "react";
 import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
 const solutions = [
   {
@@ -75,6 +76,8 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser();
+const router = useRouter()
+
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
@@ -239,7 +242,6 @@ export default function Navbar() {
                             "group bg-white rounded-md inline-flex items-center text-3xl font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
                           )}>
                           <span>{user.name}</span>
-                         
                         </Popover.Button>
 
                         <Transition
@@ -251,23 +253,22 @@ export default function Navbar() {
                           leave="transition ease-in duration-150"
                           leaveFrom="opacity-100 translate-y-0"
                           leaveTo="opacity-0 translate-y-1">
-                            <Popover.Panel
-                          static
-                          className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
-                          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                            <button
-                              className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                              onClick={async () => {
-                                await firebaseClient.auth().signOut();
-                              }}>
-                              Log out
-                            </button>
+                          <Popover.Panel
+                            static
+                            className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
+                            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                              <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                                <button
+                                  className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                  onClick={async () => {
+                                    await firebaseClient.auth().signOut();
+                                    router.replace("/")
+                                  }}>
+                                  Log out
+                                </button>
+                              </div>
                             </div>
-                          </div>
-                        </Popover.Panel>
-                    
-                          
+                          </Popover.Panel>
                         </Transition>
                       </>
                     )}
@@ -291,7 +292,6 @@ export default function Navbar() {
                             aria-hidden="true"
                           />
                         </Popover.Button>
-
                         <Transition
                           show={open}
                           as={Fragment}
@@ -309,7 +309,6 @@ export default function Navbar() {
                     )}
                   </Popover>
                 )}
-                
               </div>
             </div>
           </div>
