@@ -23,6 +23,7 @@ export default function Create() {
     contract: "",
     user_id: "",
     image: "",
+    wallet_id:""
   });
 
   const handleChange = (event) => {
@@ -52,7 +53,7 @@ export default function Create() {
   console.log(state);
   return (
     <>
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
             <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
@@ -94,6 +95,23 @@ export default function Create() {
                         />
                       </div>
                     </div>
+                    <div className="sm:col-span-4">
+                      <label
+                        htmlFor="wallet_id"
+                        className="block text-sm font-medium text-gray-700">
+                        Wallet 
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="text"
+                          name="wallet_id"
+                          id="wallet_id"
+                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    
                     <div className="sm:col-span-3">
                       <label
                         htmlFor="target_amount"
