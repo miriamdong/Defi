@@ -23,7 +23,6 @@ const User = () => {
  
   return (
     <div>
-      <Nav />
     </div>
   );
 };

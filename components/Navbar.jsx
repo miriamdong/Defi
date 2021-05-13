@@ -52,15 +52,15 @@ const resources = [
     icon: SupportIcon,
   },
   {
-    name: 'Processing',
+    name: 'Invested',
     description: 'Learn how to maximize our platform to get the most out of it.',
-    href: `dashboard/Processing`,
+    href: 'dashboard/Invested',
     icon: BookmarkAltIcon,
   },
   {
-    name: 'Finished',
+    name: 'History',
     description: 'See what meet-ups and other events we might be planning near you.',
-    href: 'dashboard/Finished',
+    href: 'dashboard/History',
     icon: CalendarIcon,
   },
   {
@@ -77,7 +77,7 @@ function classNames(...classes) {
 export default function Navbar() {
   const { user, logout } = useUser();
 const router = useRouter()
-
+console.log("!!!",user)
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (

@@ -1,31 +1,23 @@
-import Navbar from "../Navbar";
 import { useUser } from "../../firebase/useUser";
 import React, { useRef, useState ,useEffect} from "react"
-import { firebaseClient } from '../../firebase/initFirebase'
 import Link from 'next/link'
-
-const tabs = [
-  { name: "My Project", href: "/user/{user.id}/dashboard/myproject", current: false, slug:'myproject' },
-  { name: "Processing", href: "/user/{user.id}/dashboard/Processing", current: false, slug:'Processing' },
-  { name: "Finished", href: "/user/{user.id}/dashboard/Finished", current: true, slug:'Finished'},
-  { name: "Liked", href: "/user/{user.id}/dashboard/Liked", current: false, slug:'Liked'},
-];
-
-
+import { IoTAnalytics } from "aws-sdk";
+import {tabs} from '../scr/dashboardnav'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 
-export default function Nav() {
+export default function Dashboardnav() {
+  const { user, logout } = useUser();
+  console.log("????",user)
   const [currentPage,setCurrentPage] =useState("")
   useEffect(()=>{
   let temPage = window.location.href.split('/')
   temPage = temPage[temPage.length-1]
     setCurrentPage(temPage)
+    console.log("OMG")
 })
-   
-  const { user, logout } = useUser();
   return (
     <>     
             <div className="border-gray-200 sm:pb-0 p-40 w-screen ax-w-3xl mx-auto border-b ">
@@ -48,7 +40,7 @@ export default function Nav() {
                 <div className="hidden sm:block">
                   <nav className="-mb-px flex space-x-8">
                     {tabs.map((tab) => (
-                      <Link href={tab.href}>
+                      <Link href={"/user/" + firebase.auth().currentUser.uid + tab.href}>
                       <a
                         key={tab.name}                        
                         className={classNames(
