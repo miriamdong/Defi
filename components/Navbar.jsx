@@ -23,6 +23,7 @@ import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
 import { useRouter } from 'next/router'
 
+
 const solutions = [
   {
     name: "History",
@@ -33,7 +34,7 @@ const solutions = [
   {
     name: "Get More Coins",
     description: "Speak directly to your customers in a more meaningful way.",
-    href: "#",
+    href: "/wallets/coins",
     icon: CursorClickIcon,
   },
   {
@@ -76,8 +77,7 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser();
-const router = useRouter()
-
+  const router = useRouter()
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
@@ -202,6 +202,7 @@ const router = useRouter()
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
+
                                 <Link href={user ? "/user/" + user.id + "/" + item.href : "#"}>
                                   <a
                                     key={item.name}
