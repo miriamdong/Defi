@@ -28,7 +28,7 @@ contract MyWallet {
     bool sent;
   }
   mapping(uint => Transfer) transfers;
-  uint nextId;
+  uint public nextId;
   mapping(address => mapping(uint => bool)) approvals;
 
   constructor(address[] memory _approvers, uint _quorum) public payable {
