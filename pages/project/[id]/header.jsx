@@ -36,24 +36,7 @@ const supportLinks = [
     icon: NewspaperIcon,
   },
 ];
-const stats = [
-  {
-    id: 1,
-    name: "token price",
-    stat: "71,897",
-    icon: UsersIcon,
-    change: "122",
-    changeType: "increase",
-  },
-  {
-    id: 2,
-    name: "collection ends in",
-    stat: "58.16%",
-    icon: MailOpenIcon,
-    change: "5.4%",
-    changeType: "increase",
-  },
-];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -106,11 +89,30 @@ export default function Header() {
         setComments(response.data);
       });
   }, []);
+  console.log("$$$Project",project)
+  const stats = [
+    {
+      id: 1,
+      name: "Min token price",
+      stat: "100",
+      href: "/img/catcoin.png",
+      change: "122",
+      changeType: "",
+    },
+    {
+      id: 2,
+      name: "Target Amount",
+      stat: project.target_amount+" "+"MEOW",
+      href: "/img/calender.png",
+      change: "",
+      changeType: "",
+    },
+  ];
 
   return (
     <div className="bg-white pt-40">
       {/* Header */}
-      <div className="min-h-screen bg-white flex">
+      <div className="min-h-40 bg-white flex">
         <div className="hidden lg:block relative w-0 flex-1">
           <img className="absolute inset-0 h-full w-full object-cover" src={project.image} alt="" />
         </div>
@@ -206,6 +208,7 @@ export default function Header() {
         <div className="max-w-10xl mx-auto ">
           <dl className="rounded-lg h-60 bg-white shadow-lg sm:grid sm:grid-cols-2">
             <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
+            <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">By someone</dt>
               <dd className="order-1 text-5xl font-extrabold text-indigo-600">{project.name}</dd>
             </div>
             <div className="flex flex-col text-center">
@@ -217,8 +220,8 @@ export default function Header() {
                     key={item.id}
                     className="relative bg-white px-4 sm:pt-6 rounded-lg overflow-hidden">
                     <dt>
-                      <div className="absolute bg-indigo-500 rounded-md p-2">
-                        <item.icon className="h-5 w-5 text-white" aria-hidden="true" />
+                      <div className="absolute rounded-md p-2">
+                        <img src={item.href} className="h-10 w-10 text-white" aria-hidden="true" />
                       </div>
                       <p className="ml-10 text-lg font-medium text-gray-500 truncate">
                         {item.name}
@@ -226,7 +229,7 @@ export default function Header() {
                     </dt>
                     <dd className="ml-16 pb-6 flex items-baseline ">
                       <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
-                      <p
+                      {/* <p
                         className={classNames(
                           item.changeType === "increase" ? "text-green-600" : "text-red-600",
                           "ml-2 flex items-baseline text-sm font-semibold",
@@ -247,7 +250,7 @@ export default function Header() {
                           {item.changeType === "increase" ? "Increased" : "Decreased"} by
                         </span>
                         {item.change}
-                      </p>
+                      </p> */}
                     </dd>
                   </div>
                 ))}
@@ -257,13 +260,13 @@ export default function Header() {
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
                   Progressing
                 </div>
-                <div className="text-right">
-                  <span className="text-xs font-semibold inline-block text-pink-600">
+                <div className="">
+                  <span className="text-2xl font-semibold inline-block text-pink-600">
                     {project.funding}%
                   </span>
                 </div>
                 <div className="relative pt-3 w-3/4 ">
-                  <div className=" overflow-hidden h-6 mb-4 text-xs flex rounded bg-purple-200">
+                  <div className=" overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
                       style={{ width: project.funding }}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
