@@ -1,7 +1,6 @@
-import React, { useEffect, Component, useState } from "react";
-import MyToken from "../../../contracts/MyToken.json";
-import getWeb3 from "../../../getWeb3";
-import MyWallet from "../../../contracts/Wallet.json";
+import React, { useEffect, useState } from "react";
+import MyToken from "../../contracts/MyToken.json";
+import getWeb3 from "../../getWeb3";
 
 function Transfer() {
   const [web3, setWeb3] = useState(undefined);
@@ -22,13 +21,13 @@ function Transfer() {
       const wallet = await web3.eth.accounts.wallet;
       console.log(wallet);
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = MyWallet.networks[networkId];
+      const deployedNetwork = MyToken.networks[networkId];
       const contract = new web3.eth.Contract(
         MyToken.abi,
         deployedNetwork && deployedNetwork.address,
       );
 
-      console.log(contract);
+      console.log(contract, MyToken.abi);
 
       // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
       // console.log(`Transaction hash: ${receipt.transactionHash}`);

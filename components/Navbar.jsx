@@ -21,8 +21,7 @@ import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState } from "react";
 import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router";
 
 const solutions = [
   {
@@ -40,34 +39,34 @@ const solutions = [
   {
     name: "Balance",
     description: "Connect with third-party tools that you're already using.",
-    href: "#",
+    href: "/wallets/myWallet",
     icon: ViewGridIcon,
   },
 ];
 const callsToAction = [{ name: "Call to Help", href: "#", icon: PhoneIcon }];
 const resources = [
   {
-    name: 'My Project',
-    description: 'Get all of your questions answered in our forums or contact support.',
-    href: 'dashboard/myproject',
+    name: "My Project",
+    description: "Get all of your questions answered in our forums or contact support.",
+    href: "dashboard/myproject",
     icon: SupportIcon,
   },
   {
-    name: 'Processing',
-    description: 'Learn how to maximize our platform to get the most out of it.',
+    name: "Processing",
+    description: "Learn how to maximize our platform to get the most out of it.",
     href: `dashboard/Processing`,
     icon: BookmarkAltIcon,
   },
   {
-    name: 'Finished',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: 'dashboard/Finished',
+    name: "Finished",
+    description: "See what meet-ups and other events we might be planning near you.",
+    href: "dashboard/Finished",
     icon: CalendarIcon,
   },
   {
-    name: 'Liked',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: 'dashboard/Liked',
+    name: "Liked",
+    description: "See what meet-ups and other events we might be planning near you.",
+    href: "dashboard/Liked",
     icon: PlayIcon,
   },
 ];
@@ -77,7 +76,7 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser();
-  const router = useRouter()
+  const router = useRouter();
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
@@ -202,7 +201,6 @@ export default function Navbar() {
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
-
                                 <Link href={user ? "/user/" + user.id + "/" + item.href : "#"}>
                                   <a
                                     key={item.name}
@@ -263,7 +261,7 @@ export default function Navbar() {
                                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                                   onClick={async () => {
                                     await firebaseClient.auth().signOut();
-                                    router.replace("/")
+                                    router.replace("/");
                                   }}>
                                   Log out
                                 </button>
