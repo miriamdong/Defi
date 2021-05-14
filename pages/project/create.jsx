@@ -5,12 +5,16 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { useUser } from "../../firebase/useUser";
+import { firebaseClient } from "../../firebase/initFirebase";
+import { useRouter } from 'next/router'
 import firebase from "firebase/app";
 import "firebase/auth";
 // import  Navbar  from '../../components/Navbar';
 
 export default function Create() {
+  const router = useRouter()
+  const { user, logout } = useUser();
   // const [date, setDate] = useState(new Date());
   const [state, setState] = useState({
     name: "",
@@ -45,6 +49,7 @@ export default function Create() {
       .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
+        router.replace("/user/" + firebase.auth().currentUser.uid+ "/dashboard/myproject")
       })
       .catch((err) => {
         console.log("AXIOS ERROR: ", err);
@@ -441,11 +446,13 @@ export default function Create() {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Cancel
                   </button>
+                  {/* <Link href={"/user/" + firebase.auth().currentUser.uid+ "/dashboard/myproject"}> */}
                   <button
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Save
                   </button>
+                  {/* </Link> */}
                 </div>
               </div>
             </form>

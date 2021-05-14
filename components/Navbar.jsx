@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Menu, Popover, Transition } from "@headlessui/react";
 import {
   BookmarkAltIcon,
   CalendarIcon,
@@ -21,7 +21,9 @@ import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState } from "react";
 import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
+import { MenuItem } from "@material-ui/core";
+
 
 const solutions = [
   {
@@ -52,15 +54,15 @@ const resources = [
     icon: SupportIcon,
   },
   {
-    name: "Processing",
-    description: "Learn how to maximize our platform to get the most out of it.",
-    href: `dashboard/Processing`,
+    name: 'Invested',
+    description: 'Learn how to maximize our platform to get the most out of it.',
+    href: 'dashboard/Invested',
     icon: BookmarkAltIcon,
   },
   {
-    name: "Finished",
-    description: "See what meet-ups and other events we might be planning near you.",
-    href: "dashboard/Finished",
+    name: 'History',
+    description: 'See what meet-ups and other events we might be planning near you.',
+    href: 'dashboard/History',
     icon: CalendarIcon,
   },
   {
@@ -76,7 +78,8 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser();
-  const router = useRouter();
+const router = useRouter()
+console.log("!!!",user)
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
@@ -196,7 +199,7 @@ export default function Navbar() {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1">
                         <Popover.Panel
-                          static
+                          
                           className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -331,7 +334,7 @@ export default function Navbar() {
                     <div>
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        src="/img/cat.png"
                         alt="Workflow"
                       />
                     </div>

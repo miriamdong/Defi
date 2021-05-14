@@ -1,35 +1,24 @@
-import Navbar from "../Navbar";
-import { useUser } from "../../firebase/useUser";
 import React, { useRef, useState ,useEffect} from "react"
-import { firebaseClient } from '../../firebase/initFirebase'
 import Link from 'next/link'
-
-const tabs = [
-  { name: "My Project", href: "/user/{user.id}/dashboard/myproject", current: false, slug:'myproject' },
-  { name: "Processing", href: "/user/{user.id}/dashboard/Processing", current: false, slug:'Processing' },
-  { name: "Finished", href: "/user/{user.id}/dashboard/Finished", current: true, slug:'Finished'},
-  { name: "Liked", href: "/user/{user.id}/dashboard/Liked", current: false, slug:'Liked'},
-];
-
-
+// import useAppData from "../hooks/useAppData";
+// import { useRouter } from 'next/router'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 
-export default function Nav() {
+export default function Nav({tabs,href,name}) {
   const [currentPage,setCurrentPage] =useState("")
   useEffect(()=>{
   let temPage = window.location.href.split('/')
   temPage = temPage[temPage.length-1]
     setCurrentPage(temPage)
 })
-   
-  const { user, logout } = useUser();
+// const { state } = useAppData();
   return (
     <>     
             <div className="border-gray-200 sm:pb-0 p-40 w-screen ax-w-3xl mx-auto border-b ">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Hi </h3>
+              <h3 className="text-lg leading-6 font-medium text-gray-900">{name}</h3>
               <div className="mt-3 sm:mt-4">
                 <div className="sm:hidden">
                   <label htmlFor="current-tab" className="sr-only">
@@ -48,7 +37,7 @@ export default function Nav() {
                 <div className="hidden sm:block">
                   <nav className="-mb-px flex space-x-8">
                     {tabs.map((tab) => (
-                      <Link href={tab.href}>
+                      <Link href={href+ tab.href}>
                       <a
                         key={tab.name}                        
                         className={classNames(

@@ -22,14 +22,14 @@ export default function Card() {
     <section
       className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
       aria-labelledby="contact-heading">
-      <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-2 lg:gap-y-20 lg:gap-x-8 ">
+      <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-20 lg:gap-x-8 ">
         {state.projects.map((link) => (
           <div key={link.id} className="flex flex-col bg-white rounded-2xl shadow-xl">
             <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
 
-                <Link href="/project/[id]" as={`/project/${link.id}`}>
+                <Link href="/project/[id]/story" as={`/project/${link.id}/story`}>
                   <img src={link.image} />
                 </Link>
               </div>

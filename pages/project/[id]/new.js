@@ -52,7 +52,7 @@ const Project = () => {
         setComments(response.data);
       });
   }, []);
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-300 to-gray-400">
       <div className="w-80 bg-white rounded shadow-2xl">
