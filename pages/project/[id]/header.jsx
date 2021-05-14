@@ -3,36 +3,28 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
+import Link from 'next/link'
+const tabs = [
+  { name: "Story", href:"/Story", current: false, slug:'Story' },
+  { name: "Overview", href: "/Overview", current: false, slug:'Overview' },
+  { name: "Updates", href: "/Updates", current: true, slug:'Updates'},
+  { name: "Comments", href: "/Comments", current: false, slug:'Comments'},
+];
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 export default function Header() {
-  const router = useRouter();
-
-  const [project, setProject] = useState({
-    name: "",
-    description: "",
-    target_amount: "",
-    target_date: "",
-    min_amount: "",
-    link: "",
-    round: "",
-    contract: "",
-    user_id: "",
-    image: "",
-  });
-  useEffect(() => {
-    axios.get(`https://defidapp.herokuapp.com/projects/${router.query.id}`).then((response) => {
-      setProject(response.data[0]);
-    });
-
-    axios
-      .get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
-      .then((response) => {
-        setComments(response.data);
-      });
-  }, []);
+  const [currentPage,setCurrentPage] =useState("")
+  useEffect(()=>{
+  let temPage = window.location.href.split('/')
+  temPage = temPage[temPage.length-1]
+    setCurrentPage(temPage)
+})
   return (
     <div className="bg-gray-50 pt-12 sm:pt-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-40">
         <div className="max-w-4xl mx-auto text-center">
+          
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Trusted by developers from over 80 planets
           </h2>
@@ -62,6 +54,7 @@ export default function Header() {
               </dl>
             </div>
           </div>
+         
         </div>
       </div>
     </div>
