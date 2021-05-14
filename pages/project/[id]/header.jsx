@@ -9,6 +9,9 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/react/solid";
 import { CursorClickIcon, MailOpenIcon, UsersIcon } from "@heroicons/react/outline";
+import Transfer from "../../../components/Meta/Transfer";
+import Token from "../../../components/Meta/Token";
+import getWeb3 from "../../../getWeb3";
 
 const supportLinks = [
   {
@@ -117,7 +120,8 @@ export default function Header() {
               <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" />
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">FUNDING</h2>
             </div>
-
+            <Token />
+            <Transfer />
             <div className="mt-8">
               <div>
                 <div>
