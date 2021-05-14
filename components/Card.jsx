@@ -29,7 +29,7 @@ export default function Card() {
               <div className="px-4 py-5 sm:px-6">
                 <h3>{link.name}</h3>
 
-                <Link href="/project/[id]" as={`/project/${link.id}`}>
+                <Link href="/project/[id]/story" as={`/project/${link.id}/story`}>
                   <img src={link.image} />
                 </Link>
               </div>
