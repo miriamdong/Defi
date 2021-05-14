@@ -85,7 +85,7 @@ export default function Comments() {
                   </form>
                
       <ul className="divide-y divide-gray-200">
-        {comments.map((activityItem) => (
+        {activityItems.map((activityItem) => (
           <li key={activityItem.id} className="py-4">
             <div className="flex space-x-3">
               <img className="h-6 w-6 rounded-full" src={activityItem.person.imageUrl} alt="" />
