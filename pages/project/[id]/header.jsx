@@ -100,7 +100,7 @@ export default function Header() {
       id: 2,
       name: "Target Amount",
       stat: project.target_amount+" "+"MEOW",
-      href: "/img/calender.png",
+      href: "/img/targetamount.jpeg",
       change: "",
       changeType: "",
     },
@@ -197,15 +197,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Overlapping cards */}
       <section
         className="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-10  sm:px-6 lg:px-8 "
         aria-labelledby="contact-heading">
         <div className="max-w-10xl mx-auto ">
           <dl className="rounded-lg h-60 bg-white shadow-lg sm:grid sm:grid-cols-2">
-            <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
+            <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0
+            ">
             <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">By someone</dt>
-              <dd className="order-1 text-5xl font-extrabold text-indigo-600">{project.name}</dd>
+              <dd className="order-1 text-5xl font-extrabold text-indigo-600 pt-5">{project.name}</dd>
             </div>
             <div className="flex flex-col text-center">
               <dl
@@ -252,7 +252,7 @@ export default function Header() {
                 ))}
               </dl>
 
-              <div className="">
+              <div className="pr-3">
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
                   Progressing
                 </div>
@@ -261,7 +261,7 @@ export default function Header() {
                     {project.funding}%
                   </span>
                 </div>
-                <div className="relative pt-3 w-3/4 ">
+                <div className="relative pt-3 w-full ">
                   <div className=" overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
                       style={{ width: project.funding }}
