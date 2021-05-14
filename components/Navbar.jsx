@@ -21,9 +21,8 @@ import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState } from "react";
 import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { MenuItem } from "@material-ui/core";
-
 
 const solutions = [
   {
@@ -39,7 +38,8 @@ const solutions = [
     icon: CursorClickIcon,
   },
   {
-    name: "Buy Tokens",
+    name: "My Wallet",
+
     description: "Connect with third-party tools that you're already using.",
     href: "token/buy",
     icon: ViewGridIcon,
@@ -54,15 +54,15 @@ const resources = [
     icon: SupportIcon,
   },
   {
-    name: 'Invested',
-    description: 'Learn how to maximize our platform to get the most out of it.',
-    href: 'dashboard/Invested',
+    name: "Invested",
+    description: "Learn how to maximize our platform to get the most out of it.",
+    href: "dashboard/Invested",
     icon: BookmarkAltIcon,
   },
   {
-    name: 'History',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: 'dashboard/History',
+    name: "History",
+    description: "See what meet-ups and other events we might be planning near you.",
+    href: "dashboard/History",
     icon: CalendarIcon,
   },
   {
@@ -78,8 +78,8 @@ function classNames(...classes) {
 }
 export default function Navbar() {
   const { user, logout } = useUser();
-const router = useRouter()
-console.log("!!!",user)
+  const router = useRouter();
+  console.log("!!!", user);
   return (
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
@@ -198,9 +198,7 @@ console.log("!!!",user)
                         leave="transition ease-in duration-150"
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1">
-                        <Popover.Panel
-                          
-                          className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
+                        <Popover.Panel className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {resources.map((item) => (
@@ -332,11 +330,7 @@ console.log("!!!",user)
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
                     <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="/img/cat.png"
-                        alt="Workflow"
-                      />
+                      <img className="h-8 w-auto" src="/img/cat.png" alt="Workflow" />
                     </div>
                     <div className="-mr-2">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

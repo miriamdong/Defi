@@ -19,6 +19,8 @@ const getWeb3 = () =>
     reject("Install Metamask");
   });
 
+console.log("getWeb3::::::::::::!!!!!", getWeb3);
+
 const getWallet = async (web3) => {
   const networkId = await web3.eth.net.getId();
   const deployedNetwork = MyWallet.networks[networkId];
