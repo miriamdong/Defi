@@ -1,7 +1,7 @@
 import Header from "./header";
 import React, { useRef, useState ,useEffect} from "react"
 import Link from 'next/link'
-import Story from '/components/project/story'
+import Comments from '/components/project/comments'
 import axios from "axios";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
@@ -18,7 +18,7 @@ const tabs = [
   { name: "Comments", href: "/Comments", current: false, slug:'Comments'},
 ];
 
-export default function Project () {
+export default function Comment () {
   const [currentPage,setCurrentPage] =useState("")
   useEffect(()=>{
   let temPage = window.location.href.split('/')
@@ -118,7 +118,7 @@ return (
               </div>
               </div>
 
-              <Story />
+              <Comments />
               </div>
         </main>
       </div>

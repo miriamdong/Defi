@@ -152,8 +152,6 @@ export default function Header() {
 
               <div className="mt-6">
                 <form action="#" method="POST" className="space-y-6">
-                  
-
                   <div className="space-y-1">
                     <label htmlFor="token" className="block text-sm font-medium text-gray-700">
                       Token
@@ -181,12 +179,6 @@ export default function Header() {
                         Notification
                       </label>
                     </div>
-
-                    {/* <div className="text-sm">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Forgot your password?
-                    </a>
-                  </div> */}
                   </div>
 
                   <div>
@@ -210,7 +202,6 @@ export default function Header() {
         <div className="max-w-10xl mx-auto ">
           <dl className="rounded-lg h-60 bg-white shadow-lg sm:grid sm:grid-cols-2">
             <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
-              
               <dd className="order-1 text-5xl font-extrabold text-indigo-600">{project.name}</dd>
             </div>
             <div className="flex flex-col text-center">
@@ -259,16 +250,18 @@ export default function Header() {
               </dl>
 
               <div className="">
-                <div className="order-1 text-lg leading-6 font-medium text-gray-500">Progressing</div>
+                <div className="order-1 text-lg leading-6 font-medium text-gray-500">
+                  Progressing
+                </div>
                 <div className="text-right">
-                  <span className="text-xs font-semibold inline-block text-pink-600">{project.funding}%</span>
+                  <span className="text-xs font-semibold inline-block text-pink-600">
+                    {project.funding}%
+                  </span>
                 </div>
                 <div className="relative pt-3 w-3/4 ">
-
                   <div className=" overflow-hidden h-6 mb-4 text-xs flex rounded bg-purple-200">
-                  
                     <div
-                      style={{width: project.funding }}
+                      style={{ width: project.funding }}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import  Dashboardnav  from '/components/nav/dashboardnav';
+import  Dashboardnav  from '/components/dashboard/dashboardnav';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 import firebase from "firebase/app";

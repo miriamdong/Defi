@@ -1,4 +1,4 @@
-import  Dashboardnav  from '/components/nav/dashboardnav';
+import  Dashboardnav  from '/components/dashboard/dashboardnav';
 const posts = [
   {
     title: 'Boost your conversion rate',

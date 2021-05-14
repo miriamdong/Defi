@@ -2,7 +2,7 @@ import { useUser } from "../../firebase/useUser";
 import React, { useRef, useState ,useEffect} from "react"
 import {tabs} from '../scr/dashboardnav'
 import Nav from '../scr/nav'
-
+import FirebaseAuth from "../Auth/FirebaseAuth";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -11,10 +11,9 @@ function classNames(...classes) {
 export default function Dashboardnav() {
   const { user, logout } = useUser();
 
-  const currentUser = firebase.auth().currentUser
-  console.log(user)
+ 
  return (
-   <Nav tabs={tabs} href={"/user/" + currentUser.uid} name="hi"/>
+   <Nav tabs={tabs} href={"/user/" + firebase.auth().currentUser.uid} name="hi"/>
  )
   
 }
