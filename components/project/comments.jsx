@@ -38,7 +38,7 @@ export default function Comments() {
     event.preventDefault();
     const commentObject = {
       user_id: firebase.auth().currentUser.uid,
-      project_id: project.id,
+      project_id: router.query.id,
       comment: comment,
     };
     axios.post("https://defidapp.herokuapp.com/comments", commentObject).then((res) => {
@@ -50,6 +50,14 @@ export default function Comments() {
         });
     });
   };
+  const router = useRouter();
+  useEffect(() => {
+    axios
+      .get(`https://defidapp.herokuapp.com/comments/projects/${router.query.id}`)
+      .then((response) => {
+        setComments(response.data);
+      });
+  }, []);
 
   return (
     <div> 
@@ -85,17 +93,17 @@ export default function Comments() {
                   </form>
                
       <ul className="divide-y divide-gray-200">
-        {activityItems.map((activityItem) => (
-          <li key={activityItem.id} className="py-4">
+        {comments.map((comment) => (
+          <li key={comment.id} className="py-4">
             <div className="flex space-x-3">
-              <img className="h-6 w-6 rounded-full" src={activityItem.person.imageUrl} alt="" />
+              <img className="h-6 w-6 rounded-full" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" alt="" />
               <div className="flex-1 space-y-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium">{activityItem.person.name}</h3>
-                  <p className="text-sm text-gray-500">{activityItem.time}</p>
+                  <h3 className="text-sm font-medium">{comment.name}</h3>
+                  <p className="text-sm text-gray-500">{comment.created_at.split("T")[0]}</p>
                 </div>
                 <p className="text-sm text-gray-500">
-                  Deployed {activityItem.project} ({activityItem.commit} in master) to {activityItem.environment}
+                  {comment.comment}
                 </p>
               </div>
             </div>
