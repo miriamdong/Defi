@@ -1,22 +1,6 @@
 /// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.6.1;
 import "./MyToken.sol";
-// import "./Ownable.sol";
-
-library AddressUtils {
-  function isContract(
-    address _addr
-  )
-    internal
-    view
-    returns (bool addressCheck)
-  {
-    uint256 size;
-
-    assembly { size := extcodesize(_addr) } // solhint-disable-line
-    addressCheck = size > 0;
-  }
-}
 
 contract Escrow {
   uint public endDate;
@@ -27,11 +11,7 @@ contract Escrow {
     address payable investor;
     address payable funder;
     uint _amount;
-
-    // address investor;
-    // bool sent;
-    // address payable to;
-  }
+}
 
 
 
@@ -39,9 +19,7 @@ contract Escrow {
 
 
  constructor(
-    uint _quorum,
-    address payable _investor,
-    address payable _funder)
+    uint _quorum)
     public payable {
     quorum = _quorum;
   }
@@ -66,7 +44,7 @@ contract Escrow {
         return _state;
     }
 
-  function sendTransfer(uint id, address payable to, uint amount) public virtual {
+  function createNew(uint id, address payable to, uint amount) public virtual {
     require(state() == State.Active, "Can only invest while active");
     balances[msg.sender] = balances[msg.sender] - amount;
     to.transfer(amount);

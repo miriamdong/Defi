@@ -9,10 +9,9 @@ module.exports = async function (deployer, _network, accounts) {
   await deployer.deploy(MyToken, process.env.INITIAL_TOKENS);
   await deployer.deploy(KycContract);
   await deployer.deploy(MyTokenSales, 1, addr[0], MyToken.address, KycContract.address);
-  await deployer.deploy(MyWallet, [accounts[1], accounts[2], accounts[3]], 2, {
-    from: accounts[0],
-    value: 1000,
-  });
+  await deployer.deploy(MyWallet);
+  const wallet = await MyWallet.deployed();
+  await web3.eth.sendTransaction({ from: accounts[0], to: wallet.address, value: 10000 });
   let tokenInstance = await MyToken.deployed();
   await tokenInstance.transfer(MyTokenSales.address, process.env.INITIAL_TOKENS);
 };

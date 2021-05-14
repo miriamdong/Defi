@@ -41,16 +41,16 @@ const solutions = [
   {
     name: "Balance",
     description: "Connect with third-party tools that you're already using.",
-    href: "#",
+    href: "/wallets/myWallet",
     icon: ViewGridIcon,
   },
 ];
 const callsToAction = [{ name: "Call to Help", href: "#", icon: PhoneIcon }];
 const resources = [
   {
-    name: 'My Project',
-    description: 'Get all of your questions answered in our forums or contact support.',
-    href: 'dashboard/myproject',
+    name: "My Project",
+    description: "Get all of your questions answered in our forums or contact support.",
+    href: "dashboard/myproject",
     icon: SupportIcon,
   },
   {
@@ -66,9 +66,9 @@ const resources = [
     icon: CalendarIcon,
   },
   {
-    name: 'Liked',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: 'dashboard/Liked',
+    name: "Liked",
+    description: "See what meet-ups and other events we might be planning near you.",
+    href: "dashboard/Liked",
     icon: PlayIcon,
   },
 ];
@@ -264,7 +264,7 @@ console.log("!!!",user)
                                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                                   onClick={async () => {
                                     await firebaseClient.auth().signOut();
-                                    router.replace("/")
+                                    router.replace("/");
                                   }}>
                                   Log out
                                 </button>
