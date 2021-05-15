@@ -7,13 +7,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useUser } from "../../firebase/useUser";
 import { firebaseClient } from "../../firebase/initFirebase";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
+import Escrow from "../Escrow";
 // import  Navbar  from '../../components/Navbar';
 
 export default function Create() {
-  const router = useRouter()
+  const router = useRouter();
   const { user, logout } = useUser();
   // const [date, setDate] = useState(new Date());
   const [state, setState] = useState({
@@ -27,7 +28,7 @@ export default function Create() {
     contract: "",
     user_id: "",
     image: "",
-    wallet_id:""
+    wallet_id: "",
   });
 
   const handleChange = (event) => {
@@ -49,12 +50,13 @@ export default function Create() {
       .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
-        router.replace("/user/" + firebase.auth().currentUser.uid+ "/dashboard/myproject")
+        router.replace("/user/" + firebase.auth().currentUser.uid + "/dashboard/myproject");
       })
       .catch((err) => {
         console.log("AXIOS ERROR: ", err);
       });
   };
+
   console.log(state);
   return (
     <>
@@ -104,7 +106,7 @@ export default function Create() {
                       <label
                         htmlFor="wallet_id"
                         className="block text-sm font-medium text-gray-700">
-                        Wallet 
+                        Wallet
                       </label>
                       <div className="mt-1">
                         <input
@@ -116,7 +118,7 @@ export default function Create() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="sm:col-span-3">
                       <label
                         htmlFor="target_amount"
@@ -456,6 +458,7 @@ export default function Create() {
                 </div>
               </div>
             </form>
+            <Escrow />
           </div>
         </main>
       </div>

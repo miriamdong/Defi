@@ -116,7 +116,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -159,7 +160,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -183,7 +185,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -196,7 +199,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -257,7 +261,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -270,7 +275,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -290,7 +296,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -303,7 +310,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -322,7 +330,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -5595,17 +5604,49 @@
             {
               "indexed": false,
               "internalType": "uint256",
-              "name": "value",
+              "name": "tokens",
               "type": "uint256"
             }
           ],
           "name": "Transfer",
           "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0x8030e83b04d87bef53480e26263266d6ca66863aa8506aca6f2559d18aa1cb67": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "Snapshot",
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x3C7E3A72002c89D2d3122C346b946c87C2a140E0",
-      "transactionHash": "0x65e25b180f423e07e2bcbf79925db7796595ddbb0166124bdb16c0c7c214f9c7"
+      "address": "0x9c4F6A5076a25c3FD7592b80e47c87931DD82299",
+      "transactionHash": "0x91b9e12e3d4275823b15570356ffe85e2922c9ba87f7488e9fbfa07ac814db51"
     },
     "5777": {
       "events": {
@@ -5666,7 +5707,8 @@
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-05-14T00:33:09.228Z",
+  "updatedAt": "2021-05-15T20:24:37.262Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import tokenFactory from "../contracts/tokenFactory.json";
+// import tokenFactory from "../contracts/tokenFactory.json";
+import Escrow from "../contracts/Escrow.json";
 import getWeb3 from "../hooks/useWeb3";
 
 class NewEscrow extends Component {
@@ -16,11 +17,8 @@ class NewEscrow extends Component {
     const accounts = await web3.eth.getAccounts();
 
     const networkId = await web3.eth.net.getId();
-    const deployedNetwork = tokenFactory.networks[networkId];
-    const contract = new web3.eth.Contract(
-      tokenFactory.abi,
-      deployedNetwork && deployedNetwork.address,
-    );
+    const deployedNetwork = Escrow.networks[networkId];
+    const contract = new web3.eth.Contract(Escrow.abi, deployedNetwork && deployedNetwork.address);
 
     console.log(contract);
     this.setState({ web3, accounts, contract }, this.updateBalance);
@@ -28,8 +26,8 @@ class NewEscrow extends Component {
 
   async updateBalance() {
     const { contract } = this.state;
-    // const balance = await contract.methods.balanceOf().call();
-    // this.setState({ balance });
+    const balance = await contract.methods.balanceOf().call();
+    this.setState({ balance });
   }
 
   async deposit(e) {

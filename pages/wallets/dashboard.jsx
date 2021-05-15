@@ -17,7 +17,7 @@ export default function App() {
     //connect to websocket API
     ws.current = new WebSocket("wss://ws-feed.pro.coinbase.com");
     ws.current.onmessage = function (e) {
-      console.log(e.data);
+      console.log("e.data", e.data);
     };
 
     //inside useEffect we need to make API with async function
@@ -30,6 +30,7 @@ export default function App() {
       //coinbase returns over 120 currencies, this will filter to only USD based pairs
       let filtered = pairs.filter((pair) => {
         if (pair.quote_currency === "USD") {
+          console.log(pair);
           return pair;
         }
       });
@@ -64,6 +65,7 @@ export default function App() {
       channels: ["ticker"],
     };
     let jsonMsg = JSON.stringify(msg);
+    console.log("jsonMsg", jsonMsg);
     ws.current.onopen = () => ws.current.send(jsonMsg);
 
     let historicalDataURL = `${url}/products/${pair}/candles?granularity=86400`;
@@ -80,8 +82,9 @@ export default function App() {
     fetchHistoricalData();
     //need to update event listener for the websocket object so that it is listening for the newly updated currency pair
     ws.current.onmessage = (e) => {
+      e.preventDefault();
       let data = JSON.parse(e.data);
-      console.log(data);
+      console.log("data!!!!!!!", data);
       if (data.type !== "ticker") {
         console.log("no ticker event", e);
         return;
@@ -95,17 +98,18 @@ export default function App() {
   }, [pair]);
 
   const handleSelect = (e) => {
+    console.log("ticker", e.target.value);
     let unsubMsg = {
       type: "unsubscribe",
       product_ids: [pair],
       channels: ["ticker"],
     };
     let unsub = JSON.stringify(unsubMsg);
-
+    console.log("unsub", unsub);
     ws.current.send(unsub);
-
     setpair(e.target.value);
   };
+
   return (
     <div className="container pt-40">
       {
