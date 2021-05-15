@@ -1,29 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { NewspaperIcon, PhoneIcon, SupportIcon } from '@heroicons/react/outline'
 import  Navbar  from './Navbar';
-const supportLinks = [
-  {
-    name: 'Sales',
-    href: '#',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-    icon: PhoneIcon,
-  },
-  {
-    name: 'Technical Support',
-    href: '#',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-    icon: SupportIcon,
-  },
-  {
-    name: 'Media Inquiries',
-    href: '#',
-    description:
-      'Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.',
-    icon: NewspaperIcon,
-  },
-]
+
 
 export default function Example() {
   return (
@@ -37,8 +15,8 @@ export default function Example() {
             className="w-full h-full object-cover"
             src="/img/space.jpeg"
             alt=""
-          />
-          <div className="absolute inset-0 bg-gray-800" style={{ mixBlendMode: 'hard-light' }} aria-hidden="true" />
+          /> <div className="absolute inset-0 bg-gray-800" style={{ mixBlendMode: 'hard-light' }} aria-hidden="true" />
+         
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">rocketMEOW</h1>

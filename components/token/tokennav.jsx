@@ -8,12 +8,12 @@ function classNames(...classes) {
 }
 
 
-export default function Tokennav() {
+export default function Tokennav({href}) {
   const { user, logout } = useUser();
   console.log("#####",user)
  
  return (
-   <Nav tabs={tabs} href={"/user/SdyB5lXR6VSIiZGgTIQhCpvi07r1"} name="hi"/>
+   <Nav tabs={tabs} name="hi"/>
  )
   
 }

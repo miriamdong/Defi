@@ -43,8 +43,8 @@ const faqs = [
 export default function Example() {
   return (
     <>
-      <Tokennav />
-      <div className="bg-white pt-40">
+      <Tokennav href="/user"/>
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center">
             Frequently asked questions

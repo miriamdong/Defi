@@ -8,7 +8,7 @@ export default function Example() {
 
   return (
     <>
-    <Tokennav />  
+    <Tokennav href={"/user/SdyB5lXR6VSIiZGgTIQhCpvi07r1"} />  
     <Balance />
   </>
   )
