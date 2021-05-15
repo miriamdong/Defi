@@ -1,11 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
-
+import Link from "next/link";
 
 export default function C({projects,currentUser}) {
   return (
     
       <>
         {projects.map((project) => (
+          <Link href="/project/[id]/story" as={`/project/${project.id}/story`}>
           <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src={project.image} alt="" />
@@ -64,6 +65,7 @@ export default function C({projects,currentUser}) {
               </div>
             </div>
           </div>
+          </Link>
         ))}
      </>
     

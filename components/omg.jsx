@@ -11,7 +11,7 @@ import { Fragment } from "react";
 import Sign_in from "./Sign_in";
 import { useRouter } from 'next/router'
 
-export default function Card() {
+export default function Card({project}) {
   const { state } = useAppData();
   const { user, logout } = useUser();
   const [toggle, setToggle] = useState(false);

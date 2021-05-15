@@ -18,11 +18,9 @@
     "@apollo/react-hooks": "^4.0.0",
     "@aws-cdk/aws-s3": "^1.71.0",
     "@aws-cdk/core": "1.71.0",
+    "@craco/craco": "^6.1.2",
     "@ethersproject/contracts": "^5.1.1",
     "@ethersproject/providers": "^5.1.2",
-
-    "@craco/craco": "^6.1.2",
-
     "@headlessui/react": "^1.1.1",
     "@heroicons/react": "^1.0.1",
     "@material-ui/core": "^4.11.4",
@@ -39,6 +37,7 @@
     "chai-as-promised": "^7.1.1",
     "chai-bn": "^0.2.1",
     "cors": "^2.8.5",
+    "d3": "^6.7.0",
     "dotenv": "^9.0.2",
     "fetch": "^1.1.0",
     "firebase": "^8.5.0",

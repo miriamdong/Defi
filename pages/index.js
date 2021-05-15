@@ -21,7 +21,6 @@ return (
       <Header />
       <Card />
       <Form />
-      <Footer />
       </div>
     </div>
   );

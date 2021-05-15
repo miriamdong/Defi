@@ -27,18 +27,17 @@ export default function Card() {
       aria-labelledby="contact-heading">
       <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-20 lg:gap-x-8 ">
         <C projects={state.projects}/>
-
         {user ? (
           <Link href="/project/create">
             <div
               className="flex flex-col bg-purple-900 rounded-2xl shadow-xl "
               style={{ textAlign: "center" }}>
               <div className="flex-1 relative ">
-                <div className=" px-4 py-10 sm:px-6 text-white">
+                <div className=" px-6 py-10 sm:px-6 text-white">
                   <h3>CREATE NEW PROJECT</h3>
                 </div>
                 <div>
-                  <img src="./img/min.gif" alt="New Project" />
+                  <img src="./img/meow.gif" alt="New Project" />
                 </div>
               </div>
             </div>
@@ -57,7 +56,7 @@ export default function Card() {
                   <h3>CREATE NEW PROJECT</h3> : <h3>PLEASE LOGIN FIRST!!!</h3>}
               </div>
               <div>
-                <img src="./img/min.gif" alt="New Project" />
+                <img src="./img/meow.gif" alt="New Project" />
               </div>
             </div>
 
