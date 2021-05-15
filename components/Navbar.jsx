@@ -39,7 +39,6 @@ const solutions = [
   },
   {
     name: "My Wallet",
-
     description: "Connect with third-party tools that you're already using.",
     href: "token/buy",
     icon: ViewGridIcon,

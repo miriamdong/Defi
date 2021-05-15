@@ -19,13 +19,9 @@ function Transfer() {
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
     const wallet = await web3.eth.accounts.wallet;
-    console.log(wallet);
     const networkId = await web3.eth.net.getId();
     const deployedNetwork = MyToken.networks[networkId];
     const contract = new web3.eth.Contract(MyToken.abi, deployedNetwork && deployedNetwork.address);
-    console.log(MyToken.abi);
-
-    console.log("ddddd", contract, MyToken.abi);
 
     // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
     // console.log(`Transaction hash: ${receipt.transactionHash}`);
@@ -104,7 +100,7 @@ function Transfer() {
 
   async function updateBalance() {
     const balance = await web3.eth.getBalance(contract.options.address);
-    console.log(balance);
+    // console.log(balance);
     setBalance(balance);
   }
 
@@ -112,9 +108,9 @@ function Transfer() {
     e.preventDefault();
     const amount = e.target.elements[0].value;
     const to = e.target.elements[1].value;
-    console.log(amount, to);
+    // console.log(amount, to);
     const myToken = contract.methods.name();
-    console.log(myToken);
+    // console.log(myToken);
     await contract.methods.transfer(to, amount).send({ from: accounts[0] });
     // await updateCurrentTransfer();
   }
@@ -144,7 +140,7 @@ function Transfer() {
   const listenToTokenTransfer = async () => {
     myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
   };
-  console.log("web3:", web3);
+  // console.log("web3:", web3);
   return (
     <>
       {!web3 && <div> Loading...</div>}
