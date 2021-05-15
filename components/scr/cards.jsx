@@ -53,13 +53,11 @@ export default function C({projects,currentUser}) {
                   <p className="text-sm font-medium text-gray-900">
                     
                     <a href={project.link} className="hover:underline">
-                      NAME
+                      {project.username}
                     </a>
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime={project.target_date}>{project.target_date}</time>
-                    <span aria-hidden="true">&middot;</span>
-                    <span>{project.min_amount}</span>
+                    <time dateTime={project.target_date}>{project.target_date.split("T")[0]}</time>
                   </div>
                 </div>
               </div>
