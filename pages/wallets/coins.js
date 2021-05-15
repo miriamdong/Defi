@@ -3,6 +3,7 @@ import MyToken from "../../contracts/MyToken.json";
 import MyTokenSale from "../../contracts/MyTokenSale.json";
 import KycContract from "../../contracts/KycContract.json";
 import getWeb3 from "../../hooks/useWeb3";
+import { useUser } from "../../firebase/useUser";
 
 class Token extends Component {
   state = {

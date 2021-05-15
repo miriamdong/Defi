@@ -1,30 +1,39 @@
-import Web3 from "web3";
-import detectEthereumProvider from "@metamask/detect-provider";
-import MyWallet from "../../contracts/MyWallet.json";
-import Wallet from "../../contracts/Wallet.json";
+export const formatData = (data) => {
+  let finalData = {
+    labels: [],
+    datasets: [
+      {
+        label: "Price",
+        data: [],
+        backgroundColor: "rgb(255, 99, 132, 0.8)",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+        fill: false,
+      },
+    ],
+  };
+  //convert dates from timestamp to mm/dd/yy format
+  let dates = data.map((val) => {
+    const ts = val[0];
+    let date = new Date(ts * 1000);
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
 
-const getWeb3 = () =>
-  new Promise(async (resolve, reject) => {
-    let provider = await detectEthereumProvider();
-    console.log(provider);
-    if (provider) {
-      await provider.request({ method: "eth_requestAccounts" });
-      try {
-        const web3 = new Web3(window.ethereum);
-        resolve(web3);
-      } catch (error) {
-        reject(error);
-      }
-    }
-    reject("Install Metamask");
+    let final = `${month}-${day}-${year}`;
+    return final;
   });
+  //coinbase API returns multiple price values, we want the ending price for that day
+  let priceArr = data.map((val) => {
+    return val[4];
+  });
+  //reverse price array so it is in chronological order
+  priceArr.reverse();
+  //do same for dates
+  dates.reverse();
+  //set data labels as the date array for ChartJS
+  finalData.labels = dates;
+  //price array will be used as dataset for ChartJS
+  finalData.datasets[0].data = priceArr;
 
-console.log("getWeb3::::::::::::!!!!!", getWeb3);
-
-const getWallet = async (web3) => {
-  const networkId = await web3.eth.net.getId();
-  const deployedNetwork = MyWallet.networks[networkId];
-  return new web3.eth.Contract(MyWallet.abi, deployedNetwork && deployedNetwork.address);
+  return finalData;
 };
-
-export { getWeb3, getWallet };
