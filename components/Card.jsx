@@ -28,7 +28,7 @@ export default function Card() {
       <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-20 lg:gap-x-8 ">
         <C projects={state.projects}/>
         {user ? (
-          <Link href="/project/create">
+          <Link href="/project/KYC">
             <div
               className="flex flex-col bg-purple-900 rounded-2xl shadow-xl "
               style={{ textAlign: "center" }}>
