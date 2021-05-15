@@ -143,9 +143,7 @@ export default function Navbar() {
                                 <a
                                   key={item.name}
                                   href={
-                                    user
-                                      ? "/user/SdyB5lXR6VSIiZGgTIQhCpvi07r1" + "/" + item.href
-                                      : "#"
+                                    user ? "/user/" + user.id + "/" + item.href : "#"
                                   }
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                   <item.icon

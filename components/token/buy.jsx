@@ -70,7 +70,6 @@ export default function Buy() {
                   src="/img/x.png"></img>
                   
                   <img 
-                  className="w-50"
                   src="/img/catcoin.png"></img>
                   </div>
                 </div>
