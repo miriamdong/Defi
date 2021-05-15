@@ -39,7 +39,6 @@ const solutions = [
   },
   {
     name: "My Wallet",
-
     description: "Connect with third-party tools that you're already using.",
     href: "token/buy",
     icon: ViewGridIcon,
@@ -142,7 +141,11 @@ export default function Navbar() {
                               {solutions.map((item) => (
                                 <a
                                   key={item.name}
-                                  href={user ? "/user/SdyB5lXR6VSIiZGgTIQhCpvi07r1" + "/" + item.href : "#"}
+                                  href={
+                                    user
+                                      ? "/user/SdyB5lXR6VSIiZGgTIQhCpvi07r1" + "/" + item.href
+                                      : "#"
+                                  }
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                   <item.icon
                                     className="flex-shrink-0 h-6 w-6 text-indigo-600"
