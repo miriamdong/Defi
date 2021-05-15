@@ -48,15 +48,35 @@ export default function Example() {
                     <p className="mt-3 text-base text-gray-500">{project.description}</p>
                   </a>
                 </div>
-                <div className="mt-6 flex items-center">
+                <div className="pr-3 mt-6">
+                <div className="order-1 text-base leading-6 font-medium text-indigo-500 text-center">
+                  Progressing
+                </div>
+                <div className="text-right">
+                  <span className="text-base font-semibold inline-block text-indigo-500">
+                    {project.funding}%
+                  </span>
+                </div>
+                <div className="relative w-full ">
+                  <div className=" overflow-hidden h-6 mb-4 text-xs flex rounded bg-purple-200">
+                    <div
+                      style={{ width: project.funding }}
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
+                  </div>
+                </div>
+              </div>
+                <div className="flex items-center">
+                  
                   <div className="flex-shrink-0">
                     <a href={project.link}>
                       <span className="sr-only">{firebase.auth().currentUser.displayName}</span>
                       <img className="h-10 w-10 rounded-full" src={project.image} alt="" />
                     </a>
                   </div>
+                  
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
+                      
                       <a href={project.link} className="hover:underline">
                         {firebase.auth().currentUser.displayName}
                       </a>
