@@ -333,7 +333,11 @@ export default function Navbar() {
                     });
                   }}>
                   {!toggle ? (
-                    <img className="h-10" src="/img/catcoin.png" alt="BUY COINS" />
+                   <div className="flex flex-col">
+                   <img className="h-16" src="/img/catcoin.png" alt="BUY COINS" />
+                   <p className="text-blue-500">Buy Coin</p>
+                   </div>
+                    
                   ) : (
                     <h4>PLEASE LOGIN FIRST</h4>
                   )}
