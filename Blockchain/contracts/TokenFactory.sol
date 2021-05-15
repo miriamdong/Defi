@@ -5,8 +5,8 @@ pragma solidity ^0.6.1;
 import "./MyToken.sol";
 
 contract tokenFactory {
-
-    address[] tokenAddress;
+// Child[] public children;
+address[] tokenAddress;
 
     event ChildCreated(
         uint date,
@@ -14,15 +14,15 @@ contract tokenFactory {
         address childAddress
     );
 
-    function createChild(uint _data) external {
-    Child child = new child(_data);
-    children.push(child);
-    emit ChildCreated(
-    block.timestamp,
-    _data,
-    address(child)
-    );
-    }
+    // function createChild(uint _data) external {
+    // Child child = new child(_data);
+    // children.push(child);
+    // emit ChildCreated(
+    // block.timestamp,
+    // _data,
+    // address(child)
+    // );
+    // }
 
     function deploy20Contract(
         string calldata name,
