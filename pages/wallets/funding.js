@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MyToken from "../../contracts/MyToken.json";
-import getWeb3 from "../../getWeb3";
+import getWeb3 from "../../hooks/useWeb3";
+import { useUser } from "../../firebase/useUser";
 
 function Transfer() {
   const [web3, setWeb3] = useState(undefined);
@@ -17,9 +18,8 @@ function Transfer() {
     const init = async () => {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
-      const account = accounts[0];
-      const wallet = await web3.eth.accounts.wallet;
-      console.log(wallet);
+      // const wallet = await web3.eth.accounts.wallet;
+      // console.log(wallet);
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = MyToken.networks[networkId];
       const contract = new web3.eth.Contract(
@@ -27,7 +27,7 @@ function Transfer() {
         deployedNetwork && deployedNetwork.address,
       );
 
-      console.log(contract, MyToken.abi);
+      // console.log(contract, MyToken.abi);
 
       // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
       // console.log(`Transaction hash: ${receipt.transactionHash}`);
