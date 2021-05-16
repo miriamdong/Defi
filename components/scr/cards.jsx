@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import Link from "next/link";
-import Fav from "../../components/fav";
+import Fav from "../Fav";
+import Clock from "../Clock";
 
 export default function C({ projects, currentUser }) {
   return (
@@ -57,7 +58,8 @@ export default function C({ projects, currentUser }) {
                     </a>
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime={project.target_date}>{project.target_date.split("T")[0]}</time>
+                    {/* <time dateTime={project.target_date}>{project.target_date.split("T")[0]}</time> */}
+                    <Clock />
                   </div>
                 </div>
               </div>

@@ -12,6 +12,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import Escrow from "../Escrow";
 import Createsteps from "./createsteps";
+import Kyc from "../../components/Meta/Kyc";
 
 export default function Create() {
   const router = useRouter();
@@ -79,7 +80,7 @@ export default function Create() {
                 <div className="pt-8">
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
-                      Company Information
+                      Join Our KYC Program
                     </h3>
                   </div>
                   <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
@@ -87,16 +88,17 @@ export default function Create() {
                       <label
                         htmlFor="Project_name"
                         className="block text-sm font-medium text-gray-700">
-                        Project name
+                        My Wallet Address
                       </label>
                       <div className="mt-1">
-                        <input
+                        {/* <input
                           type="text"
                           name="name"
                           id="Project_name"
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
                           onChange={handleChange}
-                        />
+                        /> */}
+                        <Kyc />
                       </div>
                     </div>
                   </div>
@@ -120,7 +122,6 @@ export default function Create() {
                 </div>
               </div>
             </form>
-            <Escrow />
           </div>
         </main>
       </div>

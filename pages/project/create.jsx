@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
 import Escrow from "../Escrow";
-import Createsteps from "./createsteps"
+import Createsteps from "./createsteps";
 
 export default function Create() {
   const router = useRouter();
@@ -61,7 +61,6 @@ export default function Create() {
   return (
     <>
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">
-      
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
             <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
@@ -450,16 +449,15 @@ export default function Create() {
                     Cancel
                   </button>
                   <Link href="/project/sharedwallet">
-                  <button
-                    type="submit"
-                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Next step
-                  </button>
-                   </Link>
+                    <button
+                      type="submit"
+                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Next step
+                    </button>
+                  </Link>
                 </div>
               </div>
             </form>
-            <Escrow />
           </div>
         </main>
       </div>
