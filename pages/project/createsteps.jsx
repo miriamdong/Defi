@@ -12,7 +12,7 @@ export default function Createsteps({steps}) {
     setCurrentPage(temPage)
 })
   return (
-    <nav aria-label="Progress ">
+    <nav aria-label="Progress" className="pt-0 border-none">
       <ol className="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
         {steps.map((step, stepIdx) => (
           <li key={step.name} className="relative md:flex-1 md:flex">
