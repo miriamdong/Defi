@@ -1,14 +1,15 @@
 import React, { Component, useState } from "react";
 import MyToken from "../../contracts/MyToken.json";
 import MyTokenSale from "../../contracts/MyTokenSale.json";
-import KycContract from "../../contracts/KycContract.json";
 import getWeb3 from "../../hooks/useWeb3";
+import { useUser } from "../../firebase/useUser";
 
-class Kyc extends Component {
+class Token extends Component {
   state = {
     loaded: false,
-    kycAddress: "",
     tokenSaleAddress: "",
+    userTokens: 0,
+    value: 1,
   };
 
   componentDidMount = async () => {
@@ -35,19 +36,14 @@ class Kyc extends Component {
         MyTokenSale.abi,
         MyTokenSale.networks[this.networkId] && MyTokenSale.networks[this.networkId].address,
       );
-      this.kycContract = new this.web3.eth.Contract(
-        KycContract.abi,
-        KycContract.networks[this.networkId] && KycContract.networks[this.networkId].address,
-      );
-      console.log("this.kycContract:", this.kycContract);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      //   this.listenToTokenTransfer();
-      //   this.setState(
-      //     { loaded: true, tokenSaleAddress: this.myTokenSale._address },
-      //     this.updateUserTokens,
-      //   );
+      this.listenToTokenTransfer();
+      this.setState(
+        { loaded: true, tokenSaleAddress: this.myTokenSale._address },
+        this.updateUserTokens,
+      );
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(`Failed to load web3, accounts, or contract. Check console for details.`);
@@ -66,37 +62,47 @@ class Kyc extends Component {
     console.log("pppp:", event.target.value);
   };
 
-  handleKycSubmit = async () => {
-    const { kycAddress } = this.state;
-    console.log({ kycAddress });
-    await this.kycContract.methods.setKycCompleted(kycAddress).send({ from: this.accounts[0] });
-    alert("Account " + kycAddress + " is now whitelisted");
+  handleBuyToken = async (e) => {
+    await this.myTokenSale.methods
+      .buyTokens(this.accounts[0])
+      .send({ from: this.accounts[0], value: this.state.Tokens });
+  };
+
+  updateUserTokens = async () => {
+    let userTokens = await this.myToken.methods.balanceOf(this.accounts[0]).call();
+    this.setState({ userTokens: userTokens });
+  };
+
+  listenToTokenTransfer = async () => {
+    this.myToken.events.Transfer({ to: this.accounts[0] }).on("data", this.updateUserTokens);
   };
 
   render() {
+    if (!this.state.loaded) {
+      return <div>Loading Web3, accounts, and contract...</div>;
+    }
     return (
-      <>
-        {this.web3 !== null && (
-          <div className="w-full pt-5">
+      <div className="App">
+        <form>
+          <label>
+            How Many?
             <input
-              type="text"
-              name="kycAddress"
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2 text-center"
-              value={this.state.kycAddress}
+              name="Tokens"
+              type="textarea"
+              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border-2"
               onChange={this.handleInputChange}
             />
-            <div className="pt-5 flex justify-end border-none">
-              <button
-                type="button"
-                className="ml-3 inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                onClick={this.handleKycSubmit}>
-                Join & Next
-              </button>
-            </div>
-          </div>
-        )}
-      </>
+          </label>
+          <button
+            type="button"
+            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={this.handleBuyToken}>
+            Buy MEOW-Tokens
+          </button>
+        </form>
+        <p>You have: {this.state.userTokens}</p>
+      </div>
     );
   }
 }
-export default Kyc;
+export default Token;

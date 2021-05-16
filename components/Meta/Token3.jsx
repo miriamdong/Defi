@@ -49,9 +49,9 @@ function Token() {
     setMyToken(myToken);
     setBalance(myBalance);
     setMyTokenSale(myTokenSale);
-    console.log("ddddd", myToken);
-    console.log("fffffff", myToken.events);
-    console.log("sale", myTokenSale);
+    console.log("myToken", myToken);
+    console.log("myToken.events", myToken.events);
+    console.log("myTokenSale", myTokenSale);
 
     listenToTokenTransfer(myToken);
     setLoaded(true);
@@ -109,7 +109,7 @@ function Token() {
 
   const listenToTokenTransfer = async (myToken) => {
     console.log({ myToken });
-    myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
+    await myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
   };
 
   return (

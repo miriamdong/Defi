@@ -15,11 +15,10 @@ import Createsteps from "./createsteps";
 import Kyc from "../../components/Meta/Kyc";
 
 const steps = [
-  { id: '01', name: 'KYC', href: 'KYC', status: 'current'},
-  { id: '02', name: 'Create form', href: 'create', status: 'upcoming'},
-  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
-]
-
+  { id: "01", name: "KYC", href: "KYC", status: "current" },
+  { id: "02", name: "Create form", href: "create", status: "upcoming" },
+  { id: "03", name: "Shared Wallet", href: "sharedWallet", status: "upcoming" },
+];
 
 export default function Create() {
   const router = useRouter();
@@ -83,7 +82,7 @@ export default function Create() {
                     </p>
                   </div>
                 </div>
-                <Createsteps steps={steps}/>
+                <Createsteps steps={steps} />
                 <div className="pt-8">
                  
                   <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
@@ -106,6 +105,9 @@ export default function Create() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="pt-5">
+                <div className="flex justify-end"></div>
               </div>
             </form>
           </div>
