@@ -133,6 +133,9 @@ function Transfer() {
   };
   // console.log("web3:", web3);
   return (
+      <>
+     {!web3 && <div> Loading...</div>}
+       {web3 !== null && (
     <div className="Transfer">
       <div className="row">
         <div className="col-sm-12">
@@ -153,6 +156,8 @@ function Transfer() {
         </div>
       </div>
     </div>
+    )
+  </>
   );
 }
 export default Transfer;

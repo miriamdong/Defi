@@ -20,13 +20,6 @@ export default function Buy() {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="pb-16 xl:flex xl:items-center xl:justify-between">
-          <div>
-            <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
-              <span className="p-20 text-gray-900">Increased</span>
-              <span className="text-indigo-600">$99 this week</span>
-            </h1>
-            <img className=" h-90" src="/img/price.png" />
-          </div>
           <a
             href="/"
             className=" w-full bg-indigo-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0">
@@ -35,15 +28,13 @@ export default function Buy() {
         </div>
         <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
           <div>
-            <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">
-              Everything you need
-            </h2>
             <p className="mt-2 text-3xl font-extrabold text-gray-900">Buy MEOW NOW</p>
-            {/* <h1>
-              Token Price
-              {/* <img src="/img/catcoin.png"></img> */}
-            {/* </h1> */}
-            {/* <h1 className="mt-8 text-indigo-500">USD $1000</h1> */}
+            <h1>Token Price
+              
+            </h1>
+            <h1 className="mt-8 text-indigo-500">
+              USD $1000
+            </h1>
           </div>
           <form action="#" method="POST" className="space-y-6">
             <Token />

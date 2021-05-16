@@ -77,7 +77,7 @@ class Kyc extends Component {
     return (
       <>
         {this.web3 !== null && (
-          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-10 border-none">
+          <div className="w-full pt-5">
             <input
               type="text"
               name="kycAddress"
@@ -88,7 +88,7 @@ class Kyc extends Component {
             <div className="pt-5 flex justify-end border-none">
               <button
                 type="button"
-                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="ml-3 inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 onClick={this.handleKycSubmit}>
                 Join & Next
               </button>

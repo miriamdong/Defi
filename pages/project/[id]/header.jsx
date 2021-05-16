@@ -89,7 +89,7 @@ export default function Header() {
         setComments(response.data);
       });
   }, []);
-  console.log("$$$Project",project)
+  console.log("$$$Project", project);
   const stats = [
     {
       id: 1,
@@ -102,7 +102,7 @@ export default function Header() {
     {
       id: 2,
       name: "Target Amount",
-      stat: project.target_amount+" "+"MEOW",
+      stat: project.target_amount + " " + "MEOW",
       href: "/img/targetamount.jpeg",
       change: "",
       changeType: "",
@@ -110,7 +110,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="bg-white pt-40">
+    <div className="bg-white pt-32">
       {/* Header */}
       <div className="min-h-40 bg-white flex">
         <div className="hidden lg:block relative w-0 flex-1">
@@ -125,91 +125,35 @@ export default function Header() {
             <Token />
             <Transfer />
             <div className="mt-8">
-              <div>
-                <div>
-                  <p className="text-sm font-medium text-gray-700">Need more coin? Click me</p>
+              <div></div>
 
-                  <div className="mt-1 grid grid-cols-1 gap-3">
-                    <div>
-                      <a
-                        href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <span className="sr-only">Wallets</span>
-                        <svg
-                          className="w-5 h-10"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 20 20">
-                          <path
-                            fillRule="evenodd"
-                            d="M 10,30
-                          A 20,20 0,0,1 50,30
-                          A 20,20 0,0,1 90,30
-                          Q 90,60 50,90
-                          Q 10,60 10,30 z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <form action="#" method="POST" className="space-y-6">
-                  <div className="space-y-1">
-                    <label htmlFor="token" className="block text-sm font-medium text-gray-700">
-                      Token
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="token"
-                        name="token"
-                        type="text"
-                        required
-                        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <input
-                        id="remember_me"
-                        name="remember_me"
-                        type="checkbox"
-                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-                        Notification
-                      </label>
-                    </div>
-                  </div>
-
-                  <div>
-                    <button
-                      type="submit"
-                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Invest!
-                    </button>
-                  </div>
-                </form>
-              </div>
+              <div className="mt-6"></div>
             </div>
           </div>
         </div>
       </div>
 
       <section
-        className="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-10  sm:px-6 lg:px-8 "
+        className="-mt-32 max-w-7xl mx-auto relative z-10 pb-14 px-10  sm:px-6 lg:px-8 "
         aria-labelledby="contact-heading">
         <div className="max-w-10xl mx-auto ">
           <dl className="rounded-lg h-60 bg-white shadow-lg sm:grid sm:grid-cols-2">
-            <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0
+            <div
+              className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0
             ">
-            <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">By someone</dt>
-              <dd className="order-1 text-5xl font-extrabold text-indigo-600 pt-5">{project.name}</dd>
+              <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div className="w-full border-t border-gray-300" />
+                  </div>
+                  <div className="relative flex justify-center">
+                    <span className="px-2 bg-white">{project.username}</span>
+                  </div>
+                </div>
+              </dt>
+              <dd className="order-1 text-5xl font-extrabold text-indigo-600 pt-5">
+                {project.name}
+              </dd>
             </div>
             <div className="flex flex-col text-center">
               <dl
@@ -256,7 +200,7 @@ export default function Header() {
                 ))}
               </dl>
 
-              <div className="pr-3">
+              <div className="pr-3 ">
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
                   Progressing
                 </div>
@@ -268,7 +212,7 @@ export default function Header() {
                 <div className="relative pt-3 w-full ">
                   <div className=" overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
-                      style={{ width: project.funding }}
+                      style={{ width: project.funding + "%" }}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
                   </div>
                 </div>

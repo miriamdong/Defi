@@ -76,12 +76,12 @@ return (
   <>
        
        <Header />
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
       
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
           <div className="border-gray-200 ax-w-3xl border-b ">
-              <h3 className="text-4xl leading-6 font-medium text-gray-900">HI</h3>
+              {/* <h3 className="text-4xl leading-6 font-medium text-gray-900">HI</h3> */}
               <div className="px-4 text-8xl mt-3 sm:mt-4">
                 <div className=" sm:hidden ">
                   <label htmlFor="current-tab" className="sr-only">
