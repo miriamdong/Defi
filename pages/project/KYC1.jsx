@@ -14,6 +14,13 @@ import Escrow from "../Escrow";
 import Createsteps from "./createsteps";
 import Kyc from "../../components/Meta/Kyc";
 
+const steps = [
+  { id: '01', name: 'KYC', href: 'KYC', status: 'current'},
+  { id: '02', name: 'Create form', href: 'create', status: 'upcoming'},
+  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
+]
+
+
 export default function Create() {
   const router = useRouter();
   const { user, logout } = useUser();
@@ -61,7 +68,7 @@ export default function Create() {
   console.log(state);
   return (
     <>
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-0">
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
             <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
@@ -76,7 +83,7 @@ export default function Create() {
                     </p>
                   </div>
                 </div>
-                <Createsteps />
+                <Createsteps steps={steps}/>
                 <div className="pt-8">
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -107,18 +114,8 @@ export default function Create() {
 
               <div className="pt-5">
                 <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Cancel
-                  </button>
-                  <Link href="/project/create">
-                    <button
-                      type="submit"
-                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Next Step
-                    </button>
-                  </Link>
+                 
+                  
                 </div>
               </div>
             </form>

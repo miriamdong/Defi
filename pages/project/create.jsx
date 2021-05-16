@@ -11,8 +11,12 @@ import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
 import Escrow from "../Escrow";
-import Createsteps from "./createsteps";
-
+import Createsteps from "./createsteps"
+const steps = [
+  { id: '01', name: 'KYC', href: 'KYC', status: 'complete'},
+  { id: '02', name: 'Create form', href: 'create', status: 'current'},
+  { id: '03', name: 'Shared Wallet', href: 'sharedwallet', status: 'upcoming' },
+]
 export default function Create() {
   const router = useRouter();
   const { user, logout } = useUser();
@@ -68,14 +72,14 @@ export default function Create() {
                 <div>
                   <div className="text-center">
                     <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4">
-                      New Project
+                      KYC
                     </h1>
                     <p className="mt-10 mb-0 text-sm text-gray-500">
                       This information will be displayed publicly so be careful what you share.
                     </p>
                   </div>
                 </div>
-                <Createsteps />
+                <Createsteps steps={steps}/>
                 <div className="pt-8">
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -449,12 +453,12 @@ export default function Create() {
                     Cancel
                   </button>
                   <Link href="/project/sharedwallet">
-                    <button
-                      type="submit"
-                      className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Next step
-                    </button>
-                  </Link>
+                  <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Next step
+                  </button>
+                   </Link>
                 </div>
               </div>
             </form>

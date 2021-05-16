@@ -16,18 +16,20 @@ export default function C({ projects, currentUser }) {
             </Link>
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
-                <p className="text-sm font-medium text-indigo-600">
-                  <a href={project.link} className="hover:underline">
-                    Link
-                  </a>
-                </p>
-                <a href={project.link} className="block mt-2">
+                {/* <p className="text-sm font-medium text-indigo-600"> */}
+                  {/* <a href={project.link} className="hover:underline">
+                  {project.link}
+                  </a> */}
+                {/* </p> */}
+                {/* <a href={project.link} className="block mt-2"> */}
                   <p className="text-xl font-semibold text-gray-900">
                     {project.name} 
                   </p>
                   <p className="mt-3 text-base text-gray-500">{project.description}</p>
-                </a>
+
                 <Fav projectId={project.id}/>
+
+                {/* </a> */}
               </div>
               <div className="pr-3 mt-6">
                 <div className="order-1 text-base leading-6 font-medium text-indigo-500 text-center">
@@ -56,9 +58,9 @@ export default function C({ projects, currentUser }) {
 
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-900">
-                    <a href={project.link} className="hover:underline">
+                    {/* <a href={project.link} className="hover:underline"> */}
                       {project.username}
-                    </a>
+                    {/* </a> */}
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
                     {/* <time dateTime={project.target_date}>{project.target_date.split("T")[0]}</time> */}
