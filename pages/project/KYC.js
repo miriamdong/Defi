@@ -87,7 +87,7 @@ class Kyc extends Component {
                   <div className="border-none">
                     <div className="text-center border-none">
                       <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4 border-none">
-                        New Project
+                      Join Our KYC Program
                       </h1>
                       <p className="mt-10 mb-0 text-sm text-gray-500 border-none">
                         This information will be displayed publicly so be careful what you share.
@@ -95,14 +95,14 @@ class Kyc extends Component {
                     </div>
                   </div>
                   <Createsteps steps={steps} />
-                    <div className="border-none">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900 border-none">
+                    {/* <div >
+                      <h3 className="text-lg leading-6 font-medium text-gray-900 pt-5">
                         Join Our KYC Program
                       </h3>
-                    </div>
+                    </div> */}
                         <label
                           htmlFor="Project_name"
-                          className="block text-sm font-medium text-gray-700 border-none">
+                          className="block text-sm font-medium text-gray-700 pt-5">
                           My Wallet Address
                         </label>
                           {this.web3 !== null && (
@@ -114,11 +114,11 @@ class Kyc extends Component {
                               value={this.state.kycAddress}
                               onChange={this.handleInputChange}
                             />
-                          <div className="flex justify-end">
-                    <Link href="/project/create" className="flex justify-end">
+                          <div className="flex justify-end border-none">
+                    <Link href="/project/create" className="flex justify-end border-none">
                       <button
                         type="submit"
-                        className="justify-end ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         onClick={this.handleKycSubmit}>
                         Join & Next
                       </button>
