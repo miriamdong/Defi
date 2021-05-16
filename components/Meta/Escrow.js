@@ -56,39 +56,36 @@ class NewEscrow extends Component {
     const { balance } = this.state;
 
     return (
-      <div className="container py-40">
-        <h1 className="text-center">Create A Shared Wallet</h1>
-
+      <div className="container">
         <div className="row">
-          <div className="col-sm-12">
+          <div className="col-sm-12 text-2xl">
             <p>
               Balance: <b>{balance}</b> Meow{" "}
             </p>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-sm-12">
-            <form onSubmit={(e) => this.deposit(e)}>
-              <div className="form-group">
-                <label htmlFor="deposit">Deposit</label>
-                <input type="number" className="form-control" id="deposit" />
-              </div>
+        <div className="w-full">
+          <form onSubmit={(e) => this.deposit(e)}>
+            <div className="form-group ">
+              <label htmlFor="deposit ">Deposit</label>
+              <input type="number" className="form-control" id="deposit" />
+            </div>
+
+            <div className="flex justify-end">
               <button
                 type="submit"
                 className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Create Wallet
               </button>
-            </form>
-          </div>
-        </div>
-        <br />
-        <div className="row">
-          <div className="col-sm-12">
-            <button onClick={() => this.release()} type="submit" className="btn btn-primary">
-              Release
-            </button>
-          </div>
+              <button
+                onClick={() => this.release()}
+                type="submit"
+                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Release
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     );
