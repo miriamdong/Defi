@@ -75,8 +75,9 @@ const router = useRouter();
 return (
   <>
        
-      <Header />
+       <Header />
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 ">
+      
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
           <div className="border-gray-200 ax-w-3xl border-b ">

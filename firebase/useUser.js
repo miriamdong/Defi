@@ -35,6 +35,7 @@ const useUser = () => {
       if (user) {
         const userData = mapUserData(user);
         setUserCookie(userData);
+        debugger
         setUser(userData);
         const userObject = {
           authId: user.uid,
