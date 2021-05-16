@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import tokenFactory from "../contracts/tokenFactory.json";
-import Escrow from "../contracts/Escrow.json";
-import getWeb3 from "../hooks/useWeb3";
+import Escrow from "../../contracts/Escrow.json";
+import getWeb3 from "../../hooks/useWeb3";
 
 class NewEscrow extends Component {
   state = {
@@ -62,7 +62,7 @@ class NewEscrow extends Component {
         <div className="row">
           <div className="col-sm-12">
             <p>
-              Balance: <b>{balance}</b> wei{" "}
+              Balance: <b>{balance}</b> Meow{" "}
             </p>
           </div>
         </div>
@@ -74,15 +74,15 @@ class NewEscrow extends Component {
                 <label htmlFor="deposit">Deposit</label>
                 <input type="number" className="form-control" id="deposit" />
               </div>
-              <button type="submit" className="btn btn-primary">
-                Submit
+              <button
+                type="submit"
+                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Create Wallet
               </button>
             </form>
           </div>
         </div>
-
         <br />
-
         <div className="row">
           <div className="col-sm-12">
             <button onClick={() => this.release()} type="submit" className="btn btn-primary">
