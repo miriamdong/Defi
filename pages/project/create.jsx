@@ -12,7 +12,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import Escrow from "../Escrow";
 import Createsteps from "./createsteps"
-
+const steps = [
+  { id: '01', name: 'KYC', href: 'KYC', status: 'complete'},
+  { id: '02', name: 'create form', href: 'create', status: 'current'},
+  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
+]
 export default function Create() {
   const router = useRouter();
   const { user, logout } = useUser();
@@ -69,14 +73,14 @@ export default function Create() {
                 <div>
                   <div className="text-center">
                     <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4">
-                      New Project
+                      KYC
                     </h1>
                     <p className="mt-10 mb-0 text-sm text-gray-500">
                       This information will be displayed publicly so be careful what you share.
                     </p>
                   </div>
                 </div>
-                <Createsteps />
+                <Createsteps steps={steps}/>
                 <div className="pt-8">
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">

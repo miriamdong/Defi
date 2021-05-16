@@ -1,13 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from '@heroicons/react/solid'
+import React, { useRef, useState ,useEffect} from "react"
+import Link from 'next/link'
 
-const steps = [
-  { id: '01', name: 'KYC', href: 'KYC', status: 'complete' },
-  { id: '02', name: 'create form', href: 'create', status: 'current' },
-  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
-]
 
-export default function Createsteps() {
+export default function Createsteps({steps}) {
+  const [currentPage,setCurrentPage] =useState("")
+  useEffect(()=>{
+  let temPage = window.location.href.split('/')
+  temPage = temPage[temPage.length-1]
+    setCurrentPage(temPage)
+})
   return (
     <nav aria-label="Progress pt-40">
       <ol className="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">

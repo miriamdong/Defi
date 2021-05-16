@@ -12,7 +12,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import Escrow from "../Escrow";
 import Createsteps from "./createsteps";
-
+const steps = [
+  { id: '01', name: 'KYC', href: 'KYC', status: 'complete'},
+  { id: '02', name: 'create form', href: 'create', status: 'complete'},
+  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'current' },
+]
 export default function Create() {
   const router = useRouter();
   const { user, logout } = useUser();
@@ -75,7 +79,7 @@ export default function Create() {
                     </p>
                   </div>
                 </div>
-                <Createsteps />
+                <Createsteps steps={steps}/>
  </div>
 
               <div className="pt-5">
