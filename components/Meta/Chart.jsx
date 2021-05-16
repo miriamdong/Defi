@@ -6,7 +6,6 @@ import { formatData } from "./utils";
 export default function Chart() {
   const [currencies, setcurrencies] = useState([]);
   const [pair, setpair] = useState("");
-  const [price, setprice] = useState("0.00");
   const [pastData, setpastData] = useState({});
   const ws = useRef(null);
 
@@ -46,7 +45,6 @@ export default function Chart() {
       });
 
       setcurrencies(filtered);
-
       first.current = true;
     };
 
@@ -66,7 +64,7 @@ export default function Chart() {
     };
     let jsonMsg = JSON.stringify(msg);
     console.log("jsonMsg", jsonMsg);
-    ws.current.onopen = () => ws.current.send(jsonMsg);
+    ws.current.send(jsonMsg);
 
     let historicalDataURL = `${url}/products/${pair}/candles?granularity=86400`;
     const fetchHistoricalData = async () => {
@@ -80,33 +78,20 @@ export default function Chart() {
     };
     //run async function to get historical data
     fetchHistoricalData();
-    //need to update event listener for the websocket object so that it is listening for the newly updated currency pair
-    ws.current.onmessage = (e) => {
-      e.preventDefault();
-      let data = JSON.parse(e.data);
-      console.log("data!!!!!!!", data);
-      if (data.type !== "ticker") {
-        console.log("no ticker event", e);
-        return;
-      }
-      //every time we receive an even from the websocket for our currency pair, update the price in state
-      if (data.product_id === pair) {
-        setprice(data.price);
-      }
-    };
+
     //dependency array is passed pair state, will run on any pair state change
   }, [pair]);
 
   const handleSelect = (e) => {
-    console.log("ticker", e.target.value);
-    let unsubMsg = {
-      type: "unsubscribe",
-      product_ids: [pair],
-      channels: ["ticker"],
-    };
-    let unsub = JSON.stringify(unsubMsg);
-    console.log("unsub", unsub);
-    ws.current.send(unsub);
+    // console.log("ticker", e.target.value);
+    // let unsubMsg = {
+    //   type: "unsubscribe",
+    //   product_ids: [pair],
+    //   channels: ["ticker"],
+    // };
+    // let unsub = JSON.stringify(unsubMsg);
+    // console.log("unsub", unsub);
+    // ws.current.send(unsub);
     setpair(e.target.value);
   };
 
@@ -123,7 +108,7 @@ export default function Chart() {
           })}
         </select>
       }
-      <Dashboard price={price} data={pastData} />
+      <Dashboard ws={ws} pair={pair} data={pastData} />
     </div>
   );
 }
