@@ -57,7 +57,6 @@ export default function Create() {
                   </div>
                 </div>
               </div>
-              
           </div>
         </main>
       </div>
