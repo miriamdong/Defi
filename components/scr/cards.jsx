@@ -23,9 +23,12 @@ export default function C({ projects, currentUser }) {
                 {/* </p> */}
                 {/* <a href={project.link} className="block mt-2"> */}
                   <p className="text-xl font-semibold text-gray-900">
-                    {project.name} <Fav />
+                    {project.name} 
                   </p>
                   <p className="mt-3 text-base text-gray-500">{project.description}</p>
+
+                <Fav projectId={project.id}/>
+
                 {/* </a> */}
               </div>
               <div className="pr-3 mt-6">
