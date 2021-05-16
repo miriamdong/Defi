@@ -13,10 +13,10 @@ import "firebase/auth";
 import Escrow from "../Escrow";
 import Createsteps from "./createsteps";
 const steps = [
-  { id: '01', name: 'KYC', href: 'KYC', status: 'complete'},
-  { id: '02', name: 'create form', href: 'create', status: 'complete'},
-  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'current' },
-]
+  { id: "01", name: "KYC", href: "KYC", status: "complete" },
+  { id: "02", name: "create form", href: "Create", status: "complete" },
+  { id: "03", name: "Shared Wallet", href: "sharedWallet", status: "current" },
+];
 export default function Create() {
   const router = useRouter();
   const { user, logout } = useUser();
@@ -79,8 +79,8 @@ export default function Create() {
                     </p>
                   </div>
                 </div>
-                <Createsteps steps={steps}/>
- </div>
+                <Createsteps steps={steps} />
+              </div>
 
               <div className="pt-5">
                 <div className="flex justify-end">
@@ -89,11 +89,11 @@ export default function Create() {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Create Wallet
                   </button>
-                  <Link href="/project/create">
+                  <Link href={"/user/" + firebase.auth().currentUser.uid+ "/dashboard/myproject"}>
                     <button
                       type="submit"
                       className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                     Submit 
+                      Submit
                     </button>
                   </Link>
                 </div>

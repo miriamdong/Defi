@@ -15,7 +15,7 @@ import Createsteps from "./createsteps";
 
 const steps = [
   { id: '01', name: 'KYC', href: 'KYC', status: 'current'},
-  { id: '02', name: 'create form', href: 'create', status: 'upcoming'},
+  { id: '02', name: 'Create form', href: 'create', status: 'upcoming'},
   { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
 ]
 
