@@ -111,13 +111,6 @@ export default function Create() {
                   </div>
                 </div>
               </div>
-
-              <div className="pt-5">
-                <div className="flex justify-end">
-                 
-                  
-                </div>
-              </div>
             </form>
           </div>
         </main>

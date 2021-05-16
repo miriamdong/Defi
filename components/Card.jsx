@@ -23,7 +23,7 @@ export default function Card() {
   
   return (
      <section
-      className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8  "
+      className=" -mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-10  "
       aria-labelledby="contact-heading">
       <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-20 lg:gap-x-8 ">
         <C projects={state.projects}/>

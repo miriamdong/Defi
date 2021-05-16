@@ -158,9 +158,11 @@ function Transfer() {
                     <label htmlFor="to">To</label>
                     <input type="text" className="form-control" id="to" />
                   </div>
-                  <button type="submit" className="btn btn-primary">
+                  <div className="flex justify-end">
+                  <button type="submit" className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Submit
                   </button>
+                  </div>
                 </form>
                 {/* <p>You have: {state.userTokens}</p> */}
               </div>
@@ -177,9 +179,11 @@ function Transfer() {
                 {currentTransfer.alreadyApproved ? (
                   "Already approved"
                 ) : (
-                  <button type="submit" className="btn btn-primary" onClick={sendTransfer}>
+                  <div className="flex justify-end">
+                  <button type="submit" className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={sendTransfer}>
                     Submit
                   </button>
+                  </div>
                 )}
               </div>
             </div>
