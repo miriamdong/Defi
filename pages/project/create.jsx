@@ -15,7 +15,7 @@ import Createsteps from "./createsteps"
 const steps = [
   { id: '01', name: 'KYC', href: 'KYC', status: 'complete'},
   { id: '02', name: 'Create form', href: 'create', status: 'current'},
-  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
+  { id: '03', name: 'Shared Wallet', href: 'sharedwallet', status: 'upcoming' },
 ]
 export default function Create() {
   const router = useRouter();
@@ -452,7 +452,7 @@ export default function Create() {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Cancel
                   </button>
-                  <Link href="/project/sharedWallet">
+                  <Link href="/project/sharedwallet">
                   <button
                     type="submit"
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

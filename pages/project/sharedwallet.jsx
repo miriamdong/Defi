@@ -15,7 +15,7 @@ import Createsteps from "./createsteps";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
   { id: "02", name: "create form", href: "Create", status: "complete" },
-  { id: "03", name: "Shared Wallet", href: "sharedWallet", status: "current" },
+  { id: "03", name: "Shared Wallet", href: "sharedwallet", status: "current" },
 ];
 export default function Create() {
   const router = useRouter();
