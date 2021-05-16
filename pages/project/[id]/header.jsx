@@ -134,7 +134,7 @@ export default function Header() {
       </div>
 
       <section
-        className="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-10  sm:px-6 lg:px-8 "
+        className="-mt-32 max-w-7xl mx-auto relative z-10 pb-14 px-10  sm:px-6 lg:px-8 "
         aria-labelledby="contact-heading">
         <div className="max-w-10xl mx-auto ">
           <dl className="rounded-lg h-60 bg-white shadow-lg sm:grid sm:grid-cols-2">
