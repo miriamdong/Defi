@@ -60,7 +60,7 @@ export default function Example() {
                 <div className="relative w-full ">
                   <div className=" overflow-hidden h-6 mb-4 text-xs flex rounded bg-purple-200">
                     <div
-                      style={{ width: project.funding }}
+                      style={{ width: project.funding +"%"}}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
                   </div>
                 </div>
