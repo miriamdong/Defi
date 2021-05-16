@@ -1,7 +1,6 @@
 import Web3 from "web3";
 
 const getWeb3 = () => {
-  console.log("!!!!!!!!!!");
   return new Promise(async (resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
 
@@ -10,11 +9,10 @@ const getWeb3 = () => {
     if (window.ethereum) {
       const web3 = new Web3(window.ethereum);
       try {
-        // Request account access if needed
-
+        console.log("Request account access if needed");
         const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-        console.log("fffffffffffffffffff");
         // Acccounts now exposed
+        console.log("Acccounts now exposed", accounts);
         resolve(web3);
       } catch (error) {
         reject(error);
