@@ -10,16 +10,15 @@ import { firebaseClient } from "../../firebase/initFirebase";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
-import Escrow from "../Escrow";
+// import Escrow from "../Escrow";
 import Createsteps from "./createsteps";
 import Kyc from "../../components/Meta/Kyc";
 
 const steps = [
-  { id: '01', name: 'KYC', href: 'KYC', status: 'current'},
-  { id: '02', name: 'Create form', href: 'create', status: 'upcoming'},
-  { id: '03', name: 'Shared Wallet', href: 'sharedWallet', status: 'upcoming' },
-]
-
+  { id: "01", name: "KYC", href: "KYC", status: "current" },
+  { id: "02", name: "Create form", href: "create", status: "upcoming" },
+  { id: "03", name: "Shared Wallet", href: "sharedWallet", status: "upcoming" },
+];
 
 export default function Create() {
   const router = useRouter();
@@ -83,7 +82,7 @@ export default function Create() {
                     </p>
                   </div>
                 </div>
-                <Createsteps steps={steps}/>
+                <Createsteps steps={steps} />
                 <div className="pt-8">
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -110,6 +109,9 @@ export default function Create() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="pt-5">
+                <div className="flex justify-end"></div>
               </div>
             </form>
           </div>

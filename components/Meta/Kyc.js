@@ -39,6 +39,7 @@ class Kyc extends Component {
         KycContract.abi,
         KycContract.networks[this.networkId] && KycContract.networks[this.networkId].address,
       );
+      console.log("this.kycContract:", this.kycContract);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -67,6 +68,7 @@ class Kyc extends Component {
 
   handleKycSubmit = async () => {
     const { kycAddress } = this.state;
+    console.log({ kycAddress });
     await this.kycContract.methods.setKycCompleted(kycAddress).send({ from: this.accounts[0] });
     alert("Account " + kycAddress + " is now whitelisted");
   };
