@@ -65,7 +65,6 @@ export default function Create() {
   return (
     <>
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">
-      
         <main className="bg-white">
           <div className="max-w-3xl mx-auto">
             <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
@@ -463,7 +462,6 @@ export default function Create() {
                 </div>
               </div>
             </form>
-            <Escrow />
           </div>
         </main>
       </div>

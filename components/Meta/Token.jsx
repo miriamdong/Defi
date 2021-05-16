@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MyToken from "../../contracts/MyToken.json";
 import MyTokenSale from "../../contracts/MyTokenSale.json";
-import KycContract from "../../contracts/KycContract.json";
+// import KycContract from "../../contracts/KycContract.json";
 import getWeb3 from "../../hooks/useWeb3";
 
 function Token() {

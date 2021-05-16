@@ -57,7 +57,7 @@ class NewEscrow extends Component {
 
     return (
       <div className="container py-40">
-        <h1 className="text-center">Escrow</h1>
+        <h1 className="text-center">Create A Shared Wallet</h1>
 
         <div className="row">
           <div className="col-sm-12">
