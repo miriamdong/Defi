@@ -5,6 +5,7 @@ import KycContract from "../../contracts/KycContract.json";
 import getWeb3 from "../../hooks/useWeb3";
 import Createsteps from "./createsteps";
 import Link from "next/link";
+// import Kyc from "../../components/Meta/Kyc";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "current" },
   { id: "02", name: "Create form", href: "create", status: "upcoming" },
@@ -83,50 +84,51 @@ class Kyc extends Component {
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-32 border-none">
           <main className="bg-white border-none">
             <div className="max-w-3xl mx-auto border-none">
-              <form className="space-y-8 divide-y divide-gray-200 border-none">
-                <div className="border-none">
-                  <div className="text-center border-none">
-                    <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4 border-none">
-                      Join Our KYC Program
-                    </h1>
-                    <p className="mt-10 mb-0 text-sm text-gray-500 border-none">
-                      This information will be displayed publicly so be careful what you share.
-                    </p>
-                  </div>
+              {/* <form className="space-y-8 divide-y divide-gray-200 border-none"> */}
+              <div className="border-none">
+                <div className="text-center border-none">
+                  <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4 border-none">
+                    Join Our KYC Program
+                  </h1>
+                  <p className="mt-10 mb-0 text-sm text-gray-500 border-none">
+                    This information will be displayed publicly so be careful what you share.
+                  </p>
                 </div>
-                <Createsteps steps={steps} />
-                {/* <div >
+              </div>
+              <Createsteps steps={steps} />
+              {/* <div >
                       <h3 className="text-lg leading-6 font-medium text-gray-900 pt-5">
                         Join Our KYC Program
                       </h3>
                     </div> */}
-                <label
-                  htmlFor="Project_name"
-                  className="block text-sm font-medium text-gray-700 pt-5">
-                  My Wallet Address
-                </label>
-                {this.web3 !== null && (
-                  <>
-                    <input
-                      type="text"
-                      name="kycAddress"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
-                      value={this.state.kycAddress}
-                      onChange={this.handleInputChange}
-                    />
-                    <div className="flex justify-end border-none">
-                      <Link href="/project/create" className="flex justify-end border-none">
-                        <button
-                          type="submit"
-                          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          onClick={this.handleKycSubmit}>
-                          Join & Next
-                        </button>
-                      </Link>
-                    </div>
-                  </>
-                )}
-              </form>
+              <label
+                htmlFor="Project_name"
+                className="block text-sm font-medium text-gray-700 pt-5">
+                My Wallet Address
+              </label>
+              {this.web3 !== null && (
+                <>
+                  <input
+                    type="text"
+                    name="kycAddress"
+                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2"
+                    value={this.state.kycAddress}
+                    onChange={this.handleInputChange}
+                  />
+                  <div className="flex justify-end border-none">
+                    <Link href="/project/create" className="flex justify-end border-none">
+                      <button
+                        type="submit"
+                        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={this.handleKycSubmit}>
+                        Join & Next
+                      </button>
+                    </Link>
+                  </div>
+                </>
+              )}
+              {/* </form>
+              <KYC /> */}
             </div>
           </main>
         </div>
