@@ -10,18 +10,18 @@ function Dashboard({ price, data }) {
     responsive: true,
     maintainAspectRatio: false,
   };
-  if (price === "0.00") {
-    return <h2>please select a currency pair</h2>;
-  }
-  return (
-    <div className="dashboard">
-      <h2>{`$${price}`}</h2>
 
-      <div className="chart-container">
-        <Line data={data} options={opts} />
+  if (price !== "0.00")
+    return (
+      <div className="dashboard">
+        <h2>{`$${price}`}</h2>
+
+        <div className="chart-container">
+          <Line data={data} options={opts} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  return <h4>please select a currency pair</h4>;
 }
 
 export default Dashboard;
