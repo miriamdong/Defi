@@ -107,7 +107,9 @@ function Transfer() {
   async function createTransfer(e) {
     e.preventDefault();
     const amount = e.target.elements[0].value;
-    const to = e.target.elements[1].value;
+    // const to = e.target.elements[1].value;
+    const projectAccount = "0x05026bf962eC84FEe60FECa11EDF41dce3587530";
+    const to = projectAccount;
     // console.log(amount, to);
     const myToken = contract.methods.name();
     // console.log(myToken);
@@ -121,17 +123,6 @@ function Transfer() {
     // await updateCurrentTransfer();
   }
 
-  // async function updateCurrentTransfer() {
-  //   const currentTransferId = (await contract.methods.nextId().call()) - 1;
-  //   if (currentTransferId >= 0) {
-  //     const currentTransfer = await contract.methods.transfers(currentTransferId).call();
-  //     const alreadyApproved = await contract.methods
-  //       .approvals(accounts[0], currentTransferId)
-  //       .call();
-  //     setCurrentTransfer({ ...currentTransfer, alreadyApproved });
-  //   }
-  // }
-
   const updateUserTokens = async () => {
     let userTokens = await contract.methods.balanceOf(accounts[0]).call();
     setState({ userTokens: userTokens });
@@ -142,51 +133,26 @@ function Transfer() {
   };
   // console.log("web3:", web3);
   return (
-    <>
-      {!web3 && <div> Loading...</div>}
-      {web3 !== null && (
-        <div className="Transfer">
-          {!currentTransfer ? (
-            <div className="row">
-              <div className="col-sm-12">
-                <form onSubmit={(e) => createTransfer(e)}>
-                  <div className="form-group">
-                    <label htmlFor="amount">Amount</label>
-                    <input type="number" className="form-control" id="amount" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="to">To</label>
-                    <input type="text" className="form-control" id="to" />
-                  </div>
-                  <button type="submit" className="btn btn-primary">
-                    Submit
-                  </button>
-                </form>
-                {/* <p>You have: {state.userTokens}</p> */}
-              </div>
+    <div className="Transfer">
+      <div className="row">
+        <div className="col-sm-12">
+          <form onSubmit={(e) => createTransfer(e)}>
+            <div className="form-group">
+              <label htmlFor="amount">Amount</label>
+              <input type="number" className="form-control" id="amount" />
             </div>
-          ) : (
-            <div className="row">
-              <div className="col-sm-12">
-                <h2>Approve transfer</h2>
-                <ul>
-                  <li>TransferId: {currentTransfer.id}</li>
-                  <li>Amount: {currentTransfer.amount}</li>
-                  <li>Approvals: {currentTransfer.approvals}</li>
-                </ul>
-                {currentTransfer.alreadyApproved ? (
-                  "Already approved"
-                ) : (
-                  <button type="submit" className="btn btn-primary" onClick={sendTransfer}>
-                    Submit
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
+            {/* <div className="form-group">
+              <label htmlFor="to">To</label>
+              <input type="text" className="form-control" id="to" />
+            </div> */}
+            <button type="submit" className="btn btn-primary">
+              Invest Me
+            </button>
+          </form>
+          {/* <p>You have: {userTokens}</p> */}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
 export default Transfer;

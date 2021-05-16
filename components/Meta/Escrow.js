@@ -20,13 +20,14 @@ class NewEscrow extends Component {
     const deployedNetwork = Escrow.networks[networkId];
     const contract = new web3.eth.Contract(Escrow.abi, deployedNetwork && deployedNetwork.address);
 
-    console.log(contract);
+    console.log("Escrow.abi contract:", contract);
     this.setState({ web3, accounts, contract }, this.updateBalance);
   }
 
   async updateBalance() {
     const { contract } = this.state;
     const balance = await contract.methods.balanceOf().call();
+    console.log({ balance });
     this.setState({ balance });
   }
 
@@ -38,6 +39,7 @@ class NewEscrow extends Component {
       value: e.target.elements[0].value,
     });
     this.updateBalance();
+    console.log("Transactions:", { contract });
   }
 
   async release() {
@@ -62,7 +64,7 @@ class NewEscrow extends Component {
         <div className="row">
           <div className="col-sm-12">
             <p>
-              Balance: <b>{balance}</b> Meow{" "}
+              Balance: <b>{balance}</b> Meow Tokens{" "}
             </p>
           </div>
         </div>

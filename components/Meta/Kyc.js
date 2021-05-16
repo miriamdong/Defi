@@ -63,7 +63,7 @@ class Kyc extends Component {
     this.setState({
       [name]: value,
     });
-    console.log("pppp:", event.target.value);
+    console.log("event.target.value:", event.target.value);
   };
 
   handleKycSubmit = async () => {
