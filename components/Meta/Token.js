@@ -82,7 +82,7 @@ class Token extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div className="App">
+      <div className="App pt-10">
         <form>
           <label>
             How Many?

@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/outline";
 import Token from "../Meta/Token";
-
+import Chart from "../Meta/Chart";
 const features = [
   "Vitae in pulvinar odio id utobortis in inter.",
   "Sed sed id viverra viverra augue eget massa.",
@@ -17,27 +17,23 @@ const features = [
 
 export default function Buy() {
   return (
-    <div className="bg-white">
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="pb-16 xl:flex xl:items-center xl:justify-between">
-          <a
+    <div className="bg-white pb-40">
+      <div className="max-w-7xl mx-auto sm:py-5 sm:px-8 lg:px-4">
+        <div className="xl:grid xl:grid-cols-2 ">
+          <div className="pt-0">
+            {/* <p className="mt-2 text-3xl font-extrabold text-gray-900">Buy MEOW NOW</p>
+            <h1>Token Price</h1>
+            <h1 className="mt-8 text-indigo-500">USD $1000</h1> */}
+            <Chart />
+            <div className="pt-10">
+            <a
             href="/"
-            className=" w-full bg-indigo-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0">
+            className=" bg-indigo-600 border border-transparent px-5 py-2 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0">
             Invest a project
           </a>
-        </div>
-        <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
-          <div>
-            <p className="mt-2 text-3xl font-extrabold text-gray-900">Buy MEOW NOW</p>
-            <h1>Token Price
-              
-            </h1>
-            <h1 className="mt-8 text-indigo-500">
-              USD $1000
-            </h1>
           </div>
-          <form action="#" method="POST" className="space-y-6">
-            <Token />
+          </div>
+          <div className="">
             {/* <div>
               <label htmlFor="token" className="block text-sm font-medium text-gray-700">
                 How many do you want?
@@ -53,28 +49,36 @@ export default function Buy() {
                   /> */}
 
             {/* </div> */}
-
-            <img src="/img/catcoin.png"></img>
-
+            <div className="xl:grid xl:grid-cols-2 xl:gap-x-8 py-10 h-40">
+              <div>
+            <h1>Token Price</h1>
+            <h1 className="text-indigo-500">USD $1000</h1>
+            </div>
+            <img 
+              className="h-2/4"
+            src="/img/catcoin.png"></img>
+            </div>
+            <Token />
+            
             {/* <img className="w-25 h-30" src="/img/x.png"></img> */}
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
+            {/* <div className="flex items-center justify-between"> */}
+              {/* <div className="flex items-center"> */}
+                {/* <input
                   id="notification"
                   name="notification"
                   type="checkbox"
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
+                /> */}
+                {/* <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
                   Newsletter
-                </label>{" "}
-              </div>
-              <div className="text-sm">
+                </label>{" "} */}
+              {/* </div> */}
+              {/* <div className="text-sm">
                 <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500"></a>
-              </div>
-            </div>
-          </form>
+              </div> */}
+            {/* </div> */}
+          </div>
         </div>
       </div>
     </div>

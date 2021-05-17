@@ -96,7 +96,7 @@ export default function Chart() {
   };
 
   return (
-    <div className="container pt-32">
+    <div className="w-10/12 h-3/4">
       {
         <select name="currency" value={pair} onChange={handleSelect}>
           {currencies.map((cur, idx) => {
