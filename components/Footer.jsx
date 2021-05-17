@@ -108,12 +108,14 @@ export default function Footer() {
         Footer
       </h2>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <div className="flex flex-justify">
-      {projects.map((project) => (
+      <div className="flex flex-container ">
+      
       <Marquee gradientColor={[]}>  
-              <img className="h-10 w-10 rounded-full" src={project.image} alt="" />  
-      </Marquee>
-      ))}
+      {projects.map((project) => (
+              <img className="h-10 w-10 rounded-full flex-space-between" src={project.image} alt="" />  
+              ))}
+      
+              </Marquee>
       </div>
         <div className="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-4">

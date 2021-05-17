@@ -143,9 +143,11 @@ function Transfer() {
                 <div className="form-group">
                   <label htmlFor="amount">Amount</label>
                   <input type="number" className="form-control" id="amount" />{" "}
-                  <button type="submit" className="btn btn-primary">
+                  <div className="text-right pt-5">
+                  <button type="submit" className="ml-3 inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Invest Me
                   </button>
+                  </div>
                 </div>
                 {/* <div className="form-group">
               <label htmlFor="to">To</label>
