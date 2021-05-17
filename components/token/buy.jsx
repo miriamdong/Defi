@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/outline";
 import Token from "../Meta/Token";
+import Kyc from "../Meta/Kyc";
 
 const features = [
   "Vitae in pulvinar odio id utobortis in inter.",
@@ -29,12 +30,8 @@ export default function Buy() {
         <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
           <div>
             <p className="mt-2 text-3xl font-extrabold text-gray-900">Buy MEOW NOW</p>
-            <h1>Token Price
-              
-            </h1>
-            <h1 className="mt-8 text-indigo-500">
-              USD $1000
-            </h1>
+            <h1>Token Price</h1>
+            <h1 className="mt-8 text-indigo-500">USD $1000</h1>
           </div>
           <form action="#" method="POST" className="space-y-6">
             <Token />
@@ -53,6 +50,7 @@ export default function Buy() {
                   /> */}
 
             {/* </div> */}
+            <Kyc />
 
             <img src="/img/catcoin.png"></img>
 

@@ -77,11 +77,11 @@ class Kyc extends Component {
     return (
       <>
         {this.web3 !== null && (
-          <div className="w-full pt-5">
+          <div className="w-full pt-3">
             <input
               type="text"
               name="kycAddress"
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full l:text-l border-gray-300 rounded-md p-2 border-2 text-center"
+              className="shadow-sm focus:ring-indigo-500 block w-full border-gray-300 rounded-md p-2 border-2 text-center"
               value={this.state.kycAddress}
               onChange={this.handleInputChange}
             />
