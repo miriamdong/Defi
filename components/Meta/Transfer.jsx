@@ -133,31 +133,32 @@ function Transfer() {
   };
   // console.log("web3:", web3);
   return (
-      <>
-     {!web3 && <div> Loading...</div>}
-       {web3 !== null && (
-    <div className="Transfer">
-      <div className="row">
-        <div className="col-sm-12">
-          <form onSubmit={(e) => createTransfer(e)}>
-            <div className="form-group">
-              <label htmlFor="amount">Amount</label>
-              <input type="number" className="form-control" id="amount" />
-            </div>
-            {/* <div className="form-group">
+    <>
+      {!web3 && <div> Loading...</div>}
+      {web3 !== null && (
+        <div className="Transfer">
+          <div className="row">
+            <div className="col-sm-12">
+              <form onSubmit={(e) => createTransfer(e)}>
+                <div className="form-group">
+                  <label htmlFor="amount">Amount</label>
+                  <input type="number" className="form-control" id="amount" />{" "}
+                  <button type="submit" className="btn btn-primary">
+                    Invest Me
+                  </button>
+                </div>
+                {/* <div className="form-group">
               <label htmlFor="to">To</label>
               <input type="text" className="form-control" id="to" />
             </div> */}
-            <button type="submit" className="btn btn-primary">
-              Invest Me
-            </button>
-          </form>
-          {/* <p>You have: {userTokens}</p> */}
+              </form>
+              {/* <p>You have: {userTokens}</p> */}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    )
-  </>
+      )}
+    </>
   );
 }
+
 export default Transfer;
