@@ -136,18 +136,17 @@ function Transfer() {
     <>
       {!web3 && <div> Loading...</div>}
       {web3 !== null && (
-        <div className="Transfer">
+        <div className="Transfer sm:pb-20">
           <div className="row">
             <div className="col-sm-12">
               <form onSubmit={(e) => createTransfer(e)}>
                 <div className="form-group">
-                  <label htmlFor="amount">Amount</label>
+                  <label htmlFor="amount">Amount
                   <input type="number" className="form-control" id="amount" />{" "}
-                  <div className="text-right pt-5">
+                  </label>
                   <button type="submit" className="ml-3 inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Invest Me
                   </button>
-                  </div>
                 </div>
                 {/* <div className="form-group">
               <label htmlFor="to">To</label>

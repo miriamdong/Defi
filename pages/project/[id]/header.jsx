@@ -204,8 +204,8 @@ export default function Header() {
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
                   Raised from {9999999999} investors
                 </div>
-                <div className="relative pt-3 w-full ">
-                  <div className=" overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
+                <div className="relative pt-5 w-full ">
+                  <div className="overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
                       style={{ width: project.funding + "%" }}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
