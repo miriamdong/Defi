@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import GridLoader from "react-spinners/GridLoader";
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3();
+import { Input } from "mdb-ui-kit";
+import dynamic from "next/dynamic";
 
 export default function Upload(props) {
   const [uploading, setUploading] = useState(false);
@@ -58,9 +60,19 @@ export default function Upload(props) {
 
   return (
     <>
-      <p>Upload a .png or .jpg image (max 10MB).</p>
-      <img src={imgUrl} alt="" />
-      <input onChange={uploadPhoto} type="file" ref={inputEl} accept="image/png, image/jpeg" />
+      <form class="md-form">
+        <div class="file-field">
+          <img src={imgUrl} alt="" />
+          <div class="btn btn-primary btn-sm float-left">
+            <input
+              onChange={uploadPhoto}
+              type="file"
+              ref={inputEl}
+              accept="image/png, image/jpeg"
+            />
+          </div>
+        </div>
+      </form>
     </>
   );
 }
