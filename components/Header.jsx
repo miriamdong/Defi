@@ -21,8 +21,7 @@ export default function Example() {
               rocketMEOW
             </h1>
             <p className="mt-6 max-w-3xl text-xl text-gray-300">
-              Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non.
-              Cras aliquet purus dui laoreet diam sed lacus, fames. Dui, amet, nec sit pulvinar.
+              The Most Trusted Ethereum Blockchain Solutions
             </p>
           </div>
         </div>

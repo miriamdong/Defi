@@ -1,25 +1,26 @@
-import '../styles/main.css';
-import  FirebaseAuth from '../components/Auth/FirebaseAuth';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import App from 'next/app';
-import Card from "../components/Card"
-import  Navbar  from '../components/Navbar';
-import  Footer  from '../components/Footer';
-import Head from 'next/head';
+import "../styles/main.css";
+import FirebaseAuth from "../components/Auth/FirebaseAuth";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "next/app";
+import Card from "../components/Card";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Head from "next/head";
+import { userContext } from "../hooks/userContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       {/* <Card data={pageProps.projects} /> */}
 
-    <Head>
+      <Head>
         <title>rocketMEOW</title>
-        <link rel='icon' href='/rocket.ico' />
-    </Head>
-    <Navbar />
-    <Component {...pageProps} />
-    <Footer />
-    {/* <FirebaseAuth /> */}
+        <link rel="icon" href="/rocket.ico" />
+      </Head>
+      <Navbar />
+      <Component {...pageProps} />
+      <Footer />
+      {/* <FirebaseAuth /> */}
     </>
   );
 }
