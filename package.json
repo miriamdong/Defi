@@ -89,7 +89,6 @@
     "@angular-devkit/build-angular": "^0.1102.12",
     "autoprefixer": "^10.2.5",
     "aws-cdk": "1.71.0",
-    "css-loader": "^5.2.4",
     "postcss": "^8.2.14",
     "tailwindcss": "^2.1.2"
   },
