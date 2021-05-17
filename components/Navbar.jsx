@@ -15,16 +15,14 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import Sign_in from "./Sign_in";
+import Sign_in from "../components/Auth/SignIn";
 import { useUser } from "../firebase/useUser";
-import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState } from "react";
-import { firebaseClient } from "../firebase/initFirebase";
+import { auth } from "../firebase/initFirebase";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MenuItem } from "@material-ui/core";
 import Notification from "./Notification";
-import Button from "@material-ui/core/Button";
 
 const solutions = [
   {
@@ -77,6 +75,10 @@ const resources = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+// const user = useContext(UserContext);
+// const { photoURL, displayName, email } = user;
+
 export default function Navbar() {
   const [toggle, setToggle] = useState(false);
   const { user, logout } = useUser();
@@ -248,7 +250,7 @@ export default function Navbar() {
                           )}>
                           <img
                             className="inline-block h-8 w-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            src={user.photoURL}
                             alt=""
                           />{" "}
                           {/* {user.name} */}
@@ -271,7 +273,7 @@ export default function Navbar() {
                                 <button
                                   className="overflow-visible ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                                   onClick={async () => {
-                                    await firebaseClient.auth().signOut();
+                                    await auth.signOut();
                                     router.replace("/");
                                   }}>
                                   Log out
