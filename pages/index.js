@@ -9,6 +9,7 @@ import React from "react";
 // import WriteToCloudFirestore from '../components/cloudFirestore/Write'
 // import ReadDataFromCloudFirestore from '../components/cloudFirestore/Read'
 import { useUser } from "../firebase/useUser";
+import Marquee from "react-fast-marquee";
 // import Counter from '../components/realtimeDatabase/Counter'
 // import UploadFile from '../components/storage/UploadFile'
 
