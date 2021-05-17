@@ -1,10 +1,12 @@
 // import { upload } from "../../pages/api/upload-url";
 import { useRef, useState } from "react";
 import GridLoader from "react-spinners/GridLoader";
+// import { Input } from "mdb-ui-kit";
+// import * as mdb from "mdb-ui-kit";
+import dynamic from "next/dynamic";
+
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3();
-import { Input } from "mdb-ui-kit";
-import dynamic from "next/dynamic";
 
 export default function Upload(props) {
   const [uploading, setUploading] = useState(false);

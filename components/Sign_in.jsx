@@ -1,12 +1,12 @@
-import FirebaseAuth from './Auth/FirebaseAuth'
-import React, { useRef, useState } from "react"
-import { firebaseClient } from '../firebase/initFirebase'
+import FirebaseAuth from "./Auth/FirebaseAuth";
+import React, { useRef, useState } from "react";
+import { firebaseClient } from "../firebase/initFirebase";
 
 export default function Log_in() {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   return (
-    <div >
+    <div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" action="#" method="POST">
@@ -22,7 +22,7 @@ export default function Log_in() {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={'Email'}
+                  placeholder={"Email"}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -40,29 +40,26 @@ export default function Log_in() {
                   type="password"
                   autoComplete="current-password"
                   value={pass}
-                  placeholder={'Password'}
+                  placeholder={"Password"}
                   onChange={(e) => setPass(e.target.value)}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
-            
+
             <div>
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 onClick={async () => {
-                  debugger
+                  // debugger
                   await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
-                  window.location.href = '/';
-              }}
-              >
+                  window.location.href = "/";
+                }}>
                 Log in
               </button>
-              
             </div>
-            
           </form>
 
           <div className="mt-6">
@@ -74,13 +71,10 @@ export default function Log_in() {
                 <span className="px-2 bg-white text-gray-500">Or login with</span>
               </div>
             </div>
-            </div>
+          </div>
           <FirebaseAuth />
         </div>
-
-       
       </div>
-     
     </div>
-  )
+  );
 }

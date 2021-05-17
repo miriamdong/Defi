@@ -23,19 +23,20 @@ import { firebaseClient } from "../firebase/initFirebase";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MenuItem } from "@material-ui/core";
-import Notification from './Notification'
+import Notification from "./Notification";
+import Button from "@material-ui/core/Button";
 
 const solutions = [
   {
-    name: "History",
+    name: "My Dashboard",
     description: "Get a better understanding of where your traffic is coming from.",
-    href: "#",
+    href: "wallets/dashboard",
     icon: ChartBarIcon,
   },
   {
     name: "Get More Coins",
     description: "Speak directly to your customers in a more meaningful way.",
-    href: "/wallets/coins",
+    href: "wallets/coins",
     icon: CursorClickIcon,
   },
   {
@@ -85,8 +86,8 @@ export default function Navbar() {
     <Popover className="fixed bg-white w-screen z-50 h-32 border-b">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 ">
-            <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10">
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 ">
+            <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-4">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
                   <a href="#">
@@ -100,7 +101,7 @@ export default function Navbar() {
                     />
                   </a>
                 </Link>
-                <Notification/>
+                <Notification />
               </div>
               <div className="-mr-2 -my-2 md:hidden">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -144,9 +145,7 @@ export default function Navbar() {
                               {solutions.map((item) => (
                                 <a
                                   key={item.name}
-                                  href={
-                                    user ? "/user/" + user.id + "/" + item.href : "#"
-                                  }
+                                  href={user ? "/user/" + user.id + "/" + item.href : "#"}
                                   className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                   <item.icon
                                     className="flex-shrink-0 h-6 w-6 text-indigo-600"
@@ -168,7 +167,9 @@ export default function Navbar() {
                   )}
                 </Popover>
 
-                <a href="/user/faq" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                <a
+                  href="/user/faq"
+                  className="text-base font-medium text-gray-500 hover:text-gray-900">
                   FAQ
                 </a>
                 <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -245,7 +246,12 @@ export default function Navbar() {
                             open ? "text-gray-900" : "text-blue-500",
                             "group bg-white rounded-md inline-flex items-center text-3xl font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
                           )}>
-                          <span>{user.name}</span>
+                          <img
+                            className="inline-block h-8 w-8 rounded-full"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          />{" "}
+                          {/* {user.name} */}
                         </Popover.Button>
 
                         <Transition
@@ -317,8 +323,12 @@ export default function Navbar() {
               {user ? (
                 <Link href={"/user/" + user.id + "/token/buy"}>
                   <div className="flex flex-col">
-                  <img className="h-16" src="/img/catcoin.png" alt="BUY COINS" />
-                  <p className="text-blue-500">Buy Coin</p>
+                    <img
+                      className="h-16"
+                      src="https://cdn.dribbble.com/users/2574702/screenshots/6702374/metamask.gif"
+                      alt="BUY COINS"
+                    />
+                    {/* <Button color="primary">Click Me</Button> */}
                   </div>
                 </Link>
               ) : (
@@ -332,11 +342,10 @@ export default function Navbar() {
                     });
                   }}>
                   {!toggle ? (
-                   <div className="flex flex-col">
-                   <img className="h-16" src="/img/catcoin.png" alt="BUY COINS" />
-                   <p className="text-blue-500">Buy Coin</p>
-                   </div>
-                    
+                    <div className="flex flex-col">
+                      <img className="h-16" src="/img/catcoin.png" alt="BUY COINS" />
+                      <p className="text-blue-500">Buy</p>
+                    </div>
                   ) : (
                     <h4>PLEASE LOGIN FIRST</h4>
                   )}

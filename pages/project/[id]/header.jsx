@@ -93,8 +93,8 @@ export default function Header() {
   const stats = [
     {
       id: 1,
-      name: "Min token price",
-      stat: "100",
+      name: "Target Date",
+      stat: "05/31/2021",
       href: "/img/catcoin.png",
       change: "122",
       changeType: "",
@@ -202,18 +202,15 @@ export default function Header() {
 
               <div className="pr-3 ">
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
-                  Progressing
-                </div>
-                <div className="">
-                  <span className="text-2xl font-semibold inline-block text-pink-600">
-                    {project.funding}%
-                  </span>
+                  Raised from {9999999999} investors
                 </div>
                 <div className="relative pt-3 w-full ">
                   <div className=" overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
                       style={{ width: project.funding + "%" }}
-                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
+                      {project.funding}% Funded
+                    </div>
                   </div>
                 </div>
               </div>
