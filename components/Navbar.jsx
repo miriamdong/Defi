@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import {
   BookmarkAltIcon,
+  BellIcon,
   CalendarIcon,
   ChartBarIcon,
   CursorClickIcon,
@@ -27,21 +28,21 @@ import UserDropdown from "../components/UserDropdown";
 
 const solutions = [
   {
-    name: "My Dashboard",
+    name: "My Project",
     description: "Get a better understanding of where your traffic is coming from.",
-    href: "wallets/dashboard",
+    href: "dashboard/myproject",
     icon: ChartBarIcon,
   },
   {
     name: "Get More Coins",
     description: "Speak directly to your customers in a more meaningful way.",
-    href: "wallets/coins",
+    href: "token/buy",
     icon: CursorClickIcon,
   },
   {
     name: "My Wallet",
     description: "Connect with third-party tools that you're already using.",
-    href: "token/buy",
+    href: "wallets/myWallet",
     icon: ViewGridIcon,
   },
 ];
@@ -175,8 +176,8 @@ export default function Navbar() {
                   className="text-base font-medium text-gray-500 hover:text-gray-900">
                   FAQ
                 </a>
-                <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                  Docs
+                <a href="/blog" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                  Blog
                 </a>
 
                 <Popover className="relative">
@@ -253,10 +254,15 @@ export default function Navbar() {
                             className="inline-block h-8 w-8 rounded-full"
                             src={user.photoURL}
                             alt=""
-                          />{" "}
+                          />
                           {/* {user.name} */}
+                          <a
+                            href="#"
+                            className="ml-5 flex-shrink-0 bg-white rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
+                            <span className="sr-only">View notifications</span>
+                            <BellIcon className="h-6 w-6" aria-hidden="true" />
+                          </a>
                         </Popover.Button>
-
                         <Transition
                           show={open}
                           as={Fragment}
@@ -348,7 +354,7 @@ export default function Navbar() {
                   {!toggle ? (
                     <div className="flex flex-col">
                       <img className="h-16" src="/img/catcoin.png" alt="BUY COINS" />
-                      <p className="text-blue-500">Buy</p>
+                      {/* <p className="text-blue-500">Buy</p> */}
                     </div>
                   ) : (
                     <h4>PLEASE LOGIN FIRST</h4>

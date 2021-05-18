@@ -6,6 +6,7 @@ import "firebase/auth";
 import Seo from "../../../../components/SEO";
 import { useUser, mapUserData } from "../../../../firebase/useUser";
 import { auth } from "../../../../firebase/initFirebase";
+import Escrow from "../../../../components/Meta/Escrow";
 
 export default function Example() {
   const [projects, setProjects] = useState([]);
@@ -77,6 +78,7 @@ export default function Example() {
                     <div className="order-1 text-base leading-6 font-medium text-indigo-500 text-center">
                       Progressing
                     </div>
+                    <Escrow />
                     <div className="text-right">
                       <span className="text-base font-semibold inline-block text-indigo-500">
                         {project.funding}%

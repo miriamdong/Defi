@@ -1,6 +1,3 @@
+const withVideos = require("next-videos");
 
-module.exports = {
-  images: {
-    domains: ['images.unsplash.com'],
-  },
-};
+module.exports = withVideos();
