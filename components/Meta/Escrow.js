@@ -62,7 +62,7 @@ class NewEscrow extends Component {
         <div className="row">
           <div className="col-sm-12 text-2xl">
             <p className="text-sm font-medium text-gray-900 hover:underline">
-              Balance: <b>{balance}</b> Meow Tokens{" "}
+              Your Balance: <b>{balance}</b> Meow Tokens{" "}
             </p>
           </div>
         </div>
@@ -70,7 +70,9 @@ class NewEscrow extends Component {
         <div className="w-full">
           <form onSubmit={(e) => this.deposit(e)}>
             <div className="form-group text-sm font-medium text-gray-900 hover:underline">
-              <label htmlFor="deposit">Deposit</label>
+              <label htmlFor="deposit">
+                Deposit Minimal One Token To Create an Escorw Wallet Address
+              </label>
               <input type="number" className="form-control" id="deposit" />
             </div>
 

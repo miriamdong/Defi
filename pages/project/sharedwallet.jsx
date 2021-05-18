@@ -25,7 +25,7 @@ export default function Create() {
             <div className="space-y-8 divide-y divide-gray-200">
               <div>
                 <div className="text-center">
-                  <h1 className="text-4xl leading-6 font-medium text-gray-900 p-4">
+                  <h1 className="text-3xl leading-6 font-medium text-gray-900 p-4">
                     Create Your Shared Wallet
                   </h1>
                   <p className="mt-10 mb-0 text-sm text-gray-500">

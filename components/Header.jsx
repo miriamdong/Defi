@@ -11,7 +11,12 @@ export default function Example() {
           <div className="absolute inset-0">
             {/* <img className="w-full h-full object-cover" src="/img/space.jpeg" alt="" />{" "} */}
             <div class="overlay"></div>
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <video
+              // className="w-full h-full object-cover"
+              playsinline="playsinline"
+              autoplay="autoplay"
+              muted="muted"
+              loop="loop">
               <source
                 src="https://defi-meow.s3-us-west-2.amazonaws.com/Pexels+Videos+1851190.mp4"
                 type="video/mp4"

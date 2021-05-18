@@ -28,9 +28,9 @@ import UserDropdown from "../components/UserDropdown";
 
 const solutions = [
   {
-    name: "My Project",
+    name: "My Inbox",
     description: "Get a better understanding of where your traffic is coming from.",
-    href: "dashboard/myproject",
+    href: "wallets/inbox",
     icon: ChartBarIcon,
   },
   {
@@ -331,7 +331,7 @@ export default function Navbar() {
                 )}
               </div>
               {user ? (
-                <Link href={"/user/" + user.id + "/token/buy"}>
+                <Link href={"/user/" + user.id + "/wallets/myWallet"}>
                   <div className="flex flex-col">
                     <img
                       className="h-16"

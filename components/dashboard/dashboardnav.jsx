@@ -39,5 +39,5 @@ export default function Dashboardnav() {
     }
   }, [user]);
 
-  return <Nav tabs={tabs} href={"/user/" + { uid }} name="hi" />;
+  return <Nav tabs={tabs} href={"/user/" + { uid }} />;
 }
