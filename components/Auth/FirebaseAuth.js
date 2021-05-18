@@ -8,7 +8,7 @@ import { mapUserData } from "../../firebase/useUser";
 import { auth } from "../../firebase/initFirebase";
 
 // firebaseClient.initializeApp(clientCredentials) // initialize firebase
-console.log({ auth });
+// console.log({ auth });
 const firebaseAuthConfig = {
   signInFlow: "popup",
   // Auth providers
@@ -42,6 +42,7 @@ const FirebaseAuth = () => {
       setRenderAuth(true);
     }
   }, []);
+
   return (
     <div>
       {renderAuth ? (
@@ -51,4 +52,5 @@ const FirebaseAuth = () => {
   );
 };
 
+console.log({ FirebaseAuth });
 export default FirebaseAuth;

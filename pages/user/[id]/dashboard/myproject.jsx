@@ -4,17 +4,40 @@ import axios from "axios";
 import firebase from "firebase/app";
 import "firebase/auth";
 import Seo from "../../../../components/SEO";
+import { useUser, mapUserData } from "../../../../firebase/useUser";
+import { auth } from "../../../../firebase/initFirebase";
 
 export default function Example() {
   const [projects, setProjects] = useState([]);
+  const [uid, setUid] = useState("");
+  const { user, logout } = useUser();
 
   useEffect(() => {
-    axios
-      .get(`https://defidapp.herokuapp.com/projects/users/${firebase.auth().currentUser.uid}`)
-      .then((response) => {
-        console.log(response);
-        setProjects(response.data);
-      });
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        const userData = mapUserData(user);
+        console.log({ userData });
+        setUid(userData.id);
+      }
+    });
+    const current = firebase.auth().currentUser;
+    if (current) {
+      console.log({ current });
+      console.log(current.uid);
+      setUid(current.uid);
+    }
+    // else if (auth !== null) {
+    //   console.log("auth", auth.currentUser);
+    //   // console.log(auth.currentUser.uid);
+    //   setUid(auth.currentUser.uid);
+    // }
+  }, [user]);
+
+  useEffect(() => {
+    axios.get(`https://defidapp.herokuapp.com/projects/users/${uid}`).then((response) => {
+      console.log(response);
+      setProjects(response.data);
+    });
   }, []);
 
   return (

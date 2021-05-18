@@ -35,5 +35,5 @@ const getWeb3 = () => {
   });
 };
 
-console.log("###########:", getWeb3);
+console.log("getWeb3:", getWeb3);
 export default getWeb3;
