@@ -41,6 +41,7 @@ export const generateUserDocument = async (user, additionalData) => {
   }
   return getUserDocument(user.uid);
 };
+
 const getUserDocument = async (uid) => {
   if (!uid) return null;
   try {
@@ -55,7 +56,15 @@ const getUserDocument = async (uid) => {
 };
 
 console.log("Firebase was successfully init.");
+
 export const auth = firebase.auth();
+// .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+// .catch(function (error) {
+//   // Handle Errors here.
+//   const errorCode = error.code;
+//   const errorMessage = error.message;
+// });
+
 export const firestore = firebase.firestore();
 
 // firebaseClient.initializeApp(clientCredentials);

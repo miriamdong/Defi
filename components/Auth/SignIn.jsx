@@ -94,7 +94,7 @@ export default function Sign_in() {
             </div>
             <p className="text-center my-3">
               Don't have an account?{" "}
-              <Link to="SignUp" className="text-blue-500 hover:text-blue-600">
+              <Link to="auth" className="text-blue-500 hover:text-blue-600">
                 Sign up here
               </Link>{" "}
               <br />{" "}

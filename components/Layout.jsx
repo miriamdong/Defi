@@ -1,10 +1,11 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   BellIcon,
   ClockIcon,
   CogIcon,
   CreditCardIcon,
+  CurrencyDollarIcon,
   DocumentReportIcon,
   HomeIcon,
   MenuAlt1Icon,
@@ -16,20 +17,26 @@ import {
 } from "@heroicons/react/outline";
 import {
   CashIcon,
+  ChartBarIcon,
   CheckCircleIcon,
   ChevronDownIcon,
   ChevronRightIcon,
   OfficeBuildingIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
-import { useUser } from "../firebase/useUser";
-import { removeUserCookie, setUserCookie, getUserFromCookie } from "../firebase/userCookies";
+import { useUser, mapUserData } from "../firebase/useUser";
+import Token from "./Meta/Token";
+import firebase from "firebase/app";
+import { auth } from "../firebase/initFirebase";
+import Chart from "./Meta/Chart";
+import { CursorClickIcon, MailOpenIcon, UsersIcon } from "@heroicons/react/outline";
+import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/react/solid";
 
 const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: true },
+  { name: "Home", href: "/", icon: HomeIcon, current: true },
   { name: "History", href: "#", icon: ClockIcon, current: false },
   { name: "Balances", href: "#", icon: ScaleIcon, current: false },
-  { name: "Projects", href: "#", icon: CreditCardIcon, current: false },
+  { name: "Projects", href: "/", icon: CreditCardIcon, current: false },
   { name: "Subscribers", href: "#", icon: UserGroupIcon, current: false },
   { name: "Reports", href: "#", icon: DocumentReportIcon, current: false },
 ];
@@ -39,8 +46,14 @@ const secondaryNavigation = [
   { name: "Privacy", href: "#", icon: ShieldCheckIcon },
 ];
 const cards = [
-  { name: "Account balance", href: "#", icon: ScaleIcon, amount: "$30,659 Tokens" },
-  // More items...
+  {
+    name: "MEOW",
+    href: "#",
+    icon: ArrowSmUpIcon,
+    amount: "Increase 58.4%",
+  },
+  { name: "Account Gain/Loss", href: "#", icon: ChartBarIcon, amount: "$30,659" },
+  { name: "Unrealized Gain/Loss", href: "#", icon: CurrencyDollarIcon, amount: "$60,954" },
 ];
 const transactions = [
   {
@@ -81,12 +94,33 @@ export default function Wallet() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout } = useUser();
   const [curuser, setUser] = useState();
-  console.log(curuser);
+  const [url, setUrl] = useState("");
+  const [name, setName] = useState("");
 
   console.log({ user });
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        const userData = mapUserData(user);
+        console.log({ userData });
+        setUrl(userData.photoURL);
+        setName(userData.name);
+      }
+    });
+    const current = firebase.auth().currentUser;
+    if (current) {
+      console.log({ current });
+      setUser(current);
+      setUrl(current.photoURL);
+      setName(current.name);
+    }
+  }, [user]);
+
+  console.log(curuser);
+
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100">
+    <div className="h-screen flex overflow-hidden bg-gray-100 pt-40">
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -278,11 +312,6 @@ export default function Wallet() {
                   <>
                     <div>
                       <Menu.Button className="max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50">
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
                         <span className="hidden ml-3 text-gray-700 text-sm font-medium lg:block">
                           <span className="sr-only">Open user menu</span>
                         </span>
@@ -356,11 +385,7 @@ export default function Wallet() {
                 <div className="flex-1 min-w-0">
                   {/* Profile */}
                   <div className="flex items-center">
-                    <img
-                      className="hidden h-16 w-16 rounded-full sm:block"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-                      alt=""
-                    />
+                    <img className="hidden h-16 w-16 rounded-full sm:block" src={url} alt="" />
                     <div>
                       <div className="flex items-center">
                         <img
@@ -368,9 +393,9 @@ export default function Wallet() {
                           src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
                           alt=""
                         />
-                        <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                          Welcome Back!
-                        </h1>
+                        <h2 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                          Welcome Back! {name}
+                        </h2>
                       </div>
                       <dl className="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
                         <dt className="sr-only">Company</dt>
@@ -394,16 +419,7 @@ export default function Wallet() {
                   </div>
                 </div>
                 <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                    Add money
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                    Send money
-                  </button>
+                  <Token />
                 </div>
               </div>
             </div>
@@ -412,6 +428,7 @@ export default function Wallet() {
           <div className="mt-8">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-lg leading-6 font-medium text-gray-900">Overview</h2>
+              <Chart />
               <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {/* Card */}
                 {cards.map((card) => (

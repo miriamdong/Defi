@@ -100,7 +100,7 @@ class Token extends Component {
             Buy MEOW-Tokens
           </button>
         </form>
-        <p>You have: {this.state.userTokens}</p>
+        <p>You have: {this.state.userTokens} tokens</p>
       </div>
     );
   }
