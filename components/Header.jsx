@@ -13,7 +13,7 @@ export default function Example() {
             <div class="overlay"></div>
             <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
               <source
-                src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                src="https://defi-meow.s3-us-west-2.amazonaws.com/Pexels+Videos+1851190.mp4"
                 type="video/mp4"
               />
             </video>

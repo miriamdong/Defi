@@ -13,8 +13,8 @@ import "firebase/auth";
 import Createsteps from "./createsteps";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
-  { id: "02", name: "Create form", href: "create", status: "current" },
-  { id: "03", name: "Shared Wallet", href: "sharedwallet", status: "upcoming" },
+  { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "complete" },
+  { id: "03", name: "Create Form", href: "create", status: "current" },
 ];
 export default function Create() {
   const router = useRouter();

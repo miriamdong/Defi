@@ -19,8 +19,8 @@ import CountrySelect from "../../components/CountrySelect";
 
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "current" },
-  { id: "02", name: "Create form", href: "create", status: "upcoming" },
-  { id: "03", name: "Shared Wallet", href: "sharedwallet", status: "upcoming" },
+  { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "upcoming" },
+  { id: "03", name: "Create Form", href: "create", status: "upcoming" },
 ];
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -51,14 +51,12 @@ export default function Create() {
               <div className="mt-6 grid grid-flow-col grid-rows-1 grid-cols-4 gap-4">
                 <div className="col-start-2 col-span-2">
                   Let's get to know each other...
-                  <label htmlFor="Company Name" className="block text-lg font-medium text-gray-700">
+                  <label htmlFor="Company Name" className="text-sm font-medium text-gray-900">
                     Where is your company?
                   </label>
                   <CountrySelect />
                   <div className="mt-6">
-                    <label
-                      htmlFor="Conpany Name"
-                      className="block text-lg font-medium text-gray-700">
+                    <label htmlFor="Conpany Name" className="text-sm font-medium text-gray-900">
                       What is your Company name?
                     </label>
                     <div className="relative w-full ">

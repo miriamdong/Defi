@@ -13,8 +13,8 @@ import Escrow from "../../components/Meta/Escrow";
 import Createsteps from "./createsteps";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
-  { id: "02", name: "create form", href: "Create", status: "complete" },
-  { id: "03", name: "Shared Wallet", href: "sharedwallet", status: "current" },
+  { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "current" },
+  { id: "03", name: "Create Form", href: "create", status: "upcoming" },
 ];
 export default function Create() {
   return (
@@ -25,11 +25,13 @@ export default function Create() {
             <div className="space-y-8 divide-y divide-gray-200">
               <div>
                 <div className="text-center">
-                  <h1 className="text-6xl leading-6 font-medium text-gray-900 p-4">
+                  <h1 className="text-4xl leading-6 font-medium text-gray-900 p-4">
                     Create Your Shared Wallet
                   </h1>
                   <p className="mt-10 mb-0 text-sm text-gray-500">
-                    This information will be displayed publicly so be careful what you share.
+                    Multisignature wallets require two or more private keys to sign and send a
+                    transaction. The storage method requires multiple cryptographic signatures (a
+                    private key’s unique fingerprint) to access the wallet.
                   </p>
                 </div>
               </div>
