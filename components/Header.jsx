@@ -9,7 +9,14 @@ export default function Example() {
         {/* Header */}
         <div className="relative pb-32 bg-gray-800">
           <div className="absolute inset-0">
-            <img className="w-full h-full object-cover" src="/img/space.jpeg" alt="" />{" "}
+            {/* <img className="w-full h-full object-cover" src="/img/space.jpeg" alt="" />{" "} */}
+            <div class="overlay"></div>
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+              <source
+                src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                type="video/mp4"
+              />
+            </video>
             <div
               className="absolute inset-0 bg-gray-800"
               style={{ mixBlendMode: "hard-light" }}

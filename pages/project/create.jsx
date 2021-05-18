@@ -48,7 +48,7 @@ export default function Create() {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    console.log(state);
+    console.log("axios: state", state);
     axios
       .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
       .then((res) => {
@@ -387,57 +387,6 @@ export default function Create() {
                         </div>
                       </div>
                     </fieldset>
-                    {/* <fieldset className="mt-6">
-                      <div>
-                        <legend className="text-base font-medium text-gray-900">
-                          Push Notifications
-                        </legend>
-                        <p className="text-sm text-gray-500">
-                          These are delivered via SMS to your mobile phone.
-                        </p>
-                      </div>
-                      <div className="mt-4 space-y-4">
-                        <div className="flex items-center">
-                          <input
-                            id="push_everything"
-                            name="push_notifications"
-                            type="radio"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                          />
-                          <label
-                            htmlFor="push_everything"
-                            className="ml-3 block text-sm font-medium text-gray-700">
-                            Everything
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="push_email"
-                            name="push_notifications"
-                            type="radio"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                          />
-                          <label
-                            htmlFor="push_email"
-                            className="ml-3 block text-sm font-medium text-gray-700">
-                            Same as email
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="push_nothing"
-                            name="push_notifications"
-                            type="radio"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-                          />
-                          <label
-                            htmlFor="push_nothing"
-                            className="ml-3 block text-sm font-medium text-gray-700">
-                            No push notifications
-                          </label>
-                        </div>
-                      </div>
-                    </fieldset> */}
                   </div>
                 </div>
               </div>
@@ -452,6 +401,7 @@ export default function Create() {
                   <Link href="/project/sharedwallet">
                     <button
                       type="submit"
+                      onClick={handleSubmit}
                       className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Next step
                     </button>

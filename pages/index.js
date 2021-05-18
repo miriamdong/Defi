@@ -5,7 +5,7 @@ import Card from "../components/Card";
 import Form from "../components/Project_form";
 import Footer from "../components/Footer";
 import Image from "next/image";
-// import main from "../components/video/main";
+import BackgroundVideo from "../components/video/index";
 import React from "react";
 
 // import WriteToCloudFirestore from '../components/cloudFirestore/Write'
@@ -48,6 +48,7 @@ export default function Home() {
       </div> */}
 
       <div>
+        {/* <BackgroundVideo /> */}
         <Header />
         <Card />
         <Form />
