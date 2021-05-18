@@ -114,23 +114,47 @@ function Transfer() {
     const myToken = contract.methods.name();
     // console.log(myToken);
     await contract.methods.transfer(to, amount).send({ from: accounts[0] });
-    // await updateCurrentTransfer();
+
+    // Get transaction details
+    const trx = await web3.eth.getTransaction(txHash);
+    const valid = validateTransaction(trx);
+    // If transaction is not valid, simply return
+    if (!valid) return;
+    const receipt = web3.eth.getTransactionReceipt(trx);
+    console.log(receipt);
+
+    if (firebase.auth().currentUser !== undefined) {
+      const fundingObj = {
+        auth_id: firebase.auth().currentUser.uid,
+        project_id: projectId,
+        amount: e.target.elements[0].value,
+        transaction_id: trx,
+      };
+      axios
+        .post("https://defidapp.herokuapp.com/fundings", fundingObj)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(() => {
+          console.log("error");
+        });
+    }
   }
 
   async function sendTransfer() {
     await contract.methods.sendTransfer(currentTransfer.id).send({ from: accounts[0] });
     await updateBalance();
     // await updateCurrentTransfer();
+
+    const updateUserTokens = async () => {
+      let userTokens = await contract.methods.balanceOf(accounts[0]).call();
+      setState({ userTokens: userTokens });
+    };
+
+    const listenToTokenTransfer = async () => {
+      myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
+    };
   }
-
-  const updateUserTokens = async () => {
-    let userTokens = await contract.methods.balanceOf(accounts[0]).call();
-    setState({ userTokens: userTokens });
-  };
-
-  const listenToTokenTransfer = async () => {
-    myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
-  };
   // console.log("web3:", web3);
   return (
     <>
@@ -164,5 +188,4 @@ function Transfer() {
     </>
   );
 }
-
 export default Transfer;

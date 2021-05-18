@@ -1,30 +1,14 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ]
-  }
-  ```
-*/
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { ChevronRightIcon } from '@heroicons/react/solid'
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { ChevronRightIcon } from "@heroicons/react/solid";
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+  { name: "Product", href: "#" },
+  { name: "Features", href: "#" },
+  { name: "Marketplace", href: "#" },
+  { name: "Company", href: "#" },
+];
 
 export default function Example() {
   return (
@@ -35,8 +19,7 @@ export default function Example() {
           width={364}
           height={384}
           viewBox="0 0 364 384"
-          fill="none"
-        >
+          fill="none">
           <defs>
             <pattern
               id="eab71dd9-9d7a-47bd-8044-256344ee00d0"
@@ -44,8 +27,7 @@ export default function Example() {
               y={0}
               width={20}
               height={20}
-              patternUnits="userSpaceOnUse"
-            >
+              patternUnits="userSpaceOnUse">
               <rect x={0} y={0} width={4} height={4} fill="currentColor" />
             </pattern>
           </defs>
@@ -53,31 +35,28 @@ export default function Example() {
         </svg>
       </div>
       <div className="relative pt-6 pb-16 sm:pb-24">
- <main className="mt-16 sm:mt-24">
+        <main className="mt-16 sm:mt-24">
           <div className="mx-auto max-w-7xl">
             <div className="lg:grid lg:grid-cols-12 lg:gap-8">
               <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
                 <div>
-                  
                   <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
-                    <span className="md:block">Data to enrich your</span>{' '}
+                    <span className="md:block">Data to enrich your</span>{" "}
                     <span className="text-indigo-400 md:block">online business</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                    amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.
+                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
+                    commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt
+                    sunt.
                   </p>
-   </div>
+                </div>
               </div>
               <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
                 <div className="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
                   <div className="px-4 py-8 sm:px-10">
                     <div>
                       <p className="text-lgfont-medium text-gray-700 text-center">JOIN US TODAY</p>
-
                     </div>
-
-                    
 
                     <div className="mt-20">
                       <form action="#" method="POST" className="space-y-6">
@@ -129,8 +108,7 @@ export default function Example() {
                         <div>
                           <button
                             type="submit"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          >
+                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Create your account
                           </button>
                         </div>
@@ -139,15 +117,15 @@ export default function Example() {
                   </div>
                   <div className="px-4 py-6 bg-gray-50 border-t-2 border-gray-200 sm:px-10">
                     <p className="text-xs leading-5 text-gray-500">
-                      By signing up, you agree to our{' '}
+                      By signing up, you agree to our{" "}
                       <a href="#" className="font-medium text-gray-900 hover:underline">
                         Terms
                       </a>
-                      ,{' '}
+                      ,{" "}
                       <a href="#" className="font-medium text-gray-900 hover:underline">
                         Data Policy
-                      </a>{' '}
-                      and{' '}
+                      </a>{" "}
+                      and{" "}
                       <a href="#" className="font-medium text-gray-900 hover:underline">
                         Cookies Policy
                       </a>
@@ -161,5 +139,5 @@ export default function Example() {
         </main>
       </div>
     </div>
-  )
+  );
 }
