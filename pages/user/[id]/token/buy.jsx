@@ -1,5 +1,5 @@
-import Tokennav from "/components/token/tokennav";
-import Buy from "/components/token/buy";
+import Tokennav from "../../../../components/token/tokennav";
+import Buy from "../../../../components/token/buy";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import firebase from "firebase/app";

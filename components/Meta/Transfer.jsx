@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import MyToken from "../../contracts/MyToken.json";
 // import getWeb3 from "../../getWeb3";
 import getWeb3 from "../../hooks/useWeb3";
+import firebase from "firebase/app";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Pusher from "pusher-js";
 
 function Transfer() {
   const [web3, setWeb3] = useState(undefined);
   const [accounts, setAccounts] = useState(undefined);
   const [contract, setContract] = useState(undefined);
   const [balance, setBalance] = useState(undefined);
-  const [currentTransfer, setCurrentTransfer] = useState(undefined);
   const [transfers, setTransfers] = useState([]);
-  // const [quorum, setQuorum] = useState(undefined);
   const [myToken, setMyToken] = useState(undefined);
   const [wallet, setWallet] = useState(undefined);
+  const router = useRouter();
 
   const init = async () => {
     const web3 = await getWeb3();
@@ -23,10 +26,8 @@ function Transfer() {
     const deployedNetwork = MyToken.networks[networkId];
     const contract = new web3.eth.Contract(MyToken.abi, deployedNetwork && deployedNetwork.address);
 
-    // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
+    console.log(contract.totalSupply);
     // console.log(`Transaction hash: ${receipt.transactionHash}`);
-    // const quorum = await contract.methods.quorum().call();
-
     // console.log(MyToken.networks[this.networkId].address);
 
     setWeb3(web3);
@@ -46,57 +47,12 @@ function Transfer() {
     });
   }, []);
 
-  // const init = () => {
-  //   console.log("calling init");
-  // let initWeb3;
-  // return getWeb3()
-  //   .then((result) => {
-  //     initWeb3 = result;
-  //     console.log("thenWeb3:", result);
-  //     setWeb3(initWeb3);
-  //     return initWeb3.eth.getAccounts();
-  //   })
-  //   .then((accounts) => {
-  //     const account = accounts[0];
-  //     // const wallet = web3.eth.accounts.wallet;
-  //     return initWeb3.eth.net.getId();
-  //   })
-  //   .then((networkId) => {
-  //     const deployedNetwork = MyToken.networks[networkId];
-  //     const res = new web3.eth.Contract(MyToken.abi, deployedNetwork && deployedNetwork.address);
-  //     setContract(res);
-  //   });
-  // const accounts = await web3.eth.getAccounts();
-  // const account = accounts[0];
-  // const wallet = await web3.eth.accounts.wallet;
-  // console.log(wallet);
-  // const networkId = await web3.eth.net.getId();
-  // const deployedNetwork = MyToken.networks[networkId];
-  // const contract = new web3.eth.Contract(MyToken.abi, deployedNetwork && deployedNetwork.address);
-
-  // console.log(contract, MyToken.abi);
-
-  // // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
-  // // console.log(`Transaction hash: ${receipt.transactionHash}`);
-  // // const quorum = await contract.methods.quorum().call();
-
-  // // console.log(MyToken.networks[this.networkId].address);
-
-  // setWeb3(web3);
-  // setAccounts(accounts);
-  // // setQuorum(quorum);
-  // setWallet(wallet);
-  // setTransfers(transfers);
-  // setContract(contract);
-  // return web3;
-  // };
-
   useEffect(() => {
     if (typeof contract !== "undefined" && typeof web3 !== "undefined") {
       updateBalance();
       // updateCurrentTransfer();
     }
-  }, [accounts, contract, web3, currentTransfer]);
+  }, [accounts, contract, web3, transfers]);
 
   async function updateBalance() {
     const balance = await web3.eth.getBalance(contract.options.address);
@@ -106,6 +62,7 @@ function Transfer() {
 
   async function createTransfer(e) {
     e.preventDefault();
+
     const amount = e.target.elements[0].value;
     // const to = e.target.elements[1].value;
     const projectAccount = "0x05026bf962eC84FEe60FECa11EDF41dce3587530";
@@ -113,23 +70,15 @@ function Transfer() {
     // console.log(amount, to);
     const myToken = contract.methods.name();
     // console.log(myToken);
-    await contract.methods.transfer(to, amount).send({ from: accounts[0] });
-
-    // Get transaction details
-    const trx = await web3.eth.getTransaction(txHash);
-    const valid = validateTransaction(trx);
-    // If transaction is not valid, simply return
-    if (!valid) return;
-    const receipt = web3.eth.getTransactionReceipt(trx);
-    console.log(receipt);
 
     if (firebase.auth().currentUser !== undefined) {
       const fundingObj = {
-        auth_id: firebase.auth().currentUser.uid,
-        project_id: projectId,
+        user_id: firebase.auth().currentUser.uid,
+        project_id: router.query.id,
         amount: e.target.elements[0].value,
-        transaction_id: trx,
+        transaction_id: 10,
       };
+      console.log("fundingObj", fundingObj);
       axios
         .post("https://defidapp.herokuapp.com/fundings", fundingObj)
         .then((res) => {
@@ -139,22 +88,27 @@ function Transfer() {
           console.log("error");
         });
     }
+
+    await contract.methods.transfer(to, amount).send({ from: accounts[0] });
+    // Get transaction details
+    // const trx = await web3.eth.getTransaction(txHash);
+    // console.log("trx", trx);
+    // // const valid = validateTransaction(trx);
+    // // // If transaction is not valid, simply return
+    // // if (!valid) return;
+    // const receipt = web3.eth.getTransactionReceipt(trx);
+    // console.log({ receipt });
   }
 
-  async function sendTransfer() {
-    await contract.methods.sendTransfer(currentTransfer.id).send({ from: accounts[0] });
-    await updateBalance();
-    // await updateCurrentTransfer();
+  //   const updateUserTokens = async () => {
+  //     let userTokens = await contract.methods.balanceOf(accounts[0]).call();
+  //     setState({ userTokens: userTokens });
+  //   };
 
-    const updateUserTokens = async () => {
-      let userTokens = await contract.methods.balanceOf(accounts[0]).call();
-      setState({ userTokens: userTokens });
-    };
-
-    const listenToTokenTransfer = async () => {
-      myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
-    };
-  }
+  //   const listenToTokenTransfer = async () => {
+  //     myToken.events.Transfer({ to: accounts[0] }).on("data", updateUserTokens);
+  //   };
+  // }
   // console.log("web3:", web3);
   return (
     <>

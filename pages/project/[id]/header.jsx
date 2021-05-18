@@ -1,17 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, NewspaperIcon, PhoneIcon, SupportIcon, XIcon } from "@heroicons/react/outline";
+import { ClockIcon, NewspaperIcon, PhoneIcon, SupportIcon, XIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/react/solid";
-import { CursorClickIcon, MailOpenIcon, UsersIcon } from "@heroicons/react/outline";
+import {
+  ArrowSmDownIcon,
+  ArrowSmUpIcon,
+  CalendarIcon,
+  CurrencyDollarIcon,
+} from "@heroicons/react/solid";
 import Transfer from "../../../components/Meta/Transfer";
 import Token from "../../../components/Meta/Token";
 import getWeb3 from "../../../getWeb3";
+import moment from "moment";
 
 const supportLinks = [
   {
@@ -94,17 +99,17 @@ export default function Header() {
     {
       id: 1,
       name: "Target Date",
-      stat: "05/31/2021",
-      href: "/img/catcoin.png",
+      stat: moment(project.target_date).format("MMM Do YYYY"),
+      icon: ClockIcon,
       change: "122",
-      changeType: "",
+      changeType: "increase",
     },
     {
       id: 2,
       name: "Target Amount",
       stat: project.target_amount + " " + "MEOW",
-      href: "/img/targetamount.jpeg",
-      change: "",
+      icon: CurrencyDollarIcon,
+      change: "10",
       changeType: "",
     },
   ];
@@ -114,7 +119,14 @@ export default function Header() {
       {/* Header */}
       <div className="min-h-40 bg-white flex">
         <div className="hidden lg:block relative w-0 flex-1">
-          <img className="absolute inset-0 h-full w-full object-cover" src={project.image} alt="" />
+          {/* <img className="absolute inset-0 h-full w-full object-cover" src={project.image} alt="" /> */}
+          <div class="overlay"></div>
+          <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source
+              src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+              type="video/mp4"
+            />
+          </video>
         </div>
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -141,11 +153,10 @@ export default function Header() {
             <div
               className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0
             ">
-              <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+              <dt className="order-2 mt-6 text-lg leading-6 font-medium text-gray-500">
                 <div className="relative">
-                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div className="w-full border-t border-gray-300" />
-                  </div>
+                  {/* <div className="border-t border-gray-300" /> */}
+                  <div className="absolute inset-0 flex items-center" aria-hidden="true"></div>
                   <div className="relative flex justify-center">
                     <span className="px-2 bg-white">{project.username}</span>
                   </div>
@@ -165,36 +176,14 @@ export default function Header() {
                     className="relative bg-white px-4 sm:pt-6 rounded-lg overflow-hidden">
                     <dt>
                       <div className="absolute rounded-md p-2">
-                        <img src={item.href} className="h-10 w-10 text-white" aria-hidden="true" />
+                        <item.icon className="h-9 w-9 text-purple-600" aria-hidden="true" />
                       </div>
-                      <p className="ml-10 text-lg font-medium text-gray-500 truncate">
+                      <div className="ml-6 text-lg font-medium text-gray-500 truncate">
                         {item.name}
-                      </p>
+                      </div>
                     </dt>
-                    <dd className="ml-16 pb-6 flex items-baseline ">
-                      <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
-                      {/* <p
-                        className={classNames(
-                          item.changeType === "increase" ? "text-green-600" : "text-red-600",
-                          "ml-2 flex items-baseline text-sm font-semibold",
-                        )}>
-                        {item.changeType === "increase" ? (
-                          <ArrowSmUpIcon
-                            className="self-center flex-shrink-0 h-5 w-5 text-green-500"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          <ArrowSmDownIcon
-                            className="self-center flex-shrink-0 h-5 w-5 text-red-500"
-                            aria-hidden="true"
-                          />
-                        )}
-
-                        <span className="sr-only">
-                          {item.changeType === "increase" ? "Increased" : "Decreased"} by
-                        </span>
-                        {item.change}
-                      </p> */}
+                    <dd className="ml-16 pb-6 flex align-text-bottom">
+                      <p className="ml-2 text-l font-semibold text-gray-900">{item.stat}</p>
                     </dd>
                   </div>
                 ))}
@@ -204,11 +193,11 @@ export default function Header() {
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
                   Raised from {9999999999} investors
                 </div>
-                <div className="relative pt-5 w-full ">
+                <div className="relative pt-4 w-full ">
                   <div className="overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
                     <div
                       style={{ width: project.funding + "%" }}
-                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-700">
                       {project.funding}% Funded
                     </div>
                   </div>
