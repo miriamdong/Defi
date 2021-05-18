@@ -1,0 +1,96 @@
+.Container {
+  position: relative;
+  min-height: 300px;
+  max-height: 800px;
+  overflow: hidden;
+  margin-bottom: 500px;
+}
+
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -99;
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Add some content at the bottom of the video/page */
+.Content {
+  position: absolute;
+  top: 0;
+  color: #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.SubContent {
+  text-align: center;
+  padding: 10px;
+}
+.SubContent p {
+  color: #eeeeeead;
+  font-size: 1.3rem;
+}
+.SubContent button {
+  font-weight: bold;
+  margin-top: 30px;
+  color: #f1f1f1;
+  border: #f1f1f1 1px solid;
+  padding: 10px 5px;
+  background-color: hsla(0, 0%, 0%, 0);
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+.SubContent button:hover {
+  background-color: #f1f1f1;
+  color: #000000c0;
+}
+
+.SubContent img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  border: #f1f1f1 1px solid;
+}
+
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground {
+    width: 300%;
+    left: -100%;
+  }
+}

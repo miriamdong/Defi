@@ -85,7 +85,6 @@ class Token extends Component {
       <div className="App pt-10">
         <form>
           <label>
-            How Many?
             <input
               name="Tokens"
               type="textarea"
