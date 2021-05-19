@@ -1,36 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import classes from "./BackgroundVideo.module.scss";
+import ReactPlayer from "react-player";
 
-type Props = {
-  url: "https://youtu.be/lNLeRmnkug8";
-};
-const BackgroundVideo: React.FC<Props> = ({ url }) => {
-  const videoOptions = {
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-      controls: 0,
-      rel: 0,
-      showinfo: 0,
-    },
-  };
+const BackgroundVideo = () => {
   return (
     <div className={classes.Container}>
-      <video
-        autoPlay
-        loop
-        muted
-        className={classes.video}
-        style={{
-          width: "100%",
-          left: "50%",
-          top: "50%",
-          height: "100%",
-          objectFit: "cover",
-          transform: "translate(-50%, -50%)",
-        }}>
-        <source src={url} type="video/mp4"></source>
-      </video>
+      <ReactPlayer url="https://player.vimeo.com/video/552165449?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" />
     </div>
   );
 };

@@ -82,8 +82,11 @@ class Token extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div className="App pt-10">
+      <div className="Token pt-2">
         <form>
+          <p className="text-sm font-medium text-gray-400 hover:underline">
+            You have: {this.state.userTokens} tokens
+          </p>
           <label>
             <input
               name="Tokens"
@@ -99,7 +102,6 @@ class Token extends Component {
             Buy MEOW-Tokens
           </button>
         </form>
-        <p>You have: {this.state.userTokens} tokens</p>
       </div>
     );
   }

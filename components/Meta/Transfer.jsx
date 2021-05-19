@@ -119,8 +119,10 @@ function Transfer() {
             <div className="col-sm-12">
               <form onSubmit={(e) => createTransfer(e)}>
                 <div className="form-group">
-                  <label htmlFor="amount">
-                    Amount
+                  <label
+                    htmlFor="amount"
+                    className="text-sm font-medium text-gray-400 hover:underline">
+                    Min 10 tokens
                     <input type="number" className="form-control" id="amount" />{" "}
                   </label>
                   <button

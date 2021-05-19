@@ -1,5 +1,4 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ClockIcon, NewspaperIcon, PhoneIcon, SupportIcon, XIcon } from "@heroicons/react/outline";
 import axios from "axios";
@@ -7,16 +6,21 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import {
-  ArrowSmDownIcon,
-  ArrowSmUpIcon,
-  CalendarIcon,
-  CurrencyDollarIcon,
-} from "@heroicons/react/solid";
+import { CurrencyDollarIcon } from "@heroicons/react/solid";
 import Transfer from "../../../components/Meta/Transfer";
 import Token from "../../../components/Meta/Token";
 import getWeb3 from "../../../getWeb3";
 import moment from "moment";
+import Fav from "../../../components/Fav";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  TwitterIcon,
+} from "react-share";
 
 const supportLinks = [
   {
@@ -128,17 +132,32 @@ export default function Header() {
             />
           </video>
         </div>
-        <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-6 xl:px-24">
+          {" "}
+          <div className="Demo__some-network">
+            <FacebookShareButton
+              url={"shareUrl"}
+              quote={"title"}
+              className="Demo__some-network__share-button">
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <EmailShareButton>
+              <EmailIcon size={32} round={true} />
+            </EmailShareButton>
+            <TwitterShareButton>
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>{" "}
+            <Fav />
+          </div>
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" />
-              <h2 className="mt-6 text-3xl font-extrabold text-gray-900">FUNDING</h2>
+              {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
+              <h2 className="mt-4 text-3xl font-extrabold text-gray-900">INVEST</h2>
+              <Transfer />
+              <Token />
             </div>
-            <Token />
-            <Transfer />
             <div className="mt-8">
-              <div></div>
-
+              {" "}
               <div className="mt-6"></div>
             </div>
           </div>

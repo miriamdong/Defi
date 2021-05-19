@@ -4,10 +4,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useUser } from "../../firebase/useUser";
-import { firebaseClient } from "../../firebase/initFirebase";
-import { useRouter } from "next/router";
-import firebase from "firebase/app";
+import Grid from "@material-ui/core/Grid";
 import "firebase/auth";
 import Escrow from "../../components/Meta/Escrow";
 import Createsteps from "./createsteps";
@@ -40,6 +37,14 @@ export default function Create() {
                 <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                   <div className="sm:col-span-6">
                     <Escrow />
+                    <Link href="/project/create">
+                      <button
+                        type="submit"
+                        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Next
+                        <div className="wf-animate-loader-white absolute mx-auto inset-x-0 invisible"></div>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
