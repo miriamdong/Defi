@@ -4,7 +4,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { removeUserCookie, setUserCookie, getUserFromCookie } from "./userCookies";
 import axios from "axios";
-import { auth, generateUserDocument } from "./initFirebase";
+// import { auth, generateUserDocument } from "./initFirebase";
 
 // initFirebase()
 

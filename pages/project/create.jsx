@@ -1,5 +1,6 @@
 // import UploadFile from '../../components/storage/UploadFile'
 import Upload from "../../components/storage/AWS";
+import UploadFile from "../../components/storage/UploadFile";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import axios from "axios";
@@ -328,7 +329,8 @@ export default function Create() {
                             htmlFor="file-upload"
                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                             {" "}
-                            <Upload setImgUrl={(imgUrl) => setState({ ...state, image: imgUrl })} />
+                            {/* <Upload setImgUrl={(imgUrl) => setState({ ...state, image: imgUrl })} /> */}
+                            <UploadFile />
                           </label>
                         </div>
                         <p className="text-xs text-gray-500">MP4 up t0 20MB</p>
