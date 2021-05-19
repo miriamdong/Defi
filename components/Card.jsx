@@ -4,13 +4,10 @@ import useAppData from "../hooks/useAppData.js";
 import { NewspaperIcon, PhoneIcon, SupportIcon } from "@heroicons/react/outline";
 import FirebaseAuth from "./Auth/FirebaseAuth";
 import React, { useRef, useState, useEffect } from "react";
-import { firebaseClient } from "../firebase/initFirebase";
 import { useUser } from "../firebase/useUser";
 import { Popover, Transition } from "@headlessui/react";
-import { Fragment } from "react";
 import { useRouter } from "next/router";
 import C from "./scr/cards";
-import firebase from "firebase/app";
 
 export default function Card() {
   const { state } = useAppData();

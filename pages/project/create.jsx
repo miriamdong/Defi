@@ -2,12 +2,11 @@
 import Upload from "../../components/storage/AWS";
 import UploadFile from "../../components/storage/UploadFile";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useUser } from "../../firebase/useUser";
-import { firebaseClient } from "../../firebase/initFirebase";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
