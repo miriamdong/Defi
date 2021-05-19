@@ -35,10 +35,12 @@ export default function Example() {
   }, [user]);
 
   useEffect(() => {
-    axios.get(`https://defidapp.herokuapp.com/projects/users/${uid}`).then((response) => {
-      console.log(response);
-      setProjects(response.data);
-    });
+    axios
+      .get(`https://defidapp.herokuapp.com/projects/users/${firebase.auth().currentUser.uid}`)
+      .then((response) => {
+        console.log(response);
+        setProjects(response.data);
+      });
   }, []);
 
   return (

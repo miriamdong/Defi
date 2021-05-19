@@ -78,9 +78,9 @@ class Token extends Component {
   };
 
   render() {
-    if (!this.state.loaded) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
+    // if (!this.state.loaded) {
+    //   return <div>Loading Web3, accounts, and contract...</div>;
+    // }
     return (
       <div className="Token pt-2">
         <form>

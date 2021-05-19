@@ -210,7 +210,7 @@ export default function Header() {
 
               <div className="pr-3 ">
                 <div className="order-1 text-lg leading-6 font-medium text-gray-500">
-                  Raised from {9999999999} investors
+                  Raised from {project.investors} investors
                 </div>
                 <div className="relative pt-4 w-full ">
                   <div className="overflow-hidden h-8 mb-4 text-xs flex rounded bg-purple-200">
