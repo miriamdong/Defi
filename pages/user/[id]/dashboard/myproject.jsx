@@ -27,11 +27,6 @@ export default function Example() {
       console.log(current.uid);
       setUid(current.uid);
     }
-    // else if (auth !== null) {
-    //   console.log("auth", auth.currentUser);
-    //   // console.log(auth.currentUser.uid);
-    //   setUid(auth.currentUser.uid);
-    // }
   }, [user]);
 
   useEffect(() => {
