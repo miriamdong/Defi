@@ -119,7 +119,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="bg-white pt-32">
+    <div className="bg-white pt-28">
       {/* Header */}
       <div className="min-h-40 bg-white flex">
         <div className="hidden lg:block relative w-0 flex-1">
