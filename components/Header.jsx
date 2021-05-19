@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 export default function Example() {
   return (
     <>
-      <div className="relative bg-white pt-32">
+      <div className="relative bg-white pt-28">
         {/* Header */}
         <div className="relative pb-32 bg-gray-800">
           <div className="absolute inset-0">
