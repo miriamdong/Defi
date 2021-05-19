@@ -113,7 +113,7 @@ export default function Footer() {
       
       <Marquee gradientColor={[]}>  
       {projects.map((project) => (
-              <img className="h-10 w-10 rounded-full flex-space-between" src={project.image} alt="" />  
+              <img className="h-10 w-10 rounded-full m-5" src={project.image} alt="" />  
               ))}
       
               </Marquee>

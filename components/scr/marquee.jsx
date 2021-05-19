@@ -25,7 +25,7 @@ const Marquee: FC<Props> = ({
 
   return (
     <div className={rootClassName}>
-      <Ticker offset={80}>
+      <Ticker offset={80} >
         {() => <div className={s.container}>{children}</div>}
       </Ticker>
     </div>

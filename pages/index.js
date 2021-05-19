@@ -31,7 +31,6 @@ export default function Home() {
       <div>
         <Header />
         <Card />
-        <Brand />
         <Testimonial />
         <Form />
       </div>
