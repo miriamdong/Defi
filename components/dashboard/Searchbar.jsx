@@ -11,13 +11,13 @@ export default function Searchbar() {
           <div
             className="absolute inset-y-0 left-0 flex items-center pointer-events-none"
             aria-hidden="true">
-            <SearchIcon className="h-5 w-5" aria-hidden="true" />
+            <SearchIcon className="h-5 w-5 m-2" aria-hidden="true" />
           </div>
           <input
             id="search_field"
             name="search_field"
             className="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent sm:text-sm"
-            placeholder="Search transactions"
+            placeholder="Search"
             type="search"
           />
         </div>

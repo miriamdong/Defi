@@ -7,12 +7,18 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import { userContext } from "../hooks/userContext";
+import Router from "next/router";
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
+
+//Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      {/* <Card data={pageProps.projects} /> */}
-
       <Head>
         <title>rocketMEOW</title>
         <link rel="icon" href="/rocket.ico" />
@@ -20,18 +26,8 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-      {/* <FirebaseAuth /> */}
     </>
   );
 }
-
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-//   const res = await fetch(`https://defidapp.herokuapp.com/projects`)
-//   const projects = await res.json()
-//   console.log(projects);
-//   return { ...appProps, projects};
-// };
 
 export default MyApp;

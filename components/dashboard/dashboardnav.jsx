@@ -3,7 +3,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { tabs } from "../scr/dashboardnav";
 import Nav from "../scr/nav";
 import firebase from "firebase/app";
-import axios from "axios";
 import { auth } from "../../firebase/initFirebase";
 
 console.log({ auth });

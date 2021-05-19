@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import BackgroundVideo from "../components/video/index";
 import React from "react";
+import Testimonial from "../components/Testimonials";
+import Brand from "../components/Brand";
 
 // import WriteToCloudFirestore from '../components/cloudFirestore/Write'
 // import ReadDataFromCloudFirestore from '../components/cloudFirestore/Read'
@@ -29,6 +31,8 @@ export default function Home() {
       <div>
         <Header />
         <Card />
+        <Brand />
+        <Testimonial />
         <Form />
       </div>
     </>

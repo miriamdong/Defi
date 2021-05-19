@@ -14,7 +14,7 @@ function Dashboard({ price, data, ws, pair }) {
 
   if (price !== "0.00")
     return (
-      <div className="dashboard">
+      <div className="dashboard text-sm font-medium text-gray-900">
         <Price ws={ws} pair={pair} />
         <div className="chart-container">
           <Line data={data} options={opts} />

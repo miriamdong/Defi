@@ -3,7 +3,7 @@ import { CashIcon } from "@heroicons/react/solid";
 const transactions = [
   {
     id: 1,
-    name: "Payment to Molly Sanders",
+    name: "Invest in GMedChain",
     href: "#",
     amount: "200",
     currency: "Meow Tokens",
