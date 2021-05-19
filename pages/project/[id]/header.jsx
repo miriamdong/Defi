@@ -133,8 +133,10 @@ export default function Header() {
           </video>
         </div>
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-6 xl:px-24">
-          {" "}
-          <div className="Demo__some-network">
+       <div className="text-left">
+        <Fav />
+        </div>
+          <div className="Demo__some-network text-right">
             <FacebookShareButton
               url={"shareUrl"}
               quote={"title"}
@@ -147,7 +149,7 @@ export default function Header() {
             <TwitterShareButton>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>{" "}
-            <Fav />
+            
           </div>
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
