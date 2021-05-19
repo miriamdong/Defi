@@ -10,6 +10,7 @@ import {
   InboxIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
+import Chart from "../../../../components/Meta/Chart";
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: HomeIcon, current: false },
@@ -55,6 +56,7 @@ export default function report() {
             <StockChart info={data} />
           </div>
         </dt>
+        <Chart />
       </dl>
     </div>
   );

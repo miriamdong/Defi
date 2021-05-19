@@ -1,6 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Popover, Transition } from "@headlessui/react";
-import { ClockIcon, NewspaperIcon, PhoneIcon, SupportIcon, XIcon } from "@heroicons/react/outline";
+import { ClockIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import "firebase/auth";
 import { CurrencyDollarIcon } from "@heroicons/react/solid";
 import Transfer from "../../../components/Meta/Transfer";
 import Token from "../../../components/Meta/Token";
-import getWeb3 from "../../../getWeb3";
+import Clock from "../../../components/Clock";
 import moment from "moment";
 import Fav from "../../../components/Fav";
 import {
@@ -18,37 +17,8 @@ import {
   TwitterShareButton,
   EmailIcon,
   FacebookIcon,
-  FacebookMessengerIcon,
   TwitterIcon,
 } from "react-share";
-
-const supportLinks = [
-  {
-    name: "Sales",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: PhoneIcon,
-  },
-  {
-    name: "Technical Support",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: SupportIcon,
-  },
-  {
-    name: "Media Inquiries",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: NewspaperIcon,
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Header() {
   const router = useRouter();
@@ -145,33 +115,16 @@ export default function Header() {
             <TwitterShareButton>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>{" "}
-<<<<<<< HEAD
           </div>
           <div className="text-left">
             <Fav />
-          </div>
-          <div>
-            {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900">INVEST</h2>
-            <Transfer />
-            <Token />
-          </div>
-          <div className="mx-auto w-full max-w-sm lg:w-96">
-            <div className="mt-8">
-              {" "}
-              <div className="mt-6"></div>
-            </div>
-=======
-          </div>
-          <div className="text-left">
-            <Fav />
->>>>>>> scarlet
           </div>
           <div>
             {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
             <h2 className="text-3xl font-extrabold text-gray-900">INVEST</h2>
             <Transfer />
             <Token />
+            <Clock date={project.target_date} />
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:w-96"></div>
