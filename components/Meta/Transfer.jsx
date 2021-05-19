@@ -114,7 +114,7 @@ function Transfer() {
     <>
       {/* {!web3 && <div> Loading...</div>} */}
       {web3 !== null && (
-        <div className="Transfer sm:pb-20">
+        <div className="Transfer">
           <div className="row">
             <div className="col-sm-12">
               <form onSubmit={(e) => createTransfer(e)}>

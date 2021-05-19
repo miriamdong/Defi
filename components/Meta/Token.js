@@ -82,9 +82,9 @@ class Token extends Component {
     //   return <div>Loading Web3, accounts, and contract...</div>;
     // }
     return (
-      <div className="Token pt-2">
+      <div className="Token pt-2 pb-20">
         <form>
-          <p className="text-sm font-medium text-gray-400 hover:underline">
+          <p className="text-sm font-medium text-gray-400">
             You have: {this.state.userTokens} tokens
           </p>
           <label>

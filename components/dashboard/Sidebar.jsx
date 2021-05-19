@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/outline";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -90,7 +91,7 @@ export default function Sidebar() {
                 aria-label="Sidebar">
                 <div className="px-2 space-y-1">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className={classNames(
@@ -105,7 +106,7 @@ export default function Sidebar() {
                         aria-hidden="true"
                       />
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="mt-6 pt-6">
