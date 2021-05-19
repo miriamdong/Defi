@@ -145,7 +145,6 @@ export default function Header() {
             <TwitterShareButton>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>{" "}
-<<<<<<< HEAD
           </div>
           <div className="text-left">
             <Fav />
@@ -161,11 +160,6 @@ export default function Header() {
               {" "}
               <div className="mt-6"></div>
             </div>
-=======
-          </div>
-          <div className="text-left">
-            <Fav />
->>>>>>> scarlet
           </div>
           <div>
             {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
