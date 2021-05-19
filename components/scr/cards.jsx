@@ -2,9 +2,8 @@
 import Link from "next/link";
 import Fav from "../Fav";
 import Clock from "../Clock";
-import Moment from "react-moment";
 import moment from "moment";
-import React, { Component } from "react";
+import React from "react";
 
 const today = moment().format("MMM Do YY");
 console.log(today);

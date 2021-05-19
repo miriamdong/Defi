@@ -1,6 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Popover, Transition } from "@headlessui/react";
-import { ClockIcon, NewspaperIcon, PhoneIcon, SupportIcon, XIcon } from "@heroicons/react/outline";
+import { ClockIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -18,37 +17,8 @@ import {
   TwitterShareButton,
   EmailIcon,
   FacebookIcon,
-  FacebookMessengerIcon,
   TwitterIcon,
 } from "react-share";
-
-const supportLinks = [
-  {
-    name: "Sales",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: PhoneIcon,
-  },
-  {
-    name: "Technical Support",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: SupportIcon,
-  },
-  {
-    name: "Media Inquiries",
-    href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: NewspaperIcon,
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Header() {
   const router = useRouter();
