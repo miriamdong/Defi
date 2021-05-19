@@ -98,8 +98,6 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const [url, setUrl] = useState("");
-  const [name, setName] = useState("");
   const user = useUser();
   if (user) {
     const userData = mapUserData(user);
