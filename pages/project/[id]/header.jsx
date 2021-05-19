@@ -124,7 +124,6 @@ export default function Header() {
       <div className="min-h-40 bg-white flex">
         <div className="hidden lg:block relative w-0 flex-1">
           {/* <img className="absolute inset-0 h-full w-full object-cover" src={project.image} alt="" /> */}
-          <div class="overlay"></div>
           <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <source
               src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
@@ -146,6 +145,7 @@ export default function Header() {
             <TwitterShareButton>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>{" "}
+<<<<<<< HEAD
           </div>
           <div className="text-left">
             <Fav />
@@ -161,7 +161,20 @@ export default function Header() {
               {" "}
               <div className="mt-6"></div>
             </div>
+=======
           </div>
+          <div className="text-left">
+            <Fav />
+>>>>>>> scarlet
+          </div>
+          <div>
+            {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
+            <h2 className="text-3xl font-extrabold text-gray-900">INVEST</h2>
+            <Transfer />
+            <Token />
+          </div>
+
+          <div className="mx-auto w-full max-w-sm lg:w-96"></div>
         </div>
       </div>
 

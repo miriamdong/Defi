@@ -17,6 +17,7 @@
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Marquee from "react-fast-marquee";
 import useAppData from "../hooks/useAppData.js";
+import Logo from "./Logo"
 const navigation = {
   solutions: [
     { name: 'Marketing', href: '#' },
@@ -112,11 +113,12 @@ export default function Footer() {
       
       <Marquee gradientColor={[]}>  
       {projects.map((project) => (
-              <img className="h-10 w-10 rounded-full flex-space-between" src={project.image} alt="" />  
+              <img className="h-10 w-10 rounded-full m-5" src={project.image} alt="" />  
               ))}
       
               </Marquee>
       </div>
+      <Logo />
         <div className="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-4">
             <div className="md:grid md:grid-cols-2 md:gap-8">
