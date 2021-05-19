@@ -154,7 +154,7 @@ export default function Header() {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
               {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
-              <h2 className="mt-4 text-3xl font-extrabold text-gray-900">INVEST</h2>
+              <h2 className="text-3xl font-extrabold text-gray-900">INVEST</h2>
               <Transfer />
               <Token />
             </div>
