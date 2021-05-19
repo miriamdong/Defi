@@ -2,11 +2,21 @@
 import { useState, useEffect } from "react";
 import "firebase/auth";
 import Pusher from 'pusher-js'
+import { makeStyles } from '@material-ui/core/styles';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 const Notification = () => {
 
-  const [notification, setNotification] = useState('')
+  const [notification, setNotification] = useState(false)
   useEffect(() => {
     console.log('Notification page')
     Pusher.logToConsole = true;
@@ -18,7 +28,7 @@ const Notification = () => {
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       console.log('Notification triggered')
-      setNotification('One new investor')
+      setNotification(true)
     });
 
   }, []);
@@ -26,8 +36,18 @@ const Notification = () => {
 
 
   return (
-    <div className="flex flex-col">
-      <p className="text-blue-500">{notification}</p>
+    <div>
+      
+      {notification ?
+      <Badge color="secondary" badgeContent={"1"} showZero>
+      <MailIcon />
+    </Badge>
+    :
+    <Badge color="secondary" badgeContent={0}>
+        <MailIcon />
+      </Badge>
+    }
+      
     </div>
   );
 };
