@@ -10,9 +10,8 @@ export default function Example() {
         <div className="relative pb-32 bg-gray-800">
           <div className="absolute inset-0">
             {/* <img className="w-full h-full object-cover" src="/img/space.jpeg" alt="" />{" "} */}
-            <div class="overlay"></div>
             <video
-              // className="w-full h-full object-cover"
+              className="w-full h-full object-cover"
               playsinline="playsinline"
               autoplay="autoplay"
               muted="muted"
@@ -24,7 +23,7 @@ export default function Example() {
             </video>
             <div
               className="absolute inset-0 bg-gray-800"
-              style={{ mixBlendMode: "hard-light" }}
+              style={{ mixBlendMode: "difference" }}
               aria-hidden="true"
             />
           </div>

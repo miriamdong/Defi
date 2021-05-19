@@ -234,7 +234,7 @@ export default function Footer() {
               The latest news, articles, and resources, sent to your inbox weekly.
             </p>
           </div>
-          <form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
+          <form className="sm:flex sm:max-w-md lg:mt-0">
             <label htmlFor="emailAddress" className="sr-only">
               Email address
             </label>
@@ -244,7 +244,7 @@ export default function Footer() {
               id="emailAddress"
               autoComplete="email"
               required
-              className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400 sm:max-w-xs"
+              className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400 sm:max-w-xs"
               placeholder="Enter your email"
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
