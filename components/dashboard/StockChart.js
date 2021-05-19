@@ -39,7 +39,7 @@ const options = {
         gridLines: {
           color: "rgba(255, 255, 255, .2)",
           borderDash: [5, 5],
-          zeroLineColor: "rgba(255, 255, 255, .2)",
+          zeroLineColor: "255,255,0,0.3",
           zeroLineBorderDash: [5, 5],
         },
       },

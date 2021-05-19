@@ -41,7 +41,7 @@ export default function C({ projects, currentUser }) {
             </div>
             <div className="pr-3 mt-6">
               <div className="order-1 text-base leading-6 font-medium text-indigo-500 text-center">
-                Progressing
+                Raised from {project.investors} investors
               </div>
               <div className="text-right">
                 <span className="text-base font-semibold inline-block text-indigo-500">

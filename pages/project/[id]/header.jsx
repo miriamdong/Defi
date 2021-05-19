@@ -9,7 +9,7 @@ import "firebase/auth";
 import { CurrencyDollarIcon } from "@heroicons/react/solid";
 import Transfer from "../../../components/Meta/Transfer";
 import Token from "../../../components/Meta/Token";
-import getWeb3 from "../../../getWeb3";
+import Clock from "../../../components/Clock";
 import moment from "moment";
 import Fav from "../../../components/Fav";
 import {
@@ -151,21 +151,10 @@ export default function Header() {
           </div>
           <div>
             {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900">INVEST</h2>
-            <Transfer />
-            <Token />
-          </div>
-          <div className="mx-auto w-full max-w-sm lg:w-96">
-            <div className="mt-8">
-              {" "}
-              <div className="mt-6"></div>
-            </div>
-          </div>
-          <div>
-            {/* <img className="h-12 w-auto" src="/img/walletbutton.png" alt="" /> */}
             <h2 className="text-3xl font-extrabold text-gray-900">INVEST</h2>
             <Transfer />
             <Token />
+            <Clock date={project.target_date} />
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:w-96"></div>
