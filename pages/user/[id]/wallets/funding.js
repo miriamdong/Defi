@@ -27,17 +27,8 @@ function Transfer() {
         deployedNetwork && deployedNetwork.address,
       );
 
-      // console.log(contract, MyToken.abi);
-
-      // console.log(`mmmmmmmm: ${await contract.methods.data().call()}`);
-      // console.log(`Transaction hash: ${receipt.transactionHash}`);
-      // const quorum = await contract.methods.quorum().call();
-
-      // console.log(MyToken.networks[this.networkId].address);
-
       setWeb3(web3);
       setAccounts(accounts);
-      // setQuorum(quorum);
       setWallet(wallet);
       setTransfers(transfers);
       setContract(contract);
