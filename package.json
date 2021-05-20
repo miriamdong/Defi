@@ -43,8 +43,8 @@
     "autosuggest-highlight": "^3.1.1",
     "aws-sdk": "^2.783.0",
     "axios": "^0.21.1",
-    "bn.js": "^4.11.0",
-    "bootstrap": "^4.6.0",
+    "bn.js": "^5.2.0",
+    "bootstrap": "^5.0.1",
     "canvas": "^2.8.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
@@ -103,6 +103,7 @@
     "web-vitals": "^1.1.2",
     "web3": "1.2.2",
     "web3modal": "^1.9.3",
+    "webpack": "^5.37.1",
     "websocket": "^1.0.34",
     "yarn": "^1.22.10"
   },
