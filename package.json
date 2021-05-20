@@ -38,6 +38,7 @@
     "@truffle/hdwallet-provider": "^1.4.0",
     "@walletconnect/web3-provider": "^1.4.1",
     "add": "^2.0.6",
+    "autoprefixer": "^10.2.5",
     "autosuggest-highlight": "^3.1.1",
     "aws-sdk": "^2.783.0",
     "axios": "^0.21.1",
@@ -56,13 +57,19 @@
     "google-protobuf": "^3.17.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-cookie": "^2.2.1",
+    "laravel-mix-purgecss": "^6.0.0",
     "mdb-ui-kit": "^3.5.1",
     "moment": "^2.29.1",
     "next": "10.2.0",
     "next-videos": "1.4.0",
     "nprogress": "^0.2.0",
+    "postcss": "^8.2.15",
     "postcss-cli": "^8.3.1",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^14.0.2",
+    "postcss-load-config": "^3.0.1",
     "postcss-loader": "^5.3.0",
+    "postcss-plugin": "^1.0.0",
     "pusher-js": "^7.0.3",
     "react": "17.0.2",
     "react-bootstrap": "^1.5.2",
@@ -87,6 +94,7 @@
     "react-youtube": "^7.13.1",
     "react-youtube-background": "^1.0.0",
     "semantic-ui-react": "^2.0.3",
+    "tailwindcss": "^2.1.2",
     "truffle": "^5.3.5",
     "tsx": "^1.0.0",
     "video.js": "^7.11.8",
@@ -95,23 +103,18 @@
     "web3modal": "^1.9.3",
     "webpack": "^5.37.1",
     "websocket": "^1.0.34",
-    "yarn": "^1.22.10",
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.15",
-    "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^14.0.2",
-    "tailwindcss": "^2.1.2"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1102.12",
     "aws-cdk": "1.71.0",
     "cssnano": "^5.0.3",
-    "sugarss": "^3.0.3",
-    "multer": "^1.4.2",
-    "multer-s3": "^2.9.0",
     "d3": "^6.7.0",
     "d3-selection": "^2.0.0",
-    "d3-selection-multi": "^1.0.1"
+    "d3-selection-multi": "^1.0.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "sugarss": "^3.0.3"
   },
   "test": {
     "@testing-library/jest-dom": "^5.12.0",
@@ -135,5 +138,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "postcss": {
+    "parser": "sugarss",
+    "map": false,
+    "plugins": {
+      "postcss-plugin": {}
+    }
   }
 }

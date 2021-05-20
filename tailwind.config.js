@@ -1,7 +1,8 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: [],
+  purge: ["./src/**/*.html", "./src/**/*.js"],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -965,7 +966,18 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive", "focus-within", "focus"],
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addVariant, e, postcss }) {
+      addVariant("supports-grid", ({ container, separator }) => {
+        const supportsRule = postcss.atRule({ name: "supports", params: "(display: grid)" });
+        supportsRule.append(container.nodes);
+        container.append(supportsRule);
+        supportsRule.walkRules((rule) => {
+          rule.selector = `.${e(`supports-grid${separator}${rule.selector.slice(1)}`)}`;
+        });
+      });
+    }),
+  ],
 };
 module.exports = {
   purge: [
