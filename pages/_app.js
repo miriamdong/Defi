@@ -1,4 +1,5 @@
 import "../styles/main.css";
+import "../styles/tailwind.css";
 import FirebaseAuth from "../components/Auth/FirebaseAuth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "next/app";
