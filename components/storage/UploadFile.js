@@ -60,7 +60,7 @@ const UploadFile = () => {
       <progress value={value} max="100" style={{ width: "100%" }}></progress>
       <br />
       <input type="file" onChange={uploadFile} ref={inputEl} />
-      <img src={url} alt="" />
+      {/* <img src={url} alt="" /> */}
       <video
         // className="w-full h-full object-cover"
         playsinline="playsinline"
