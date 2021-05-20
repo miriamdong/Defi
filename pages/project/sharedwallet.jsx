@@ -1,19 +1,15 @@
-import Upload from "../../components/storage/AWS";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
-import axios from "axios";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Grid from "@material-ui/core/Grid";
 import "firebase/auth";
 import Escrow from "../../components/Meta/Escrow";
-import Createsteps from "./createsteps";
+import Createsteps from "../../components/scr/createsteps";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
   { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "current" },
   { id: "03", name: "Create Form", href: "create", status: "upcoming" },
 ];
-export default function Create() {
+export default function SharedWallet() {
   return (
     <>
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">

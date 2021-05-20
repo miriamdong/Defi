@@ -46,7 +46,6 @@ const UploadFile = () => {
         }
       },
       function complete() {
-        alert("Uploaded to firebase storage successfully!");
         // Upload completed successfully, now we can get the download URL
         task.snapshot.ref.getDownloadURL().then((url) => {
           setFile(null);

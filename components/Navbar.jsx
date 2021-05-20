@@ -85,7 +85,7 @@ export default function Navbar() {
   const [toggle, setToggle] = useState(false);
   const { user, logout } = useUser();
   const router = useRouter();
-  console.log("!!!", user);
+  console.log("Navbar-user", user);
   return (
     <Popover className="fixed bg-white w-screen z-50 h-28 border-b">
       {({ open }) => (

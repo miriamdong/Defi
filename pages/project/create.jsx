@@ -10,7 +10,7 @@ import { useUser } from "../../firebase/useUser";
 import { useRouter } from "next/router";
 import firebase from "firebase/app";
 import "firebase/auth";
-import Createsteps from "./createsteps";
+import Createsteps from "../../components/scr/createsteps";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
   { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "complete" },
