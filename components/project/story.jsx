@@ -117,8 +117,8 @@ export default function Story() {
             components available on the market. After constructing a dedicated laser and estimating
             the measurements of the target product, it was time for a concept design.
           </p>
+          <h3> The light bulb's design</h3>
           <ul>
-            <li>The light bulb's design</li>
             <li>
               The main goal of the materials selection policy is to describe the list of materials
               that are necessary to manufacture a new product, along with the list of suppliers and
@@ -129,12 +129,6 @@ export default function Story() {
               bulbs.
             </li>
           </ul>
-          <p>
-            Quis semper vulputate aliquam venenatis egestas sagittis quisque orci. Donec commodo sit
-            viverra aliquam porttitor ultrices gravida eu. Tincidunt leo, elementum mattis elementum
-            ut nisl, justo, amet, mattis. Nunc purus, diam commodo tincidunt turpis. Amet, duis sed
-            elit interdum dignissim.
-          </p>
           <h2>Materials selection policy</h2>
           <p>
             Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat in. Convallis arcu
@@ -142,6 +136,16 @@ export default function Story() {
             Maecenas pellentesque id sed tellus mauris, ultrices mauris. Tincidunt enim cursus
             ridiculus mi. Pellentesque nam sed nullam sed diam turpis ipsum eu a sed convallis diam.
           </p>
+          <figure>
+            <img
+              className="w-full rounded-lg"
+              src="/img/light.jpeg"
+              alt=""
+              width={1310}
+              height={873}
+            />
+            <figcaption>Sagittis scelerisque nulla cursus in enim consectetur quam.</figcaption>
+          </figure>{" "}
           <blockquote>
             <p>
               Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed
@@ -153,22 +157,12 @@ export default function Story() {
             semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
             viverra tellus varius sit neque erat velit.
           </p>
-          <figure>
-            {/* <img
-              className="w-full rounded-lg"
-              src="/img/light.jpeg"
-              alt=""
-              width={1310}
-              height={873}
-            /> */}
-            <div className={classes.Container}>
-              <ReactPlayer
-                className="absolute inset-0 h-full w-full object-cover"
-                url="https://player.vimeo.com/video/552165449?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              />
-            </div>
-            <figcaption>Sagittis scelerisque nulla cursus in enim consectetur quam.</figcaption>
-          </figure>
+          <div className={classes.Container}>
+            <ReactPlayer
+              className="absolute inset-0 w-full object-cover"
+              url="https://vimeo.com/553053278"
+            />
+          </div>
           <h2>Everything you need to get up and running</h2>
           <p>
             Purus morbi dignissim senectus mattis <a href="#">adipiscing</a>. Amet, massa quam

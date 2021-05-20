@@ -23,7 +23,7 @@ const cards = [
 
 export default function Wallet() {
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100 pt-32">
+    <div className="h-screen flex overflow-hidden bg-gray-100 pt-28">
       {/* <MainSidebar /> */}
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:flex-shrink-0">
@@ -56,7 +56,7 @@ export default function Wallet() {
           <div className="mt-8">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-lg leading-6 font-medium text-gray-900">Overview</h2>
-              <Chart />
+              {/* <Chart /> */}
               <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {/* Card */}
                 {cards.map((card) => (
