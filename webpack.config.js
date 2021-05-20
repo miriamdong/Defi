@@ -1,7 +1,7 @@
+import css from "file.css";
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-import css from "file.css";
 
 module.exports = {
   entry: "./src/js/main.js",
