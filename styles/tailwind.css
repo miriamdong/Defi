@@ -4,7 +4,7 @@
 
 @layer components {
   .timeline-img {
-    @apply h-24 w-24 object-cover rounded-full shadow-md border-4 border-white xs md:mx-auto md:left-0 md:right-0;
+    @apply h-24 w-24 object-cover rounded-full shadow-md border-4 border-white md:mx-auto md:left-0 md:right-0;
   }
   .timeline-container {
     @apply relative pt-2 xs:pl-28 xs:pt-0 md:w-1/2 md:ml-auto md:pl-16;
