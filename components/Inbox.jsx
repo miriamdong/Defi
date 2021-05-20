@@ -5,13 +5,12 @@ import { CheckCircleIcon, ChevronRightIcon, MailIcon } from "@heroicons/react/so
 const applications = [
   {
     applicant: {
-      name: "Ricardo Cooper",
-      email: "ricardo.cooper@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      name: "System",
+      email: "system@rocketmeow.com",
+      imageUrl: "/rocket.ico",
     },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
+    date: "2020-05-20",
+    dateFull: "May 20, 2020",
     stage: "New",
     href: "#",
     icon: ExclamationCircleIcon,
@@ -36,8 +35,8 @@ const applications = [
       imageUrl:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
-    date: "2020-01-07",
-    dateFull: "January 7, 2020",
+    date: "2020-03-07",
+    dateFull: "March 7, 2020",
     stage: "Read",
     href: "#",
     icon: CheckCircleIcon,

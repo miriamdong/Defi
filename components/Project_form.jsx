@@ -31,6 +31,27 @@ export default function SignInForm() {
     setPassword("");
     setDisplayName("");
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    console.log("axios: state", state);
+    axios
+      .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
+      .then((res) => {
+        console.log("RESPONSE RECEIVED: ", res);
+        router.replace("/user/" + firebase.auth().currentUser.uid + "/dashboard/myproject");
+      })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+      });
+  };
+
   return (
     <div className="relative bg-gray-800 overflow-hidden">
       <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">

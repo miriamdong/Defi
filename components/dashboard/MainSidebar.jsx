@@ -21,7 +21,7 @@ const navigation = [
   { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
   { name: "History", href: "#", icon: CalendarIcon, current: false },
   { name: "My Wallet", href: "myWallet", icon: CreditCardIcon, current: false },
-  { name: "Inbox", href: "inbox", icon: InboxIcon, count: 3, current: false },
+  { name: "Inbox", href: "inbox", icon: InboxIcon, count: 1, current: false },
   { name: "Community", href: "/blog", icon: UserGroupIcon, count: 12, current: false },
   { name: "Reports", href: "report", icon: ChartBarIcon, current: false },
 ];
