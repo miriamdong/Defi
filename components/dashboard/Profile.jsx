@@ -9,27 +9,27 @@ export default function Profile() {
   const [url, setUrl] = useState("");
   const [name, setName] = useState("");
 
-  console.log({ user });
+  // console.log({ user });
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         const userData = mapUserData(user);
-        console.log({ userData });
+        // console.log({ userData });
         setUrl(userData.photoURL);
         setName(userData.name);
       }
     });
     const current = firebase.auth().currentUser;
     if (current) {
-      console.log({ current });
+      // console.log({ current });
       setUser(current);
       setUrl(current.photoURL);
       setName(current.name);
     }
   }, [user]);
 
-  console.log(curuser);
+  // console.log(curuser);
 
   return (
     <div className="flex items-center">

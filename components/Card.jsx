@@ -15,7 +15,7 @@ export default function Card() {
   const [toggle, setToggle] = useState(false);
   const router = useRouter();
   let [isShowing, setIsShowing] = useState(false);
-  console.log("$$$", state);
+  // console.log("$$$", state);
 
   return (
     <section

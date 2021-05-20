@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import MyToken from "../../../../contracts/MyWallet.json";
-import { getWallet } from "../../../../components/Meta/utils.js";
-import getWeb3 from "../../../../hooks/useWeb3";
-import MyWallet from "../../../../contracts/MyWallet.json";
-import NewTransfer from "../../../../components/Meta/NewTransfer";
+// import MyToken from "../../../../contracts/MyWallet.json";
+// import { getWallet } from "../../../../components/Meta/utils.js";
+// import getWeb3 from "../../../../hooks/useWeb3";
+// import MyWallet from "../../../../contracts/MyWallet.json";
+// import NewTransfer from "../../../../components/Meta/NewTransfer";
 import Wallet from "../../../../components/Layout";
 
 import {

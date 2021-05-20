@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MyToken from "../../contracts/MyToken.json";
-import getWeb3 from "../../hooks/useWeb3";
-import { useUser } from "../../firebase/useUser";
+import MyToken from "../../../../contracts/MyToken.json";
+import getWeb3 from "../../../../hooks/useWeb3";
 
 function Transfer() {
   const [web3, setWeb3] = useState(undefined);

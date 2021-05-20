@@ -1,17 +1,10 @@
 // import UploadFile from '../../components/storage/UploadFile'
-import Upload from "../../components/storage/AWS";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import "firebase/auth";
-import Escrow from "../../components/Meta/Escrow";
-import Createsteps from "./createsteps";
-import Kyc from "../../components/Meta/Kyc";
-import GoogleMaps from "../../components/CountrySelect";
+import Createsteps from "../../components/scr/createsteps";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
-import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -28,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Create() {
+export default function KYC() {
   const classes = useStyles();
   return (
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 p-40">
