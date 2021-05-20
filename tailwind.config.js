@@ -2,8 +2,8 @@ const colors = require("tailwindcss/colors");
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: [],
-  presets: [require("@acmecorp/tailwind-base")],
+  purge: ["./src/**/*.html", "./src/**/*.js"],
+  presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {

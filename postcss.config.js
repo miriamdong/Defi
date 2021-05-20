@@ -1,3 +1,5 @@
+const tailwindcss = require("tailwindcss");
+
 const purgecss = [
   "@fullhuman/postcss-purgecss",
   {
@@ -9,13 +11,9 @@ const purgecss = [
 module.exports = (ctx) => ({
   parser: ctx.parser ? "sugarss" : false,
   map: ctx.env === "development" ? ctx.map : false,
-  plugins: {
-    "postcss-import": {},
-    "postcss-nested": {},
-    "postcss-preset-env": {},
-    "postcss-import": {},
-    tailwindcss: {},
-    autoprefixer: {},
-    cssnano: ctx.env === "production" ? {} : false,
-  },
+  plugins: [
+    require("postcss-import"),
+    tailwindcss("./tailwind.config.js"),
+    require("autoprefixer"),
+  ],
 });

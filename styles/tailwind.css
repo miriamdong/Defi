@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* @layer components {
+@layer components {
   .timeline-img {
     @apply h-24 w-24 object-cover rounded-full shadow-md border-4 border-white xs:absolute md:mx-auto md:left-0 md:right-0;
   }
@@ -18,4 +18,4 @@
   .timeline-pointer-left {
     @apply md:left-auto md:right-14;
   }
-} */
+} ;
