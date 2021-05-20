@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
