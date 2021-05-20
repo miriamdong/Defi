@@ -2,8 +2,6 @@ import "../styles/main.css";
 import "../styles/tailwind.css";
 import FirebaseAuth from "../components/Auth/FirebaseAuth";
 import "bootstrap/dist/css/bootstrap.min.css";
-import App from "next/app";
-import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Head from "next/head";
