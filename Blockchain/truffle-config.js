@@ -1,6 +1,17 @@
 const path = require("path");
 require("dotenv").config({ path: "./.env" });
 const HDWalletProvider = require("@truffle/hdwallet-provider");
+const fs = require("fs");
+
+let secrets;
+console.log(path.join(__dirname, "secrets.json"));
+
+if (fs.existsSync(path.join(__dirname, "secrets.json"))) {
+  secrets = JSON.parse(fs.readFileSync(path.join(__dirname, "secrets.json"), "utf8"));
+} else {
+  console.log("secrets.json doesn't exist!");
+}
+
 const MetaMaskAccountIndex = 0;
 
 module.exports = {
@@ -24,7 +35,7 @@ module.exports = {
       network_id: 1337,
     },
     ropsten_infura: {
-      provider: function () {
+      provider: () => {
         return new HDWalletProvider(
           process.env.MNEMONIC,
           "https://ropsten.infura.io/v3/5e24e9ad27d84951bb4a7c50bfdbfd45",
@@ -36,10 +47,21 @@ module.exports = {
       gasPrice: 10000000000,
       network_id: 3,
     },
+    kovan: {
+      provider: () => {
+        return new HDWalletProvider(
+          [secrets],
+          "https://kovan.infura.io/v3/cb1d05ee23de429c95dceb000e746e5b",
+          0,
+          3,
+        );
+      },
+      network_id: 42,
+    },
   },
   compilers: {
     solc: {
-      version: "^0.6.0",
+      version: "^0.6.1",
       optimizer: { enabled: true, runs: 200 },
     },
   },
