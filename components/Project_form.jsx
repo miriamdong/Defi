@@ -1,16 +1,36 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { ChevronRightIcon } from "@heroicons/react/solid";
+import React, { useState } from "react";
+import { Link } from "@reach/router";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+export default function SignInForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [error, setError] = useState(null);
 
-export default function Example() {
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+    if (name === "userEmail") {
+      setEmail(value);
+    } else if (name === "userPassword") {
+      setPassword(value);
+    } else if (name === "displayName") {
+      setDisplayName(value);
+    }
+  };
+
+  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+    event.preventDefault();
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      generateUserDocument(user, { displayName });
+    } catch (error) {
+      setError("Error Signing up with email and password");
+    }
+
+    setEmail("");
+    setPassword("");
+    setDisplayName("");
+  };
   return (
     <div className="relative bg-gray-800 overflow-hidden">
       <div className="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
@@ -41,13 +61,12 @@ export default function Example() {
               <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
                 <div>
                   <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
-                    <span className="md:block">Data to enrich your</span>{" "}
-                    <span className="text-indigo-400 md:block">online business</span>
+                    <span className="md:block">Invest in founders</span>{" "}
+                    <span className="text-indigo-400 md:block">building the future</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-                    commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt
-                    sunt.
+                    Invest as little as $100 in the startups and small businesses you believe in.
+                    Together, we can help thousands of founders shooting their shot
                   </p>
                 </div>
               </div>
@@ -66,27 +85,28 @@ export default function Example() {
                           </label>
                           <input
                             type="text"
-                            name="name"
-                            id="name"
-                            autoComplete="name"
+                            className="my-1 p-1 w-full "
+                            name="displayName"
+                            value={displayName}
                             placeholder="Full name"
+                            id="displayName"
                             required
-                            className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                            onChange={(event) => onChangeHandler(event)}
                           />
                         </div>
 
                         <div>
                           <label htmlFor="mobile-or-email" className="sr-only">
-                            Mobile number or email
+                            Your email
                           </label>
                           <input
-                            type="text"
-                            name="mobile-or-email"
-                            id="mobile-or-email"
-                            autoComplete="email"
-                            placeholder="Mobile number or email"
-                            required
-                            className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                            type="email"
+                            className="my-1 p-1 w-full"
+                            name="userEmail"
+                            value={email}
+                            placeholder="Your email"
+                            id="userEmail"
+                            onChange={(event) => onChangeHandler(event)}
                           />
                         </div>
 
@@ -95,20 +115,23 @@ export default function Example() {
                             Password
                           </label>
                           <input
-                            id="password"
-                            name="password"
                             type="password"
-                            placeholder="Password"
-                            autoComplete="current-password"
-                            required
-                            className="block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 mb-3 p-1 w-full"
+                            name="userPassword"
+                            value={password}
+                            placeholder="Your Password"
+                            id="userPassword"
+                            onChange={(event) => onChangeHandler(event)}
                           />
                         </div>
 
                         <div>
                           <button
-                            type="submit"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            className="bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2
+                            focus:ring-offset-2 focus:ring-indigo-500 w-full py-2 text-white"
+                            onClick={(event) => {
+                              createUserWithEmailAndPasswordHandler(event, email, password);
+                            }}>
                             Create your account
                           </button>
                         </div>
