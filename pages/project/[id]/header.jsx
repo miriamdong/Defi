@@ -34,6 +34,7 @@ export default function Header() {
     contract: "",
     user_id: "",
     image: "",
+    video: "",
   });
 
   const [comments, setComments] = useState([]);
@@ -87,12 +88,13 @@ export default function Header() {
       changeType: "",
     },
   ];
+  console.log("project.video", project.video);
 
   return (
     <div className="bg-white pt-28">
       {/* Header */}
       <div className="min-h-40 bg-white flex">
-        <div className="hidden lg:block relative w-0 flex-1">
+        <div className="lg:block relative w-0 flex-1">
           {/* <img className="absolute inset-0 h-full w-full object-cover" src={project.image} alt="" /> */}
           <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <source
