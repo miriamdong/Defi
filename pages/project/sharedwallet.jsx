@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "firebase/auth";
 import Escrow from "../../components/Meta/Escrow";
 import Createsteps from "../../components/scr/createsteps";
+import Token from "../../components/Meta/Token";
 const steps = [
   { id: "01", name: "KYC", href: "KYC", status: "complete" },
   { id: "02", name: "Shared Wallet", href: "sharedwallet", status: "current" },
@@ -30,8 +31,9 @@ export default function SharedWallet() {
               </div>
               <Createsteps steps={steps} />
               <div className="pt-8">
-                <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                  <div className="sm:col-span-6">
+                <div className="mt-6 grid grid-flow-col grid-rows-1 grid-cols-4 gap-4">
+                  <div className="col-start-2 col-span-2">
+                    <Token />
                     <Escrow />
                     <Link href="/project/create">
                       <button
