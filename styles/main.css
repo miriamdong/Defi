@@ -10,7 +10,9 @@ Document
 /**
 Use a better box model (opinionated).
 */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *,
 ::before,
 ::after {

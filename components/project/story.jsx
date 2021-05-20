@@ -122,7 +122,7 @@ export default function Story() {
           <figure>
             <img
               className="w-full rounded-lg"
-              src="./img/light.jpeg"
+              src="/img/light.jpeg"
               alt=""
               width={1310}
               height={873}
