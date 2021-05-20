@@ -141,10 +141,11 @@ export default function Header() {
             ">
               <dt className="order-2 mt-6 text-lg leading-6 font-medium text-gray-500">
                 <div className="relative">
-                  {/* <div className="border-t border-gray-300" /> */}
-                  <div className="absolute inset-0 flex items-center" aria-hidden="true"></div>
+                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div className="w-full border-t border-gray-300" />
+                  </div>
                   <div className="relative flex justify-center">
-                    <span className="px-2 bg-white">{project.username}</span>
+                    <span className="px-2 bg-white text-lg text-gray-500">{project.username}</span>
                   </div>
                 </div>
               </dt>

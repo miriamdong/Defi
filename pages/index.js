@@ -19,7 +19,6 @@ export default function Home() {
       <div>
         <Header />
         <Card />
-        <Testimonial />
         <Form />
       </div>
     </>
