@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
+import { auth } from "../firebase/initFirebase";
+import { useRouter } from "next/router";
+import firebase from "firebase/app";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [userId, setUserId] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -18,38 +24,16 @@ export default function SignInForm() {
     }
   };
 
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { displayName });
-    } catch (error) {
-      setError("Error Signing up with email and password");
-    }
-
+    setLoading(true);
+    const { user } = await auth.createUserWithEmailAndPassword(email, password);
+    setLoading(false);
+    setUserId(firebase.auth().currentUser.uid);
+    router.replace("/user/" + firebase.auth().currentUser.uid + "/dashboard/myproject");
     setEmail("");
     setPassword("");
     setDisplayName("");
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    let axiosConfig = {
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-    console.log("axios: state", state);
-    axios
-      .post("https://defidapp.herokuapp.com/projects", state, axiosConfig)
-      .then((res) => {
-        console.log("RESPONSE RECEIVED: ", res);
-        router.replace("/user/" + firebase.auth().currentUser.uid + "/dashboard/myproject");
-      })
-      .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
-      });
   };
 
   return (
@@ -99,7 +83,7 @@ export default function SignInForm() {
                     </div>
 
                     <div className="mt-20">
-                      <form action="#" method="POST" className="space-y-6">
+                      <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                           <label htmlFor="name" className="sr-only">
                             Full name
@@ -127,6 +111,7 @@ export default function SignInForm() {
                             value={email}
                             placeholder="Your email"
                             id="userEmail"
+                            required
                             onChange={(event) => onChangeHandler(event)}
                           />
                         </div>
@@ -142,6 +127,7 @@ export default function SignInForm() {
                             value={password}
                             placeholder="Your Password"
                             id="userPassword"
+                            required
                             onChange={(event) => onChangeHandler(event)}
                           />
                         </div>
@@ -150,9 +136,7 @@ export default function SignInForm() {
                           <button
                             className="bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2
                             focus:ring-offset-2 focus:ring-indigo-500 w-full py-2 text-white"
-                            onClick={(event) => {
-                              createUserWithEmailAndPasswordHandler(event, email, password);
-                            }}>
+                            type="submit">
                             Create your account
                           </button>
                         </div>
