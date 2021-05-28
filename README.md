@@ -49,6 +49,19 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    yarn install
    ```
+3. Run the project in dev mode
+  ```sh
+   yarn dev
+  ```
+4. Run locally via http://localhost:3000
+5. If you want to build NextJS website, run following command:
+  ```sh
+   yarn build
+  ```
+6. Run production website
+  ```sh
+   yarn run start
+  ```
 
 ### Sneak peek
 #### Home Page
